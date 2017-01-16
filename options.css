@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+body
+{
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    font-family: "montserrat-lit";
+    background-color: #f8f8f8;
+}
+
+p
+{
+    margin: 0;
+}
+
+.wrap
+{
+    position: relaitve;
+    width: 1100px;
+    margin: auto;    
+}
+
+.day-table
+{
+    position: relative;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.day-table tr
+{
+    background-color: rgba(128,147,167,0.06);
+}
+
+.day-table tr:nth-of-type(2n)
+{
+    background-color: white;
+}
+
+.day-table td
+{
+    height: 115px;
+    font-size: 20px;
+}
+
+td.cover
+{
+    width: 130px;
+    user-select: none;
+}
+
+td.cover img
+{
+    height: 115px;
+}
+
+.day-table td a
+{
+    display: block;
+    vertical-align: middle;
+    line-height: 115px;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+td.button
+{
+    width: 50px;
+    text-align: center;
+    user-select: none;
+}
+
+td.title
+{
+    width: 500px;
+}
+
+.entry-form
+{
+    width: 100%;
+    
+    height: 200px;
+    background-color: grey;
+}
+
+.textbox
+{
+    width: 300px;
+    height: 60px;
+    border-style: none;
+    font-size: 30px;
+}
