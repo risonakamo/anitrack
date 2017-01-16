@@ -2,20 +2,9 @@ window.onload=main;
 
 function main()
 {
-    console.log(runHook());
-
-    chrome.storage.local.clear();    
-    chrome.storage.local.get("alist",function(d){
-        if (!d.alist)
-        {
-            chrome.storage.local.set({alist:0});
-            return;
-        }
-        
-        console.log(d.alist);
-        d.alist++;
-        chrome.storage.local.set({alist:d.alist});
-    });
+    // fullUpdateStorage(runHook());
+    progressUpdate();
+    printStorageKeys();
 }
 
 /*returns object {
@@ -81,6 +70,20 @@ function getTitles()
     return [ta,tl,tid];
 }
 
+//special use for progresshook, variation of gettitles
+//but gets ids only
+function getIds()
+{
+    var titles=document.querySelectorAll(".title a");
+    var ids=[];
+
+    titles.forEach(function(e){
+        ids.push(e.href.slice(24));
+    });
+
+    return ids;
+}
+
 function getProgress()
 {
     var p=[];
@@ -91,4 +94,75 @@ function getProgress()
     });
 
     return p;
+}
+
+function printStorageKeys()
+{
+    chrome.storage.local.get(null,function(d){
+        console.log(Object.keys(d));
+    });
+}
+
+function clearStorage()
+{
+    chrome.storage.local.clear();
+}
+
+//data should be from runhook (array of objects)
+function fullUpdateStorage(data)
+{
+    chrome.storage.local.get("ids",function(d){
+        //ids already being tracked
+        var ids=d.ids;
+        
+        if (!ids)
+        {
+            ids={};
+        }
+
+        //data to be added to tracklist
+        var setData={};
+        data.forEach(function(e){
+            //only add to tracklist if confirmed to
+            //not already exist in ids list
+            if (!ids[e.id])
+            {
+                setData[e.id]=e;
+                ids[e.id]=e.progress;
+                console.log(`adding ${e.id}`);
+            }
+        });
+
+        setData.ids=ids;
+
+        chrome.storage.local.set(setData);
+    });
+}
+
+function progressUpdate()
+{
+    var id=getIds();
+    var progress=getProgress();
+
+    chrome.storage.local.get("ids",function(d){
+        var ids=d.ids;
+
+        if (!ids)
+        {
+            ids={};
+        }
+
+        for (var x=0;x<id.length;x++)
+        {
+            if (ids[id[x]])
+            {
+                ids[id[x]]=progress[x];
+            }
+
+            console.log(`updated ${id[x]}`);
+        }
+
+        console.log(ids);
+        chrome.storage.local.set({"ids":ids});        
+    });
 }
