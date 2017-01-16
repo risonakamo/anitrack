@@ -4,7 +4,6 @@ function main()
 {
     // fullUpdateStorage(runHook());
     progressUpdate();
-    printStorageKeys();
 }
 
 /*returns object {
@@ -109,8 +108,9 @@ function clearStorage()
 }
 
 //data should be from runhook (array of objects)
-function fullUpdateStorage(data)
+function fullUpdateStorage()
 {
+    data=runHook();
     chrome.storage.local.get("ids",function(d){
         //ids already being tracked
         var ids=d.ids;
@@ -162,6 +162,7 @@ function progressUpdate()
             console.log(`updated ${id[x]}`);
         }
 
+        console.log(ids);
         chrome.storage.local.set({"ids":ids});        
     });
 }

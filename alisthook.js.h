@@ -30,10 +30,9 @@ void printStorageKeys();
 //clears storage
 void clearStorage();
 
-//takes in data from runhook i dont know why
 //updates storage by only adding new ids
 //also updates 'ids' of storage
-void fullUpdateStorage(Object data);
+void fullUpdateStorage();
 
 //updates storage 'ids' value by hooking progresses
 void progressUpdate();

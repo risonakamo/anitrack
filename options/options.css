@@ -14,6 +14,11 @@ p
     margin: 0;
 }
 
+.hidden
+{
+    display: none;
+}
+
 .wrap
 {
     position: relaitve;
@@ -21,12 +26,24 @@ p
     margin: auto;    
 }
 
+.table-wrap
+{
+    margin: auto;
+    margin-top: 30px;
+    width: 740px;
+}
+
+.table-wrap p.table-title
+{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 .day-table
 {
     position: relative;
     margin: auto;
     border-collapse: collapse;
-    margin-top: 30px;
 }
 
 .day-table tr
@@ -42,13 +59,16 @@ p
 .day-table td
 {
     height: 115px;
+    overflow: hidden;
     font-size: 20px;
     cursor: default;
+    padding: 0;
 }
 
 td.cover
 {
     width: 130px;
+    font-size: 0;
     user-select: none;
 }
 

@@ -6,6 +6,7 @@ function main()
         var ids=d.ids;
         var getIds=Object.keys(ids);
 
+        var dayTables=document.querySelectorAll(".day-table");
         chrome.storage.local.get(getIds,function(d2){
             var html="";
             var o;
@@ -15,7 +16,14 @@ function main()
                 html+=genEntry(o.cover,o.title,o.link,ids[e],o.nyaa);
             });
 
-            document.querySelector(".day-table").innerHTML=html;
+            if (o.day==null)
+            {
+                o.day=0;
+            }
+
+            //daytable system not done
+            dayTables[0].innerHTML=html;
+            dayTables[0].parentElement.classList.remove("hidden");
         });
         
     });
