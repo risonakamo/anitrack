@@ -162,7 +162,6 @@ function progressUpdate()
             console.log(`updated ${id[x]}`);
         }
 
-        console.log(ids);
         chrome.storage.local.set({"ids":ids});        
     });
 }
