@@ -3,6 +3,19 @@ window.onload=main;
 function main()
 {
     console.log(runHook());
+
+    chrome.storage.local.clear();    
+    chrome.storage.local.get("alist",function(d){
+        if (!d.alist)
+        {
+            chrome.storage.local.set({alist:0});
+            return;
+        }
+        
+        console.log(d.alist);
+        d.alist++;
+        chrome.storage.local.set({alist:d.alist});
+    });
 }
 
 /*returns object {
