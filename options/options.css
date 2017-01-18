@@ -37,6 +37,12 @@ p
 {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #00a8ff;
+}
+
+.table-wrap p.table-title.today
+{
+    color: #FF2A00;
 }
 
 .day-table

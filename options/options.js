@@ -8,22 +8,36 @@ function main()
 
         var dayTables=document.querySelectorAll(".day-table");
         chrome.storage.local.get(getIds,function(d2){
-            var html="";
+            var html=["","","","","","","",""];
             var o;
             
-            getIds.forEach(function(e){
+            getIds.forEach(function(e){                
                 o=d2[e];
-                html+=genEntry(o.cover,o.title,o.link,ids[e],e,o.nyaa);
+                
+                if (o.day==null)
+                {
+                    o.day=0;
+                }
+                
+                html[o.day]+=genEntry(o.cover,o.title,o.link,ids[e],e,o.nyaa);
             });
 
-            if (o.day==null)
-            {
-                o.day=0;
-            }
-
             //daytable system not done
-            dayTables[0].innerHTML=html;
-            dayTables[0].parentElement.classList.remove("hidden");
+            dayTables.forEach(function(e,x){
+                if (html[x]!="")
+                {
+                    e.innerHTML=html[x];
+
+                    var t=new Date();
+                    t=t.getDay()+1;
+                    if (x==t.toString())
+                    {
+                        e.parentElement.children[0].classList.add("today");
+                    }
+                    
+                    e.parentElement.classList.remove("hidden");
+                }
+            });
 
             setNLinks();
         });        
