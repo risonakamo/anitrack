@@ -11,13 +11,73 @@ p
     margin: 0;
 }
 
+a
+{
+    text-decoration: none;
+    color: black;
+}
+
+.entry
+{
+    width: 240px;
+    height: 60px;
+    font-size: 0;
+}
+
+.entry div
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.entry .small-box
+{
+    height: 100%;
+    width: 60px;
+    overflow: hidden;
+}
+
+.entry .small-box img
+{
+    height: 100%;
+}
+
+.entry .small-box.ep
+{
+    vertical-align: middle;
+    line-height: 60px;    
+}
+
+.entry .title
+{
+    height: 60px;
+    width: 120px;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.entry .title p,.entry .small-box p
+{
+    font-size: 20px;
+}
+
 .options
 {
     width: 240px;
     height: 60px;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
 }
 
 .options:hover
 {
     background-color: grey;
+    cursor: pointer;    
+}
+
+.options p
+{
+    font-size: 20px;
 }

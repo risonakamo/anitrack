@@ -85,14 +85,14 @@ function setNLinks()
             sidePane.classList.remove("hidden");
         });
     });
-
+    
     paneSubmit.addEventListener("click",function(e){
         updateND(this.dataset.id,nyaa.value,day.value);
         nyaa.value="";
         day.value=0;
         sidePane.classList.add("hidden");
     });
-
+    
     paneCancel.addEventListener("click",function(e){
         nyaa.value="";
         day.value=0;
@@ -102,14 +102,25 @@ function setNLinks()
 
 function updateND(id,nyaa,day)
 {
-    chrome.storage.local.get(id,function(d){
+    var dayGet="day"+day;
+    console.log(dayGet);
+    chrome.storage.local.get([id,dayGet],function(d){
         var entry=d[id];
+        var dayArray=d[dayGet];
+
+        if (!dayArray)
+        {
+            dayArray={};
+        }
+
+        dayArray[id]="";
 
         entry.nyaa=nyaa;
         entry.day=day;
 
         var setEntry={};
         setEntry[id]=entry;
+        setEntry[dayGet]=dayArray;
         chrome.storage.local.set(setEntry);
     });
 }
