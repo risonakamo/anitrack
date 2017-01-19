@@ -1,7 +1,7 @@
 window.onload=main;
 
 function main()
-{
+{    
     chrome.storage.local.get("ids",function(d){
         var ids=d.ids;
         var getIds=Object.keys(ids);
@@ -39,6 +39,7 @@ function main()
                 }
             });
 
+            displayStorage();
             setNLinks();
         });        
     });
@@ -122,5 +123,12 @@ function updateND(id,nyaa,day)
         setEntry[id]=entry;
         setEntry[dayGet]=dayArray;
         chrome.storage.local.set(setEntry);
+    });
+}
+
+function displayStorage()
+{
+    chrome.storage.local.get(null,function(d){
+        console.log(d);
     });
 }
