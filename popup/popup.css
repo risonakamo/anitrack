@@ -9,12 +9,18 @@ body
 p
 {
     margin: 0;
+    color: #023584;
 }
 
 a
 {
     text-decoration: none;
     color: black;
+}
+
+a:hover
+{
+    color: #00a8ff;
 }
 
 .entry
@@ -30,6 +36,12 @@ a
     vertical-align: top;
 }
 
+.entry .no-ep
+{
+    font-size: 18px;
+    font-style: italic;
+}
+
 .entry .small-box
 {
     height: 100%;
@@ -42,10 +54,15 @@ a
     height: 100%;
 }
 
-.entry .small-box.ep
+.entry .small-box.ep,.entry ,no-ep
 {
     vertical-align: middle;
-    line-height: 60px;    
+    line-height: 60px;
+}
+
+.entry .small-box.ep p,.entry .no-ep
+{
+    text-align: center;
 }
 
 .entry .title
@@ -54,6 +71,7 @@ a
     width: 120px;
     vertical-align: middle;
     line-height: 60px;
+    overflow: hidden;
 }
 
 .entry .title p,.entry .small-box p
@@ -73,11 +91,15 @@ a
 
 .options:hover
 {
-    background-color: grey;
     cursor: pointer;    
 }
 
 .options p
 {
     font-size: 20px;
+}
+
+.options p:hover
+{
+    color: #00a8ff;
 }

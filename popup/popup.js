@@ -3,7 +3,7 @@ window.onload=main;
 function main()
 {
     setOverviewButton();
-    // displayEntries();
+    displayEntries();
 }
 
 function setOverviewButton()
@@ -19,7 +19,7 @@ function displayEntries()
 {
     var entriesPoint=document.querySelector(".entries");
     var dayGet=new Date();
-    dayGet=dayGet.getDay()+2;
+    dayGet=dayGet.getDay()+1;
     dayGet="day"+dayGet;
     
     chrome.storage.local.get(dayGet,function(d){
@@ -38,8 +38,21 @@ function displayEntries()
             }
 
             entriesPoint.innerHTML=html;
+            setLinks();
         });
     });    
+}
+
+function setLinks()
+{
+    var links=document.querySelectorAll(".entry-link");
+
+    links.forEach(function(e){
+        e.addEventListener("click",function(e2){
+            e2.preventDefault();
+            chrome.tabs.create({url:this.href,active:false});
+        });
+    });
 }
 
 //nyaa should be in tag form (default form stored in
@@ -55,7 +68,7 @@ function genEntry(cover,title,progress,nyaa=0)
         nyaa=`href="https://www.nyaa.se/?page=search&cats=1_37&filter=0&term=${nyaa}"`;
     }
     
-    return `<a ${nyaa}>
+    return `<a class="entry-link" ${nyaa}>
   <div class="entry">
     <div class="small-box cover-img">
       <img src="${cover}">
