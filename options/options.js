@@ -24,6 +24,18 @@ function main()
 
             //daytable system not done
             dayTables.forEach(function(e,x){
+                if (x==0 && html[x]=="")
+                {
+                    e.parentElement.classList.add("hidden");
+                    return;
+                }
+
+                if (html[x]=="")
+                {
+                    e.innerHTML=`<p>no episodes</p>`;
+                    return;
+                }
+                
                 if (html[x]!="")
                 {
                     e.innerHTML=html[x];
@@ -33,13 +45,10 @@ function main()
                     if (x==t.toString())
                     {
                         e.parentElement.children[0].classList.add("today");
-                    }
-                    
-                    e.parentElement.classList.remove("hidden");
+                    }                    
                 }
             });
 
-            displayStorage();
             setNLinks();
         });        
     });
@@ -104,7 +113,7 @@ function setNLinks()
 function updateND(id,nyaa,day)
 {
     var dayGet="day"+day;
-    console.log(dayGet);
+
     chrome.storage.local.get([id,dayGet],function(d){
         var entry=d[id];
         var dayArray=d[dayGet];
