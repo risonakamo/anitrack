@@ -45,7 +45,7 @@ function displayEntries()
 
 function setLinks()
 {
-    var links=document.querySelectorAll(".entry-link");
+    var links=document.querySelectorAll(".entry-link,.ex-links .plink");
 
     links.forEach(function(e){
         e.addEventListener("click",function(e2){

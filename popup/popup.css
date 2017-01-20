@@ -21,7 +21,7 @@ a
 
 a:hover
 {
-    color: #00a8ff;
+    color: #01A8FE;
 }
 
 .entry
@@ -34,7 +34,7 @@ a:hover
 .entry div
 {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: top;    
 }
 
 .entry .no-ep
@@ -72,7 +72,7 @@ a:hover
     width: 120px;
     vertical-align: middle;
     line-height: 60px;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .entry .title p,.entry .small-box p
@@ -80,10 +80,43 @@ a:hover
     font-size: 20px;
 }
 
-.options
+.entry .title p:hover
+{
+    color: #01A8FE;
+}
+
+.row-box
 {
     width: 240px;
     height: 60px;
+}
+
+.ex-links
+{
+    font-size: 0;
+    background-color: #1f2631;
+}
+
+.ex-links .link
+{
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+}
+
+.ex-links .link:hover
+{
+    background-color: rgba(1,168,254,.9);
+}
+
+.ex-links .link img
+{
+    height: 100%;
+}
+
+.options
+{
     line-height: 60px;
     text-align: center;
     vertical-align: middle;
@@ -92,7 +125,7 @@ a:hover
 
 .options:hover
 {
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .options p
