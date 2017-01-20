@@ -15,6 +15,7 @@ p
 a
 {
     text-decoration: none;
+    background-color: black;
     color: black;
 }
 
@@ -54,7 +55,7 @@ a:hover
     height: 100%;
 }
 
-.entry .small-box.ep,.entry ,no-ep
+.entry .small-box.ep,.entry .no-ep
 {
     vertical-align: middle;
     line-height: 60px;
