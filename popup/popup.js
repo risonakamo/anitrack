@@ -67,7 +67,8 @@ function setLinks()
             return;
         }
 
-        p.innerHTML="face";
+        p.innerHTML="executing";
+        chrome.tabs.executeScript({file:"/alisthook_full.js"});
     });
 }
 

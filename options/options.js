@@ -98,7 +98,12 @@ function setNLinks()
     });
 
     
-    var submitFunc=function(e){               
+    var submitFunc=function(e){
+        if (e.key && e.key!="Enter")
+        {                       
+            return;
+        }
+        
         updateND(this.dataset.id,nyaa.value,day.value);
         nyaa.value="";
         day.value=0;
@@ -117,6 +122,7 @@ function setNLinks()
     };
     
     paneSubmit.addEventListener("click",submitFunc);
+    paneSubmit.addEventListener("keydown",submitFunc);
     
     paneCancel.addEventListener("click",cancelFunc);
     paneCancel.addEventListener("keydown",cancelFunc);
