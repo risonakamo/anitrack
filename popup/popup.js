@@ -53,6 +53,22 @@ function setLinks()
             chrome.tabs.create({url:this.href,active:false});
         });
     });
+
+    var updateAll=document.querySelector(".update");
+    var p=updateAll.children[0];
+    var uaFlag=0;
+
+    updateAll.addEventListener("click",function(e){
+        if (uaFlag==0)
+        {
+            uaFlag=1;
+            p.classList.add("warning");
+            p.innerHTML="sure?";
+            return;
+        }
+
+        p.innerHTML="face";
+    });
 }
 
 //nyaa should be in tag form (default form stored in

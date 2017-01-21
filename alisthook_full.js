@@ -1,3 +1,10 @@
+window.onload=main;
+
+function main()
+{
+    fullUpdateStorage();
+}
+
 /*returns object {
  title
  link

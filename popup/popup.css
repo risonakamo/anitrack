@@ -137,3 +137,14 @@ a:hover
 {
     color: #00a8ff;
 }
+
+.update
+{
+    user-select: none;
+    cursor: pointer;
+}
+
+.update p.warning
+{
+    color: #FF2A00;
+}

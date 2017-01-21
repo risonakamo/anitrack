@@ -93,21 +93,33 @@ function setNLinks()
             paneTitle.innerHTML=this.parentElement.parentElement.children[1].children[0].innerHTML;
             paneSubmit.dataset.id=this.dataset.id;
             sidePane.classList.remove("hidden");
+            nyaa.focus();
         });
     });
+
     
-    paneSubmit.addEventListener("click",function(e){
+    var submitFunc=function(e){               
         updateND(this.dataset.id,nyaa.value,day.value);
         nyaa.value="";
         day.value=0;
         sidePane.classList.add("hidden");
-    });
-    
-    paneCancel.addEventListener("click",function(e){
+    };
+
+    var cancelFunc=function(e){
+        if (e.key && e.key!="Enter")
+        {                       
+            return;
+        }
+        
         nyaa.value="";
         day.value=0;
         sidePane.classList.add("hidden");        
-    });
+    };
+    
+    paneSubmit.addEventListener("click",submitFunc);
+    
+    paneCancel.addEventListener("click",cancelFunc);
+    paneCancel.addEventListener("keydown",cancelFunc);
 }
 
 function updateND(id,nyaa,day)
