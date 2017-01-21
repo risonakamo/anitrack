@@ -22,6 +22,9 @@ function main()
                 html[o.day]+=genEntry(o.cover,o.title,o.link,ids[e],e,o.nyaa);
             });
 
+            var t=new Date();
+            t=t.getDay()+1;
+            
             //daytable system not done
             dayTables.forEach(function(e,x){
                 if (x==0 && html[x]=="")
@@ -30,6 +33,11 @@ function main()
                     return;
                 }
 
+                if (x==t.toString())
+                {
+                    e.parentElement.children[0].classList.add("today");
+                }                    
+                
                 if (html[x]=="")
                 {
                     e.innerHTML=`<p>no episodes</p>`;
@@ -38,14 +46,7 @@ function main()
                 
                 if (html[x]!="")
                 {
-                    e.innerHTML=html[x];
-
-                    var t=new Date();
-                    t=t.getDay()+1;
-                    if (x==t.toString())
-                    {
-                        e.parentElement.children[0].classList.add("today");
-                    }                    
+                    e.innerHTML=html[x];                   
                 }
             });
 
