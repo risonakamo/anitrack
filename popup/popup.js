@@ -3,7 +3,8 @@ window.onload=main;
 function main()
 {
     setOverviewButton();
-    displayEntries();
+    displayEntries(".entries",0);
+    displayEntries(".entries-2",-1);
 }
 
 function setOverviewButton()
@@ -15,23 +16,32 @@ function setOverviewButton()
     });
 }
 
-function displayEntries()
+var dayArray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function displayEntries(entryPoint=".entries",dayOffset=0)
 {
-    var entriesPoint=document.querySelector(".entries");
+    var entriesPoint=document.querySelector(entryPoint);
     var dayGet=new Date();
-    dayGet=dayGet.getDay();
-    dayGet="day"+dayGet;
+    dayGet=dayGet.getDay()+dayOffset;
+    var dayString=dayArray[dayGet];
+    dayGet="day"+(dayGet+1);
+    var today="";
+    if (dayOffset==0)
+    {
+        today="today";
+    }
     
     chrome.storage.local.get(dayGet,function(d){
         if (!d[dayGet])
         {
+            entriesPoint.innerHTML=`<p class="entries-header ${today}">${dayString}</p>`+entriesPoint.innerHTML;
             return;
         }
         
         dayGet=Object.keys(d[dayGet]);        
         chrome.storage.local.get(dayGet,function(d2){
-            var html="";
-            
+            var html=`<p class="entries-header">${dayString}</p>`;
+
+            console.log(d2);
             for (var x in d2)
             {
                 html+=genEntry(d2[x].cover,d2[x].title,d2[x].progress,d2[x].nyaa);

@@ -22,6 +22,17 @@ a:hover
     color: #01A8FE;
 }
 
+.entries-header
+{
+    text-align: center;
+    font-size: 13px;    
+}
+
+.today
+{
+    color: #FF2A00;
+}
+
 .entry
 {
     width: 240px;
