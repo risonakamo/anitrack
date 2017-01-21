@@ -10,7 +10,8 @@ function main()
         chrome.storage.local.get(getIds,function(d2){
             var html=["","","","","","","",""];
             var o;
-            
+
+            console.log(d2);
             getIds.forEach(function(e){                
                 o=d2[e];
                 

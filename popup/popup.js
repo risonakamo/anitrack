@@ -37,15 +37,20 @@ function displayEntries(entryPoint=".entries",dayOffset=0)
             return;
         }
         
-        dayGet=Object.keys(d[dayGet]);        
+        dayGet=Object.keys(d[dayGet]);
+        dayGet.push("ids");
         chrome.storage.local.get(dayGet,function(d2){
             var html=`<p class="entries-header">${dayString}</p>`;
 
-            console.log(d2);
             for (var x in d2)
             {
-                html+=genEntry(d2[x].cover,d2[x].title,d2[x].progress,d2[x].nyaa);
-            }
+                if (x=="ids")
+                {
+                    continue;
+                }
+                
+                html+=genEntry(d2[x].cover,d2[x].title,d2.ids[x],d2[x].nyaa);
+            }            
 
             entriesPoint.innerHTML=html;
             setLinks();
