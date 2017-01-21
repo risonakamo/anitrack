@@ -19,7 +19,7 @@ function displayEntries()
 {
     var entriesPoint=document.querySelector(".entries");
     var dayGet=new Date();
-    dayGet=dayGet.getDay()+1;
+    dayGet=dayGet.getDay();
     dayGet="day"+dayGet;
     
     chrome.storage.local.get(dayGet,function(d){

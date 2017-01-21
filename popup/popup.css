@@ -15,8 +15,6 @@ p
 a
 {
     text-decoration: none;
-    background-color: black;
-    color: black;
 }
 
 a:hover
@@ -97,11 +95,19 @@ a:hover
     background-color: #1f2631;
 }
 
+.ex-links .plink
+{
+    display: inline-block;
+    z-index: 10px;
+    height: 60px;
+    width: 120px;
+}
+
 .ex-links .link
 {
     display: inline-block;
-    height: 100%;
-    width: 50%;
+    height: 60px;
+    width: 120px;
     text-align: center;
 }
 
