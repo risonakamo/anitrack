@@ -24,16 +24,11 @@ function displayEntries(entryPoint=".entries",dayOffset=0)
     dayGet=dayGet.getDay()+dayOffset;
     var dayString=dayArray[dayGet];
     dayGet="day"+(dayGet+1);
-    var today="";
-    if (dayOffset==0)
-    {
-        today="today";
-    }
     
     chrome.storage.local.get(dayGet,function(d){
         if (!d[dayGet])
         {
-            entriesPoint.innerHTML=`<p class="entries-header ${today}">${dayString}</p>`+entriesPoint.innerHTML;
+            entriesPoint.innerHTML=`<p class="entries-header">${dayString}</p>`+entriesPoint.innerHTML;
             return;
         }
         
