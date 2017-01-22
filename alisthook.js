@@ -2,7 +2,7 @@ window.onload=main;
 
 function main()
 {
-    // fullUpdateStorage(runHook());
+    console.log("progress updating");
     progressUpdate();
 }
 
@@ -52,10 +52,9 @@ function progressUpdate()
                 ids[id[x]]=progress[x];
             }
 
-            console.log(`updated ${id[x]}`);
+            // console.log(`updated ${id[x]}`);
         }
 
-        console.log(ids);
         chrome.storage.local.set({"ids":ids});        
     });
 }

@@ -18,10 +18,16 @@ function setOverviewButton()
 
 var dayArray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function displayEntries(entryPoint=".entries",dayOffset=0)
-{
+{    
     var entriesPoint=document.querySelector(entryPoint);
     var dayGet=new Date();
     dayGet=dayGet.getDay()+dayOffset;
+
+    if (dayGet==-1)
+    {
+        dayGet=6;
+    }
+    
     var dayString=dayArray[dayGet];
     dayGet="day"+(dayGet+1);
     
@@ -78,7 +84,7 @@ function setLinks()
         }
 
         p.innerHTML="executing";
-        chrome.tabs.executeScript({file:"/alisthook_full.js"});
+        chrome.tabs.executeScript({file:"alisthook_full.js"});
     });
 }
 

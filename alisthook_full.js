@@ -1,7 +1,6 @@
-window.onload=main;
-
 function main()
 {
+    console.log("full updating");
     fullUpdateStorage();
 }
 
@@ -123,3 +122,5 @@ function fullUpdateStorage()
         chrome.storage.local.set(setData);
     });
 }
+
+main();
