@@ -3,8 +3,8 @@ window.onload=main;
 function main()
 {
     setOverviewButton();
-    displayEntries(".entries",0);
-    displayEntries(".entries-2",-1);
+    displayEntries(".entries",0,0);
+    displayEntries(".entries-2",-1,1);
 }
 
 function setOverviewButton()
@@ -17,7 +17,7 @@ function setOverviewButton()
 }
 
 var dayArray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-function displayEntries(entryPoint=".entries",dayOffset=0)
+function displayEntries(entryPoint=".entries",dayOffset=0,esetLinks=1)
 {    
     var entriesPoint=document.querySelector(entryPoint);
     var dayGet=new Date();
@@ -54,7 +54,11 @@ function displayEntries(entryPoint=".entries",dayOffset=0)
             }            
 
             entriesPoint.innerHTML=html;
-            setLinks();
+            
+            if (esetLinks)
+            {
+                setLinks();
+            }
         });
     });    
 }
