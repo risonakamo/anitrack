@@ -1,5 +1,11 @@
 function main()
 {
+    if (window.location.href!="http://anilist.co/user/Risona/animelist/watching")
+    {
+        console.log("incorrect url, pls navigate to http://anilist.co/user/Risona/animelist/watching");
+        return;
+    }
+    
     console.log("full updating");
     fullUpdateStorage();
 }

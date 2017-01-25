@@ -35,6 +35,11 @@ a:hover
     font-size: 0;
 }
 
+.entry-link:nth-child(odd) .entry
+{
+    background-color: rgba(128,147,167,0.06);
+}
+
 .entry div
 {
     display: inline-block;
