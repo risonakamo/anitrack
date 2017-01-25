@@ -35,6 +35,12 @@ function displayEntries(entryPoint=".entries",dayOffset=0,esetLinks=1)
         if (!d[dayGet])
         {
             entriesPoint.innerHTML=`<p class="entries-header">${dayString}</p>`+entriesPoint.innerHTML;
+
+            if (esetLinks==1)
+            {
+                setLinks();
+            }
+            
             return;
         }
         
@@ -55,7 +61,7 @@ function displayEntries(entryPoint=".entries",dayOffset=0,esetLinks=1)
 
             entriesPoint.innerHTML=html;
             
-            if (esetLinks)
+            if (esetLinks==1)
             {
                 setLinks();
             }
@@ -67,6 +73,8 @@ function setLinks()
 {
     var links=document.querySelectorAll(".entry-link,.ex-links .plink");
 
+    console.log(links);
+    
     links.forEach(function(e){
         e.addEventListener("click",function(e2){
             e2.preventDefault();
