@@ -11,7 +11,6 @@ function main()
             var html=["","","","","","","",""];
             var o;
 
-            console.log(d2);
             getIds.forEach(function(e){                
                 o=d2[e];
                 
@@ -84,6 +83,7 @@ function setNLinks()
     var sidePane=document.querySelector(".pane");
     var paneSubmit=document.querySelector(".submitBox");
     var paneCancel=document.querySelector(".cancelBox");
+    var paneDelete=document.querySelector(".delBox");
     var paneTitle=document.querySelector(".pane-title");
     var nyaa=document.querySelector(".nyaaInput");
     var day=document.querySelector(".dayInput");
@@ -94,6 +94,7 @@ function setNLinks()
 
             paneTitle.innerHTML=this.parentElement.parentElement.children[1].children[0].innerHTML;
             paneSubmit.dataset.id=this.dataset.id;
+            paneDelete.dataset.id=this.dataset.id;
             sidePane.classList.remove("hidden");
             nyaa.focus();
         });
@@ -122,12 +123,24 @@ function setNLinks()
         day.value=0;
         sidePane.classList.add("hidden");        
     };
+
+    var deleteFunc=function(e){
+        if (e.key && e.key!="Enter")
+        {                       
+            return;
+        }
+
+        delEntry(this.dataset.id);
+    };
     
     paneSubmit.addEventListener("click",submitFunc);
     paneSubmit.addEventListener("keydown",submitFunc);
     
     paneCancel.addEventListener("click",cancelFunc);
     paneCancel.addEventListener("keydown",cancelFunc);
+
+    paneDelete.addEventListener("click",deleteFunc);
+    paneDelete.addEventListener("keydown",deleteFunc);
 }
 
 function updateND(id,nyaa,day)
@@ -159,5 +172,23 @@ function displayStorage()
 {
     chrome.storage.local.get(null,function(d){
         console.log(d);
+    });
+}
+
+function delEntry(id)
+{
+    chrome.storage.local.get([id,"ids"],function(d){
+        var day="day"+d[id].day;        
+        chrome.storage.local.get(day,function(d2){
+            delete d.ids[id];
+            delete d2[day][id];
+
+            var o={};
+            o.ids=d.ids;
+            o[day]=d2[day];
+
+            chrome.storage.local.set(o);
+            chrome.storage.local.remove(id);
+        });       
     });
 }
