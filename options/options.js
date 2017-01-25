@@ -166,7 +166,7 @@ function updateND(id,nyaa,day)
         setEntry[dayGet]=dayArray;
         chrome.storage.local.set(setEntry);
     });
-}
+}xs
 
 function displayStorage()
 {
