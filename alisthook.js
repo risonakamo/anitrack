@@ -52,7 +52,7 @@ function progressUpdate()
                 ids[id[x]]=progress[x];
             }
 
-            // console.log(`updated ${id[x]}`);
+            //console.log(`updated ${id[x]}`);
         }
 
         chrome.storage.local.set({"ids":ids});        
