@@ -1,6 +1,6 @@
 function main()
 {
-    if (window.location.href!="https://anilist.co/user/Risona/animelist/watching")
+    if (window.location.href!="https://anilist.co/user/Risona/animelist/watching" && window.location.href!="https://anilist.co/user/1836/animelist/watching")
     {
         console.log("incorrect url, pls navigate to http://anilist.co/user/Risona/animelist/watching");
         return;

@@ -169,7 +169,8 @@ function genEntry(cover,title,progress,nyaa=0)
 
     else
     {
-        nyaa=`href="https://www.nyaa.se/?page=search&cats=1_37&filter=0&term=${nyaa}"`;
+        // nyaa=`href="https://www.nyaa.se/?page=search&cats=1_37&filter=0&term=${nyaa}"`;
+        nyaa=`href="https://nyaa.si/?q=${nyaa}&f=0&c=1_2"`;
     }
     
     return `<a class="entry-link" ${nyaa}>

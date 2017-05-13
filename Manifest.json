@@ -10,7 +10,7 @@
     },
 
     "content_scripts":[{
-        "matches":["https://anilist.co/user/Risona/animelist/watching"],
+        "matches":["https://anilist.co/user/Risona/animelist/watching","https://anilist.co/user/1836/animelist/watching"],
         "js":["alisthook.js"],
         "run_at":"document_end"
     }]
