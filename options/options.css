@@ -186,3 +186,25 @@ td.title
 {
     opacity: .7;
 }
+
+.user-options
+{
+    width: 740px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.user-options .textbox
+{
+    width: 200px;
+}
+
+.user-options .set-button
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 42px;
+    text-align: center;
+    margin: 0;
+}

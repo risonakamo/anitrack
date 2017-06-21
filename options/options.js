@@ -2,6 +2,8 @@ window.onload=main;
 
 function main()
 {    
+    setupUserOps();
+
     chrome.storage.local.get("ids",function(d){
         var ids=d.ids;
         var getIds=Object.keys(ids);
@@ -192,5 +194,30 @@ function delEntry(id)
             chrome.storage.local.set(o);
             chrome.storage.local.remove(id);
         });       
+    });
+}
+
+function setupUserOps()
+{
+    var setButton=document.querySelector(".set-button");
+    var opsInput=document.querySelectorAll(".user-options .textbox");    
+
+    chrome.storage.local.get("userOps",(d)=>{
+        if (!d.userOps)
+        {
+            d.userOps=["",""];
+        }
+
+        opsInput[0].value=d.userOps[0];
+        opsInput[1].value=d.userOps[1];
+    });
+
+    setButton.addEventListener("click",(e)=>{
+        var newops=[];
+        
+        newops.push(opsInput[0].value);
+        newops.push(opsInput[1].value);
+
+        chrome.storage.local.set({userOps:newops});
     });
 }

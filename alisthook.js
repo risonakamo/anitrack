@@ -2,8 +2,19 @@ window.onload=main;
 
 function main()
 {
-    console.log("progress updating");
-    progressUpdate();
+    chrome.storage.local.get("userOps",(d)=>{
+        if (!d.userOps)
+        {
+            d.userOps=["",""];
+        }
+
+        if (window.location!=`https://anilist.co/user/${d.userOps[0]}/animelist` || 
+            window.location!=`https://anilist.co/user/${d.userOps[1]}/animelist`)
+        {
+            console.log("progress updating");
+            progressUpdate();            
+        }
+    });
 }
 
 //special use for progresshook, variation of gettitles

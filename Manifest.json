@@ -3,14 +3,14 @@
     "name":"anitrack",
     "version":"2.1",
 
-    "permissions":["tabs","storage","https://anilist.co/*"],   
+    "permissions":["tabs","storage","https://anilist.co/user/*"],   
 
     "browser_action":{
         "default_popup":"popup/popup.html"
     },
 
     "content_scripts":[{
-        "matches":["https://anilist.co/user/Risona/animelist/watching","https://anilist.co/user/1836/animelist/watching"],
+        "matches":["https://anilist.co/user/*"],
         "js":["alisthook.js"],
         "run_at":"document_end"
     }]

@@ -1,13 +1,24 @@
 function main()
 {
-    if (window.location.href!="https://anilist.co/user/Risona/animelist/watching" && window.location.href!="https://anilist.co/user/1836/animelist/watching")
-    {
-        console.log("incorrect url, pls navigate to http://anilist.co/user/Risona/animelist/watching");
-        return;
-    }
-    
-    console.log("full updating");
-    fullUpdateStorage();
+    chrome.storage.local.get("userOps",(d)=>{
+        if (!d.userOps)
+        {
+            d.userOps=["",""];
+        }
+
+        if (window.location!=`https://anilist.co/user/${d.userOps[0]}/animelist/watching` || 
+            window.location!=`https://anilist.co/user/${d.userOps[1]}/animelist/watching`)
+        {
+            console.log("full updating");
+            fullUpdateStorage();
+        }
+    });
+
+    // if (window.location.href!="https://anilist.co/user/Risona/animelist/watching" && window.location.href!="https://anilist.co/user/1836/animelist/watching")
+    // {
+    //     console.log("incorrect url, pls navigate to http://anilist.co/user/Risona/animelist/watching");
+    //     return;
+    // }    
 }
 
 /*returns object {

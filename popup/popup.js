@@ -133,7 +133,17 @@ function displayEntries(entryPoint=".entries",dayOffset=0,esetLinks=1)
 function setLinks()
 {
     var links=document.querySelectorAll(".entry-link,.ex-links .plink");
-    
+    var alistLink=document.querySelector(".alist-link");
+
+    chrome.storage.local.get("userOps",(d)=>{
+        if (!d.userOps)
+        {
+            d.userOps=["",""];
+        }
+
+        alistLink.href=`http://anilist.co/user/${d.userOps[0]}/animelist`;
+    });
+
     links.forEach(function(e){
         e.addEventListener("click",function(e2){
             e2.preventDefault();
