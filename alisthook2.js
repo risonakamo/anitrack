@@ -36,16 +36,24 @@ function hook(storageData,storageIds)
         return;
     }
 
+    if (watchTable.previousSibling.innerText!="Watching")
+    {
+        return;
+    }
+
     var entries=watchTable.querySelectorAll("tr");
 
-    var data={};
-    var ids={};
+    var seenIds={};
+    Object.assign(seenIds,storageIds);
+
     for (var x=1,l=entries.length;x<l;x++)
     {
         var res={};
         res.link=entries[x].childNodes[1].firstChild.href;
         res.id=res.link.slice(25);
         res.progress=entries[x].childNodes[3].firstChild.innerText;
+
+        delete seenIds[res.id];
 
         //if hooked entry exists in storage
         if (storageData[res.id])
@@ -64,7 +72,18 @@ function hook(storageData,storageIds)
         }
     }
 
+    for (var x in seenIds)
+    {
+        delete storageData[x];
+        delete storageIds[x];
+    }
+
     storageData.ids=storageIds;
     console.log(storageData);
     chrome.storage.local.set(storageData);
+
+    if (Object.keys(seenIds).length>0)
+    {
+        chrome.storage.local.remove(Object.keys(seenIds));
+    }
 }
