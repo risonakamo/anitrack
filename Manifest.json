@@ -3,7 +3,7 @@
     "name":"anitrack",
     "version":"2.1",
 
-    "permissions":["tabs","storage","https://anilist.co/user/*"],   
+    "permissions":["tabs","storage","https://anilist.co/user/*"],
 
     "browser_action":{
         "default_popup":"popup/popup.html"
@@ -11,7 +11,7 @@
 
     "content_scripts":[{
         "matches":["https://anilist.co/user/*"],
-        "js":["alisthook.js"],
+        "js":["alisthook2.js"],
         "run_at":"document_end"
     }]
 }

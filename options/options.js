@@ -1,10 +1,15 @@
 window.onload=main;
 
 function main()
-{    
+{
     setupUserOps();
 
     chrome.storage.local.get("ids",function(d){
+        if (!d)
+        {
+            return;
+        }
+
         var ids=d.ids;
         var getIds=Object.keys(ids);
 
@@ -13,20 +18,20 @@ function main()
             var html=["","","","","","","",""];
             var o;
 
-            getIds.forEach(function(e){                
+            getIds.forEach(function(e){
                 o=d2[e];
-                
+
                 if (o.day==null)
                 {
                     o.day=0;
                 }
-                
+
                 html[o.day]+=genEntry(o.cover,o.title,o.link,ids[e],e,o.nyaa);
             });
 
             var t=new Date();
             t=t.getDay()+1;
-            
+
             //daytable system not done
             dayTables.forEach(function(e,x){
                 if (x==0 && html[x]=="")
@@ -38,23 +43,23 @@ function main()
                 if (x==t.toString())
                 {
                     e.parentElement.children[0].classList.add("today");
-                }                    
-                
+                }
+
                 if (html[x]=="")
                 {
                     e.innerHTML=`<p>no episodes</p>`;
                     return;
                 }
-                
+
                 if (html[x]!="")
                 {
-                    e.innerHTML=html[x];                   
+                    e.innerHTML=html[x];
                 }
             });
 
             setNLinks();
             // displayStorage();
-        });        
+        });
     });
 }
 
@@ -72,7 +77,7 @@ function genEntry(cover,title,alistLink,progress,id,nyaa=0)
         // nyaa=`href="https://www.nyaa.se/?page=search&cats=1_37&filter=0&term=${nyaa}"`;
         nyaa=`href="https://nyaa.si/?q=${nyaa}&f=0&c=1_2"`;
     }
-    
+
     return `<tr>
   <td class="cover"><img src="${cover}"></td>
   <td class="title"><a href="${alistLink}">${title}</a></td>
@@ -91,7 +96,7 @@ function setNLinks()
     var paneTitle=document.querySelector(".pane-title");
     var nyaa=document.querySelector(".nyaaInput");
     var day=document.querySelector(".dayInput");
-    
+
     Nlinks.forEach(function(e){
         e.addEventListener("contextmenu",function(e2){
             e2.preventDefault();
@@ -104,13 +109,13 @@ function setNLinks()
         });
     });
 
-    
+
     var submitFunc=function(e){
         if (e.key && e.key!="Enter")
-        {                       
+        {
             return;
         }
-        
+
         updateND(this.dataset.id,nyaa.value,day.value);
         nyaa.value="";
         day.value=0;
@@ -119,27 +124,27 @@ function setNLinks()
 
     var cancelFunc=function(e){
         if (e.key && e.key!="Enter")
-        {                       
+        {
             return;
         }
-        
+
         nyaa.value="";
         day.value=0;
-        sidePane.classList.add("hidden");        
+        sidePane.classList.add("hidden");
     };
 
     var deleteFunc=function(e){
         if (e.key && e.key!="Enter")
-        {                       
+        {
             return;
         }
 
         delEntry(this.dataset.id);
     };
-    
+
     paneSubmit.addEventListener("click",submitFunc);
     paneSubmit.addEventListener("keydown",submitFunc);
-    
+
     paneCancel.addEventListener("click",cancelFunc);
     paneCancel.addEventListener("keydown",cancelFunc);
 
@@ -182,7 +187,7 @@ function displayStorage()
 function delEntry(id)
 {
     chrome.storage.local.get([id,"ids"],function(d){
-        var day="day"+d[id].day;        
+        var day="day"+d[id].day;
         chrome.storage.local.get(day,function(d2){
             delete d.ids[id];
             delete d2[day][id];
@@ -193,14 +198,14 @@ function delEntry(id)
 
             chrome.storage.local.set(o);
             chrome.storage.local.remove(id);
-        });       
+        });
     });
 }
 
 function setupUserOps()
 {
     var setButton=document.querySelector(".set-button");
-    var opsInput=document.querySelectorAll(".user-options .textbox");    
+    var opsInput=document.querySelectorAll(".user-options .textbox");
 
     chrome.storage.local.get("userOps",(d)=>{
         if (!d.userOps)
@@ -214,7 +219,7 @@ function setupUserOps()
 
     setButton.addEventListener("click",(e)=>{
         var newops=[];
-        
+
         newops.push(opsInput[0].value);
         newops.push(opsInput[1].value);
 
