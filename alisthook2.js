@@ -2,28 +2,46 @@ window.onload=main;
 
 function main()
 {
-    chrome.storage.local.get("ids",(d)=>{
-        if (!d.ids)
+    chrome.storage.local.get("userOps",(d)=>{
+        if (!d.userOps)
         {
-            d={};
+            d=["",""];
         }
 
         else
         {
-            d=d.ids;
+            d=d.userOps;
         }
 
+        var urlArray=window.location.href.slice(8).split("/");
 
-        chrome.storage.local.get(Object.keys(d),(data)=>{
-            if (!data)
+        if (urlArray.length<3 || (urlArray[2]!=d[0] && urlArray[2]!=d[1]))
+        {
+            return;
+        }
+
+        chrome.storage.local.get("ids",(d)=>{
+            if (!d.ids)
             {
-                data={};
+                d={};
             }
 
-            hook(data,d);
+            else
+            {
+                d=d.ids;
+            }
+
+
+            chrome.storage.local.get(Object.keys(d),(data)=>{
+                if (!data)
+                {
+                    data={};
+                }
+
+                hook(data,d);
+            });
         });
     });
-
 }
 
 function hook(storageData,storageIds)
