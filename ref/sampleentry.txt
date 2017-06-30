@@ -1,0 +1,21 @@
+cover
+:
+"https://cdn.anilist.co/img/dir/anime/reg/21776-tB39hPtQkl3V.jpg"
+day
+:
+"4"
+id
+:
+"21776"
+link
+:
+"http://anilist.co/anime/21776"
+nyaa
+:
+"maid"
+progress
+:
+"1"
+title
+:
+"Kobayashi-san Chi no Maidragon"
