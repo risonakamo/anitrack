@@ -184,6 +184,11 @@ function displayStorage()
     });
 }
 
+function clearStorage()
+{
+    chrome.storage.local.clear();
+}
+
 function delEntry(id)
 {
     chrome.storage.local.get([id,"ids"],function(d){
