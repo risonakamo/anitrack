@@ -1,5 +1,7 @@
 window.onload=main;
 
+var _storageData;
+
 function main()
 {
     setupUserOps();
@@ -15,6 +17,8 @@ function main()
 
         var dayTables=document.querySelectorAll(".day-table");
         chrome.storage.local.get(getIds,function(d2){
+            _storageData=d2;
+            console.log(_storageData);
             var html=["","","","","","","",""];
             var o;
 
@@ -92,7 +96,6 @@ function setNLinks()
     var sidePane=document.querySelector(".pane");
     var paneSubmit=document.querySelector(".submitBox");
     var paneCancel=document.querySelector(".cancelBox");
-    var paneDelete=document.querySelector(".delBox");
     var paneTitle=document.querySelector(".pane-title");
     var nyaa=document.querySelector(".nyaaInput");
     var day=document.querySelector(".dayInput");
@@ -101,14 +104,23 @@ function setNLinks()
         e.addEventListener("contextmenu",function(e2){
             e2.preventDefault();
 
-            paneTitle.innerHTML=this.parentElement.parentElement.children[1].children[0].innerHTML;
+            paneTitle.innerHTML=_storageData[this.dataset.id].title;
+
+            if (_storageData[this.dataset.id].nyaa)
+            {
+                nyaa.value=_storageData[this.dataset.id].nyaa;
+            }
+
+            if (_storageData[this.dataset.id].day)
+            {
+                day.value=_storageData[this.dataset.id].day;
+            }
+
             paneSubmit.dataset.id=this.dataset.id;
-            paneDelete.dataset.id=this.dataset.id;
             sidePane.classList.remove("hidden");
             nyaa.focus();
         });
     });
-
 
     var submitFunc=function(e){
         if (e.key && e.key!="Enter")
@@ -133,28 +145,30 @@ function setNLinks()
         sidePane.classList.add("hidden");
     };
 
-    var deleteFunc=function(e){
-        if (e.key && e.key!="Enter")
-        {
-            return;
-        }
-
-        delEntry(this.dataset.id);
-    };
-
     paneSubmit.addEventListener("click",submitFunc);
     paneSubmit.addEventListener("keydown",submitFunc);
 
     paneCancel.addEventListener("click",cancelFunc);
     paneCancel.addEventListener("keydown",cancelFunc);
 
-    paneDelete.addEventListener("click",deleteFunc);
-    paneDelete.addEventListener("keydown",deleteFunc);
+    nyaa.addEventListener("keypress",(e)=>{
+        if (e.key=="Enter")
+        {
+            e.preventDefault();
+            updateND(paneSubmit.dataset.id,nyaa.value,day.value);
+            nyaa.value="";
+            day.value=0;
+            sidePane.classList.add("hidden");
+        }
+    })
 }
 
 function updateND(id,nyaa,day)
 {
     var dayGet="day"+day;
+
+    _storageData[id].nyaa=nyaa;
+    _storageData[id].day=day;
 
     chrome.storage.local.get([id,dayGet],function(d){
         var entry=d[id];
@@ -187,24 +201,6 @@ function displayStorage()
 function clearStorage()
 {
     chrome.storage.local.clear();
-}
-
-function delEntry(id)
-{
-    chrome.storage.local.get([id,"ids"],function(d){
-        var day="day"+d[id].day;
-        chrome.storage.local.get(day,function(d2){
-            delete d.ids[id];
-            delete d2[day][id];
-
-            var o={};
-            o.ids=d.ids;
-            o[day]=d2[day];
-
-            chrome.storage.local.set(o);
-            chrome.storage.local.remove(id);
-        });
-    });
 }
 
 function setupUserOps()
