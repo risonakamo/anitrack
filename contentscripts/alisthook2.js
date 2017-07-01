@@ -97,11 +97,36 @@ function hook(storageData,storageIds)
     }
 
     storageData.ids=storageIds;
-    console.log(storageData);
     chrome.storage.local.set(storageData);
 
     if (Object.keys(seenIds).length>0)
     {
         chrome.storage.local.remove(Object.keys(seenIds));
     }
+
+    completeMessage(entries.length-1);
+}
+
+function completeMessage(entryCount)
+{
+    var entry;
+
+    if (entry==1)
+    {
+        entry="entry";
+    }
+
+    else
+    {
+        entry="entries";
+    }
+
+    var msg=document.createElement("div");
+
+    msg.classList.add("hook-message");
+    msg.innerHTML=`anitrack: updated ${entryCount} ${entry}`;
+
+    document.body.appendChild(msg);
+
+    msg.classList.add("hook-message-show");
 }
