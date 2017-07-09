@@ -25,7 +25,7 @@ function main()
             getIds.forEach(function(e){
                 o=d2[e];
 
-                if (o.day==null)
+                if (o.day==null || o.day=="")
                 {
                     o.day=0;
                 }

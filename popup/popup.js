@@ -149,6 +149,14 @@ function setLinks()
             e2.preventDefault();
             chrome.tabs.create({url:this.href,active:false});
         });
+
+        e.addEventListener("auxclick",function(e2){
+            if (e2.button==1)
+            {
+                e2.preventDefault();
+                chrome.tabs.create({url:this.href,active:true});
+            }
+        });
     });
 }
 
