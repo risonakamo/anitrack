@@ -166,19 +166,27 @@ function setNLinks()
 function updateND(id,nyaa,day)
 {
     var dayGet="day"+day;
+    var oldDay="day"+_storageData[id].day;
 
     _storageData[id].nyaa=nyaa;
     _storageData[id].day=day;
 
-    chrome.storage.local.get([id,dayGet],function(d){
+    chrome.storage.local.get([id,dayGet,oldDay],function(d){
         var entry=d[id];
         var dayArray=d[dayGet];
+        var oldDayObj=d[oldDay];
 
         if (!dayArray)
         {
             dayArray={};
         }
 
+        if (!oldDayObj)
+        {
+            oldDayObj={};
+        }
+
+        delete oldDayObj[id];
         dayArray[id]="";
 
         entry.nyaa=nyaa;
@@ -187,6 +195,7 @@ function updateND(id,nyaa,day)
         var setEntry={};
         setEntry[id]=entry;
         setEntry[dayGet]=dayArray;
+        setEntry[oldDay]=oldDayObj;
         chrome.storage.local.set(setEntry);
     });
 }

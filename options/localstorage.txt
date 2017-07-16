@@ -1,0 +1,13 @@
+local storage structure
+
+--- show objects ---
+(variable amount) show IDs: show object
+
+--- day index ---
+keeps track of which shows are in which days
+day: {id,id,..}
+day1: {id,id,..} -> day7
+
+ids: {id,id,..}
+
+userOps: [string,string]
