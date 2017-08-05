@@ -31,7 +31,6 @@ function main()
                 d=d.ids;
             }
 
-
             chrome.storage.local.get(Object.keys(d),(data)=>{
                 if (!data)
                 {
@@ -90,11 +89,32 @@ function hook(storageData,storageIds)
         }
     }
 
+    var dayDelete={};
+    var dayString;
     for (var x in seenIds)
     {
+        if (!dayDelete["day"+storageData[x].day])
+        {
+            if (!storageData[x].day)
+            {
+                dayString="";
+            }
+
+            else
+            {
+                dayString=storageData[x].day;
+            }
+
+            dayDelete["day"+dayString]=[];
+        }
+
+        dayDelete["day"+storageData[x].day].push(x);
+
         delete storageData[x];
         delete storageIds[x];
     }
+
+    dayUpdate(dayDelete);
 
     storageData.ids=storageIds;
     chrome.storage.local.set(storageData);
@@ -129,4 +149,26 @@ function completeMessage(entryCount)
     document.body.appendChild(msg);
 
     msg.classList.add("hook-message-show");
+}
+
+//requires object with keys as day string ("day1")
+//and values as arrays of ids to be removed
+function dayUpdate(update)
+{
+    if (!Object.keys(update))
+    {
+        return;
+    }
+
+    chrome.storage.local.get(Object.keys(update),(data)=>{
+        for (var x in update)
+        {
+            for (var y=0;y<update[x].length;y++)
+            {
+                delete data[x][update[x][y]];
+            }
+        }
+
+        chrome.storage.local.set(data);
+    });
 }
