@@ -36,6 +36,8 @@ function main()
             var t=new Date();
             t=t.getDay()+1;
 
+            var todayP;
+
             //daytable system not done
             dayTables.forEach(function(e,x){
                 if (x==0 && html[x]=="")
@@ -47,6 +49,7 @@ function main()
                 if (x==t.toString())
                 {
                     e.parentElement.children[0].classList.add("today");
+                    todayP=e.parentElement.children[0];
                 }
 
                 if (html[x]=="")
@@ -61,6 +64,7 @@ function main()
                 }
             });
 
+            todayP.scrollIntoView(true);
             setNLinks();
             // displayStorage();
         });
@@ -119,6 +123,17 @@ function setNLinks()
             paneSubmit.dataset.id=this.dataset.id;
             sidePane.classList.remove("hidden");
             nyaa.focus();
+        });
+
+        e.addEventListener("click",(e)=>{
+            e.preventDefault();
+
+            if (!e.currentTarget.href)
+            {
+                return;
+            }
+
+            chrome.tabs.create({url:e.currentTarget.href,active:false});
         });
     });
 
