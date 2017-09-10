@@ -34,3 +34,53 @@
     }
 }
 
+tr.day .title a::after
+{
+    margin-left: 10px;
+    padding: 2px 3px 2px 3px;
+    color: white;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+tr.day.do .title a::after
+{
+    content: "土";
+    background-color: #b0aa9e;
+}
+
+tr.day.nic .title a::after
+{
+    content: "日";
+    background-color: #e05b56;
+}
+
+tr.day.get .title a::after
+{
+    content: "月";
+    background-color: #b790fd;
+}
+
+tr.day.ka .title a::after
+{
+    content: "火";
+    background-color: #fec828;
+}
+
+tr.day.mizu .title a::after
+{
+    content: "水";
+    background-color: #8eafff;
+}
+
+tr.day.moku .title a::after
+{
+    content: "木";
+    background-color: #cade87;
+}
+
+tr.day.kin .title a::after
+{
+    content: "金";
+    background-color: #ec9756;
+}

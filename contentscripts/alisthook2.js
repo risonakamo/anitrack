@@ -63,6 +63,7 @@ function hook(storageData,storageIds)
     var seenIds={};
     Object.assign(seenIds,storageIds);
 
+    var dayClassAdd;
     for (var x=1,l=entries.length;x<l;x++)
     {
         var res={};
@@ -77,6 +78,17 @@ function hook(storageData,storageIds)
         {
             storageData[res.id].progress=res.progress;
             storageIds[res.id]=res.progress;
+
+            if (storageData[res.id].day)
+            {
+                // entries[x].classList.add("day");
+                dayClassAdd=getDayClass(storageData[res.id].day);
+
+                if (dayClassAdd!=-1)
+                {
+                    entries[x].classList.add("day",dayClassAdd);
+                }
+            }
         }
 
         //if it does not, add it
@@ -171,4 +183,34 @@ function dayUpdate(update)
 
         chrome.storage.local.set(data);
     });
+}
+
+function getDayClass(day)
+{
+    switch (day)
+    {
+        case "1":
+        return "nic";
+
+        case "2":
+        return "get";
+
+        case "3":
+        return "ka";
+
+        case "4":
+        return "mizu";
+
+        case "5":
+        return "moku";
+
+        case "6":
+        return "kin";
+
+        case "7":
+        return "do";
+
+        default:
+        return -1;
+    }
 }
