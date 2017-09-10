@@ -64,6 +64,14 @@ function hook(storageData,storageIds)
     Object.assign(seenIds,storageIds);
 
     var dayClassAdd;
+    var today=new Date().getDay()+1;
+    var yesterday=today-1;
+
+    if (yesterday<=0)
+    {
+        yesterday=7;
+    }
+
     for (var x=1,l=entries.length;x<l;x++)
     {
         var res={};
@@ -87,6 +95,11 @@ function hook(storageData,storageIds)
                 if (dayClassAdd!=-1)
                 {
                     entries[x].classList.add("day",dayClassAdd);
+
+                    if (storageData[res.id].day==today || storageData[res.id]==yesterday)
+                    {
+                        entries[x].classList.add("kyou");
+                    }
                 }
             }
         }

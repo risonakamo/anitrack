@@ -34,6 +34,48 @@
     }
 }
 
+/*--- day marking ---*/
+
+.list tr.kyou td
+{
+    color: white;
+}
+
+.list tr.day.kyou.nic
+{
+    background-color: #e05b56;
+}
+
+.list tr.day.kyou.get
+{
+    background-color: #b790fd;
+}
+
+.list tr.day.kyou.ka
+{
+    background-color: #fec828;
+}
+
+.list tr.day.kyou.mizu
+{
+    background-color: #8eafff;
+}
+
+.list tr.day.kyou.moku
+{
+    background-color: #cade87;
+}
+
+.list tr.day.kyou.kin
+{
+    background-color: #ec9756;
+}
+
+.list tr.day.kyou.do
+{
+    background-color: #b0aa9e;
+}
+
 tr.day .title a::after
 {
     margin-left: 10px;
@@ -41,12 +83,6 @@ tr.day .title a::after
     color: white;
     font-size: 12px;
     border-radius: 3px;
-}
-
-tr.day.do .title a::after
-{
-    content: "土";
-    background-color: #b0aa9e;
 }
 
 tr.day.nic .title a::after
@@ -83,4 +119,10 @@ tr.day.kin .title a::after
 {
     content: "金";
     background-color: #ec9756;
+}
+
+tr.day.do .title a::after
+{
+    content: "土";
+    background-color: #b0aa9e;
 }
