@@ -133,7 +133,10 @@ function hook(storageData,storageIds)
             dayDelete["day"+dayString]=[];
         }
 
-        dayDelete["day"+storageData[x].day].push(x);
+        if (dayDelete["day"+storageData[x].day])
+        {
+            dayDelete["day"+storageData[x].day].push(x);
+        }
 
         delete storageData[x];
         delete storageIds[x];
