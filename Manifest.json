@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"anitrack",
-    "version":"2.1",
+    "version":"2.2.0",
 
     "permissions":["tabs","storage","https://anilist.co/user/*"],
 
