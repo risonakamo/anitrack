@@ -96,7 +96,7 @@ function hook(storageData,storageIds)
                 {
                     entries[x].classList.add("day",dayClassAdd);
 
-                    if (storageData[res.id].day==today || storageData[res.id]==yesterday)
+                    if (storageData[res.id].day==today || storageData[res.id].day==yesterday)
                     {
                         entries[x].classList.add("kyou");
                     }
