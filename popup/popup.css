@@ -138,10 +138,6 @@ a:hover
     text-align: center;
     vertical-align: middle;
     user-select: none;
-}
-
-.options:hover
-{
     cursor: pointer;
 }
 
