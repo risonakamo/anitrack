@@ -94,6 +94,17 @@ a:hover
     color: #01A8FE;
 }
 
+.entry-link.no-link .title
+{
+    color: #303338;
+    cursor: default;
+}
+
+.entry-link.no-link .title p:hover
+{
+    color: #303338;
+}
+
 .row-box
 {
     width: 240px;

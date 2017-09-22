@@ -144,20 +144,26 @@ function setLinks()
         alistLink.href=`http://anilist.co/user/${d.userOps[0]}/animelist`;
     });
 
-    links.forEach(function(e){
-        e.addEventListener("click",function(e2){
-            e2.preventDefault();
-            chrome.tabs.create({url:this.href,active:false});
-        });
+    for (var x=0,l=links.length;x<l;x++)
+    {
+        if (links[x].href)
+        {
+            links[x].addEventListener("click",(e)=>{
+                e.preventDefault();
+                chrome.tabs.create({url:e.currentTarget.href,active:false});
+            });
 
-        e.addEventListener("auxclick",function(e2){
-            if (e2.button==1)
-            {
-                e2.preventDefault();
-                chrome.tabs.create({url:this.href,active:true});
-            }
-        });
-    });
+            links[x].addEventListener("auxclick",(e)=>{
+                e.preventDefault();
+                chrome.tabs.create({url:e.currentTarget.href,active:true});
+            });
+        }
+
+        else
+        {
+            links[x].classList.add("no-link");
+        }
+    }
 }
 
 //nyaa should be in tag form (default form stored in
