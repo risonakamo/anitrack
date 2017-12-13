@@ -15,7 +15,7 @@ function main()
 
         var urlArray=window.location.href.slice(8).split("/");
 
-        if (urlArray.length<3 || (urlArray[2]!=d[0] && urlArray[2]!=d[1]))
+        if (urlArray.length<3 || (urlArray[2].toLowerCase()!=d[0].toLowerCase() && urlArray[2].toLowerCase()!=d[1].toLowerCase()))
         {
             return;
         }
