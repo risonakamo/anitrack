@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"anitrack",
-    "version":"2.2.1",
+    "version":"2.2.2",
 
     "permissions":["tabs","storage","https://anilist.co/user/*"],
 
@@ -15,5 +15,11 @@
         "js":["contentscripts/alisthook2.js"],
         "css":["contentscripts/hooked.css"],
         "run_at":"document_end"
-    }]
+    }],
+
+    "icons":{
+        "16":"popup/at-logo.png",
+        "48":"popup/at-logo.png",
+        "128":"popup/at-logo.png"
+    }
 }
