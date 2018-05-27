@@ -45,7 +45,7 @@ function main()
 
 function hook(storageData,storageIds)
 {
-    var watchTable=document.querySelector(".list");
+    var watchTable=document.querySelector(".list-section");
 
     if (!watchTable)
     {
@@ -53,12 +53,13 @@ function hook(storageData,storageIds)
         return;
     }
 
-    if (watchTable.previousSibling.innerText!="Watching")
+    if (watchTable.previousElementSibling.innerText!="Watching")
     {
         return;
     }
 
-    var entries=watchTable.querySelectorAll("tr");
+    var entries=watchTable.querySelectorAll(".entry");
+    console.log(entries);
 
     var seenIds={};
     Object.assign(seenIds,storageIds);
@@ -72,12 +73,12 @@ function hook(storageData,storageIds)
         yesterday=7;
     }
 
-    for (var x=1,l=entries.length;x<l;x++)
+    for (var x=0,l=entries.length;x<l;x++)
     {
         var res={};
-        res.link=entries[x].childNodes[1].firstChild.href;
-        res.id=res.link.slice(25);
-        res.progress=entries[x].childNodes[3].firstChild.innerText;
+        res.link=entries[x].children[1].firstChild.href;
+        res.id=res.link.replace(/.*\/(\d+)\/.*/,"$1");
+        res.progress=entries[x].children[3].innerText.replace(/(\d+)\/.*/,"$1");
 
         delete seenIds[res.id];
 
@@ -107,7 +108,7 @@ function hook(storageData,storageIds)
         //if it does not, add it
         else
         {
-            res.title=entries[x].childNodes[1].firstChild.innerText;
+            res.title=entries[x].children[1].firstChild.innerText;
             res.cover=`https://cdn.anilist.co/img/dir/anime/reg/${entries[x].firstChild.style["background-image"].slice(46,-2)}`;
             storageData[res.id]=res;
             storageIds[res.id]=res.progress;
@@ -152,7 +153,7 @@ function hook(storageData,storageIds)
         chrome.storage.local.remove(Object.keys(seenIds));
     }
 
-    completeMessage(entries.length-1);
+    completeMessage(entries.length);
 }
 
 function completeMessage(entryCount)
