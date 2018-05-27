@@ -1,3 +1,5 @@
+var _storageids;
+
 function main()
 {
     document.head.insertAdjacentHTML("beforeend",`<link rel="stylesheet" href="${chrome.runtime.getURL("contentscripts/hooked.css")}">`);
@@ -112,7 +114,8 @@ function hook(storageData,storageIds)
             storageIds[res.id]=res.progress;
         }
 
-        attachPlusUpdate(entries[x].querySelector(".progress"));
+        console.log(res.progress);
+        attachPlusUpdate(entries[x].querySelector(".progress"),storageData[res.id],storageData.ids);
     }
 
     var dayDelete={};
@@ -146,6 +149,7 @@ function hook(storageData,storageIds)
     dayUpdate(dayDelete);
 
     storageData.ids=storageIds;
+    _storageids=storageIds;
     chrome.storage.local.set(storageData);
 
     if (Object.keys(seenIds).length>0)
@@ -234,12 +238,18 @@ function getDayClass(day)
 }
 
 
-function attachPlusUpdate(progressElement,storageentry)
+function attachPlusUpdate(progressElement,entrydata)
 {
     progressElement.firstElementChild.addEventListener("click",(e)=>{
         setTimeout(()=>{
-            var progress=progressElement.firstChild.textContent.replace(/\s*(\d+)\/.*/,"$1");
+            entrydata.progress++;
+            _storageids[entrydata.id]++;
 
+            var storageupdate={ids:_storageids};
+            storageupdate[entrydata.id]=entrydata;
+            chrome.storage.local.set(storageupdate);
+
+            completeMessage(1);
         },200);
     });
 }
