@@ -58,7 +58,6 @@ function hook(storageData,storageIds)
     }
 
     var entries=watchTable.querySelectorAll(".entry");
-    console.log(entries);
 
     var seenIds={};
     Object.assign(seenIds,storageIds);
@@ -155,11 +154,12 @@ function hook(storageData,storageIds)
     completeMessage(entries.length);
 }
 
+//do the popup given int number of entries hooked to show in message
 function completeMessage(entryCount)
 {
     var entry;
 
-    if (entry==1)
+    if (entryCount==1)
     {
         entry="entry";
     }
