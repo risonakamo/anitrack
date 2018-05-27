@@ -141,7 +141,7 @@ function setLinks()
             d.userOps=["",""];
         }
 
-        alistLink.href=`http://anilist.co/user/${d.userOps[0]}/animelist`;
+        alistLink.href=`http://anilist.co/user/${d.userOps[0]}`;
     });
 
     for (var x=0,l=links.length;x<l;x++)

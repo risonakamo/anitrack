@@ -76,7 +76,7 @@ function hook(storageData,storageIds)
         var res={};
         res.link=entries[x].children[1].firstChild.href;
         res.id=res.link.replace(/.*\/(\d+)\/.*/,"$1");
-        res.progress=entries[x].children[3].innerText.replace(/(\d+)\/.*/,"$1");
+        res.progress=entries[x].children[3].innerText.replace(/\s*(\d+)\/.*/,"$1");
 
         delete seenIds[res.id];
 
@@ -111,6 +111,8 @@ function hook(storageData,storageIds)
             storageData[res.id]=res;
             storageIds[res.id]=res.progress;
         }
+
+        attachPlusUpdate(entries[x].querySelector(".progress"));
     }
 
     var dayDelete={};
@@ -229,6 +231,17 @@ function getDayClass(day)
         default:
         return -1;
     }
+}
+
+
+function attachPlusUpdate(progressElement,storageentry)
+{
+    progressElement.firstElementChild.addEventListener("click",(e)=>{
+        setTimeout(()=>{
+            var progress=progressElement.firstChild.textContent.replace(/\s*(\d+)\/.*/,"$1");
+
+        },200);
+    });
 }
 
 main();
