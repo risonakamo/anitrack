@@ -46,9 +46,19 @@
     background-color: #e05b56;
 }
 
+.list-section .entry.day.kyou.nic:hover
+{
+    background-color: #b3312d;
+}
+
 .list-section .entry.day.kyou.get
 {
     background-color: #b790fd;
+}
+
+.list-section .entry.day.kyou.get:hover
+{
+    background-color: #8364b9;
 }
 
 .list-section .entry.day.kyou.ka
@@ -56,9 +66,19 @@
     background-color: #fec828;
 }
 
+.list-section .entry.day.kyou.ka:hover
+{
+    background-color: #cc9903;
+}
+
 .list-section .entry.day.kyou.mizu
 {
     background-color: #8eafff;
+}
+
+.list-section .entry.day.kyou.mizu:hover
+{
+    background-color: #5c7ed2;
 }
 
 .list-section .entry.day.kyou.moku
@@ -66,14 +86,29 @@
     background-color: #cade87;
 }
 
+.list-section .entry.day.kyou.moku:hover
+{
+    background-color: #8b9e4c;
+}
+
 .list-section .entry.day.kyou.kin
 {
     background-color: #ec9756;
 }
 
+.list-section .entry.day.kyou.kin:hover
+{
+    background-color: #cc7330;
+}
+
 .list-section .entry.day.kyou.do
 {
     background-color: #b0aa9e;
+}
+
+.list-section .entry.day.kyou.do:hover
+{
+    background-color: #827c70;
 }
 
 .entry.day .title a::after
