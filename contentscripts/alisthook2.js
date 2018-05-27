@@ -109,7 +109,7 @@ function hook(storageData,storageIds)
         else
         {
             res.title=entries[x].children[1].firstChild.innerText;
-            res.cover=`https://cdn.anilist.co/img/dir/anime/reg/${entries[x].firstChild.style["background-image"].slice(46,-2)}`;
+            res.cover=entries[x].firstChild.children[1].style.backgroundImage.replace(/url\("(.+)"\)/,"$1");
             storageData[res.id]=res;
             storageIds[res.id]=res.progress;
         }
