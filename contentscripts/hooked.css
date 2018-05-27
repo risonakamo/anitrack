@@ -36,47 +36,47 @@
 
 /*--- day marking ---*/
 
-.list tr.kyou td
+.list-section .entry.kyou .title
 {
     color: white;
 }
 
-.list tr.day.kyou.nic
+.list-section .entry.day.kyou.nic
 {
     background-color: #e05b56;
 }
 
-.list tr.day.kyou.get
+.list-section .entry.day.kyou.get
 {
     background-color: #b790fd;
 }
 
-.list tr.day.kyou.ka
+.list-section .entry.day.kyou.ka
 {
     background-color: #fec828;
 }
 
-.list tr.day.kyou.mizu
+.list-section .entry.day.kyou.mizu
 {
     background-color: #8eafff;
 }
 
-.list tr.day.kyou.moku
+.list-section .entry.day.kyou.moku
 {
     background-color: #cade87;
 }
 
-.list tr.day.kyou.kin
+.list-section .entry.day.kyou.kin
 {
     background-color: #ec9756;
 }
 
-.list tr.day.kyou.do
+.list-section .entry.day.kyou.do
 {
     background-color: #b0aa9e;
 }
 
-tr.day .title a::after
+.entry.day .title a::after
 {
     margin-left: 10px;
     padding: 2px 3px 2px 3px;
@@ -85,43 +85,43 @@ tr.day .title a::after
     border-radius: 3px;
 }
 
-tr.day.nic .title a::after
+.entry.day.nic .title a::after
 {
     content: "日";
     background-color: #e05b56;
 }
 
-tr.day.get .title a::after
+.entry.day.get .title a::after
 {
     content: "月";
     background-color: #b790fd;
 }
 
-tr.day.ka .title a::after
+.entry.day.ka .title a::after
 {
     content: "火";
     background-color: #fec828;
 }
 
-tr.day.mizu .title a::after
+.entry.day.mizu .title a::after
 {
     content: "水";
     background-color: #8eafff;
 }
 
-tr.day.moku .title a::after
+.entry.day.moku .title a::after
 {
     content: "木";
     background-color: #cade87;
 }
 
-tr.day.kin .title a::after
+.entry.day.kin .title a::after
 {
     content: "金";
     background-color: #ec9756;
 }
 
-tr.day.do .title a::after
+.entry.day.do .title a::after
 {
     content: "土";
     background-color: #b0aa9e;

@@ -1,7 +1,6 @@
-window.onload=main;
-
 function main()
 {
+    document.head.insertAdjacentHTML("beforeend",`<link rel="stylesheet" href="${chrome.runtime.getURL("contentscripts/hooked.css")}">`);
     chrome.storage.local.get("userOps",(d)=>{
         if (!d.userOps)
         {
@@ -231,3 +230,5 @@ function getDayClass(day)
         return -1;
     }
 }
+
+main();

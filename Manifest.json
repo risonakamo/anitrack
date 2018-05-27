@@ -13,9 +13,10 @@
     "content_scripts":[{
         "matches":["https://anilist.co/user/*"],
         "js":["contentscripts/alisthook2.js"],
-        "css":["contentscripts/hooked.css"],
         "run_at":"document_end"
     }],
+
+    "web_accessible_resources":["contentscripts/hooked.css"],
 
     "icons":{
         "16":"popup/at-logo.png",
