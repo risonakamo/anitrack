@@ -1,8 +1,12 @@
 var _storageids;
 
-function main()
+document.head.insertAdjacentHTML("beforeend",`<link rel="stylesheet" href="${chrome.runtime.getURL("contentscripts/hooked.css")}">`);
+
+runHook();
+attachButtons();
+
+function runHook()
 {
-    document.head.insertAdjacentHTML("beforeend",`<link rel="stylesheet" href="${chrome.runtime.getURL("contentscripts/hooked.css")}">`);
     chrome.storage.local.get("userOps",(d)=>{
         if (!d.userOps)
         {
@@ -114,7 +118,6 @@ function hook(storageData,storageIds)
             storageIds[res.id]=res.progress;
         }
 
-        console.log(res.progress);
         attachPlusUpdate(entries[x].querySelector(".progress"),storageData[res.id],storageData.ids);
     }
 
@@ -237,9 +240,14 @@ function getDayClass(day)
     }
 }
 
-
+//attach logic to increment single shows progress each click on + sign
 function attachPlusUpdate(progressElement,entrydata)
 {
+    if (!progressElement.firstElementChild)
+    {
+        return;
+    }
+
     progressElement.firstElementChild.addEventListener("click",(e)=>{
         setTimeout(()=>{
             entrydata.progress++;
@@ -254,4 +262,25 @@ function attachPlusUpdate(progressElement,entrydata)
     });
 }
 
-main();
+//run hook on press of certain links (show user's anime list links)
+function attachButtons()
+{
+    var navtop=document.querySelector("#nav .links");
+    var navbot=document.querySelector(".nav.container");
+
+    if (!(navtop && navbot))
+    {
+        setTimeout(()=>{
+            attachButtons();
+        },200);
+        return;
+    }
+
+    navtop.children[2].addEventListener("click",(e)=>{
+        runHook();
+    });
+
+    navbot.children[1].addEventListener("click",(e)=>{
+        runHook();
+    });
+}
