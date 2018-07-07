@@ -42,7 +42,9 @@ function runHook()
                     data={};
                 }
 
-                hook(data,d);
+                setTimeout(()=>{
+                    hook(data,d);
+                },1000);
             });
         });
     });
@@ -54,7 +56,7 @@ function hook(storageData,storageIds)
 
     if (!watchTable)
     {
-        setTimeout(()=>{hook(storageData,storageIds)},100);
+        setTimeout(()=>{hook(storageData,storageIds)},600);
         return;
     }
 
