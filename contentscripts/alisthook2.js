@@ -257,11 +257,18 @@ function alistReq(query,callback)
     r.send(JSON.stringify({query:query}));
 }
 
+//update the database using the API. give it the current databased entries with id keys,
+//and and an object with the ids and the progress.
 function updateFromAPI(storageData,storageIds)
 {
     alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji}coverImage{large}id,siteUrl},progress}}}`,
     (data)=>{
         data=data.data.MediaListCollection.statusLists.current;
+
+        //keep track of every id that was present in the database but
+        //not in the API. by the end, whatever is left in here should be
+        //removed as it was not in the API
+        var seenIds=new Set(Object.keys(storageIds));
 
         var currentId;
         for (var x=0,l=data.length;x<l;x++)
@@ -271,6 +278,7 @@ function updateFromAPI(storageData,storageIds)
             if (storageData[currentId])
             {
                 storageData[currentId].progress=data[x].progress;
+                seenIds.delete(`${currentId}`);
             }
 
             else
@@ -287,9 +295,31 @@ function updateFromAPI(storageData,storageIds)
             storageIds[currentId]=data[x].progress;
         }
 
+        for (var x of deleteIds)
+        {
+            if (storageData[x].day)
+            {
+
+            }
+
+            delete storageData[x];
+            delete storageIds[x];
+        }
+
+
         _storageids=storageIds;
         chrome.storage.local.set(storageData);
         chrome.storage.local.set({ids:storageIds});
         completeMessage(data.length);
     });
+}
+
+//give it a SET of ids to REMOVE from the the database
+//and the database. returns the database
+function deleteUpdate(deleteIds)
+{
+    for (var x of deleteIds)
+    {
+        console.log(x);
+    }
 }
