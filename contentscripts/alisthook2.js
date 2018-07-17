@@ -79,6 +79,12 @@ function hook(storageData,storageIds)
         yesterday=7;
     }
 
+    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji},coverImage{large},id,siteUrl}}}}`,
+    (data)=>{
+        console.log(data.data.MediaListCollection.statusLists.current);
+    });
+
+    console.log(entries);
     for (var x=0,l=entries.length;x<l;x++)
     {
         var res={};
@@ -155,6 +161,7 @@ function hook(storageData,storageIds)
 
     storageData.ids=storageIds;
     _storageids=storageIds;
+    // console.log(storageData);
     chrome.storage.local.set(storageData);
 
     if (Object.keys(seenIds).length>0)
@@ -285,4 +292,21 @@ function attachButtons()
     navbot.children[1].addEventListener("click",(e)=>{
         runHook();
     });
+}
+
+//callback is data usable by seasonYearFilter()
+function alistReq(query,callback)
+{
+    var r=new XMLHttpRequest();
+    r.open("POST","https://graphql.anilist.co");
+
+    r.onreadystatechange=()=>{
+        if (r.readyState==4)
+        {
+            callback(JSON.parse(r.response));
+        }
+    }
+
+    r.setRequestHeader("content-type","application/json");
+    r.send(JSON.stringify({query:query}));
 }
