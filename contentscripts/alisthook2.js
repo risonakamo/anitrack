@@ -67,9 +67,6 @@ function hook(storageData,storageIds)
 
     var entries=watchTable.querySelectorAll(".entry");
 
-    var seenIds={};
-    Object.assign(seenIds,storageIds);
-
     var dayClassAdd;
     var today=new Date().getDay()+1;
     var yesterday=today-1;
@@ -79,37 +76,24 @@ function hook(storageData,storageIds)
         yesterday=7;
     }
 
-    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji},coverImage{large},id,siteUrl}}}}`,
-    (data)=>{
-        console.log(data.data.MediaListCollection.statusLists.current);
-    });
-
-    console.log(entries);
+    var id;
     for (var x=0,l=entries.length;x<l;x++)
     {
-        var res={};
-        res.link=entries[x].children[1].firstChild.href;
-        res.id=res.link.replace(/.*\/(\d+)\/.*/,"$1");
-        res.progress=entries[x].children[3].innerText.replace(/\s*(\d+)\/.*/,"$1");
-
-        delete seenIds[res.id];
+        id=entries[x].children[1].firstChild.href.replace(/.*\/(\d+)\/.*/,"$1");
 
         //if hooked entry exists in storage
-        if (storageData[res.id])
+        if (storageData[id])
         {
-            storageData[res.id].progress=res.progress;
-            storageIds[res.id]=res.progress;
-
-            if (storageData[res.id].day)
+            if (storageData[id].day)
             {
                 // entries[x].classList.add("day");
-                dayClassAdd=getDayClass(storageData[res.id].day);
+                dayClassAdd=getDayClass(storageData[id].day);
 
                 if (dayClassAdd!=-1)
                 {
                     entries[x].classList.add("day",dayClassAdd);
 
-                    if (storageData[res.id].day==today || storageData[res.id].day==yesterday)
+                    if (storageData[id].day==today || storageData[id].day==yesterday)
                     {
                         entries[x].classList.add("kyou");
                     }
@@ -117,58 +101,10 @@ function hook(storageData,storageIds)
             }
         }
 
-        //if it does not, add it
-        else
-        {
-            res.title=entries[x].children[1].firstChild.innerText;
-            res.cover=entries[x].firstChild.children[1].style.backgroundImage.replace(/url\("(.+)"\)/,"$1");
-            storageData[res.id]=res;
-            storageIds[res.id]=res.progress;
-        }
-
-        attachPlusUpdate(entries[x].querySelector(".progress"),storageData[res.id],storageData.ids);
+        attachPlusUpdate(entries[x].querySelector(".progress"),storageData[id],storageData.ids);
     }
 
-    var dayDelete={};
-    var dayString;
-    for (var x in seenIds)
-    {
-        if (!dayDelete["day"+storageData[x].day])
-        {
-            if (!storageData[x].day)
-            {
-                dayString="";
-            }
-
-            else
-            {
-                dayString=storageData[x].day;
-            }
-
-            dayDelete["day"+dayString]=[];
-        }
-
-        if (dayDelete["day"+storageData[x].day])
-        {
-            dayDelete["day"+storageData[x].day].push(x);
-        }
-
-        delete storageData[x];
-        delete storageIds[x];
-    }
-
-    dayUpdate(dayDelete);
-
-    storageData.ids=storageIds;
     _storageids=storageIds;
-    // console.log(storageData);
-    chrome.storage.local.set(storageData);
-
-    if (Object.keys(seenIds).length>0)
-    {
-        chrome.storage.local.remove(Object.keys(seenIds));
-    }
-
     completeMessage(entries.length);
 }
 
@@ -309,4 +245,12 @@ function alistReq(query,callback)
 
     r.setRequestHeader("content-type","application/json");
     r.send(JSON.stringify({query:query}));
+}
+
+function updateFromAPI()
+{
+    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji},coverImage{large},id,siteUrl}}}}`,
+    (data)=>{
+        console.log(data.data.MediaListCollection.statusLists.current);
+    });
 }
