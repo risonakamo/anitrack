@@ -44,7 +44,7 @@ function runHook()
 
                 setTimeout(()=>{
                     hook(data,d);
-                },1000);
+                },500);
             });
         });
     });
@@ -58,7 +58,7 @@ function hook(storageData,storageIds)
 
     if (!watchTable)
     {
-        setTimeout(()=>{hook(storageData,storageIds)},600);
+        setTimeout(()=>{hook(storageData,storageIds)},200);
         return;
     }
 
@@ -107,8 +107,6 @@ function hook(storageData,storageIds)
     }
 
     updateFromAPI(storageData,storageIds);
-    _storageids=storageIds;
-    completeMessage(entries.length);
 }
 
 //do the popup given int number of entries hooked to show in message
@@ -292,5 +290,6 @@ function updateFromAPI(storageData,storageIds)
         _storageids=storageIds;
         chrome.storage.local.set(storageData);
         chrome.storage.local.set({ids:storageIds});
+        completeMessage(data.length);
     });
 }
