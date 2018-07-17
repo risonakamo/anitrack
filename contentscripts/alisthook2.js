@@ -50,6 +50,8 @@ function runHook()
     });
 }
 
+//storage data: object with ids of shows in storage
+//storageIds: object of ids in storage data, with progress count
 function hook(storageData,storageIds)
 {
     var watchTable=document.querySelector(".list-section");
@@ -101,9 +103,10 @@ function hook(storageData,storageIds)
             }
         }
 
-        attachPlusUpdate(entries[x].querySelector(".progress"),storageData[id],storageData.ids);
+        attachPlusUpdate(entries[x].querySelector(".progress"),storageData[id]);
     }
 
+    updateFromAPI(storageData,storageIds);
     _storageids=storageIds;
     completeMessage(entries.length);
 }
@@ -195,7 +198,16 @@ function attachPlusUpdate(progressElement,entrydata)
 
     progressElement.firstElementChild.addEventListener("click",(e)=>{
         setTimeout(()=>{
-            entrydata.progress++;
+            if (entrydata.progress)
+            {
+                entrydata.progress++;
+            }
+
+            else
+            {
+                entrydata.progress=1;
+            }
+
             _storageids[entrydata.id]++;
 
             var storageupdate={ids:_storageids};
@@ -247,10 +259,38 @@ function alistReq(query,callback)
     r.send(JSON.stringify({query:query}));
 }
 
-function updateFromAPI()
+function updateFromAPI(storageData,storageIds)
 {
-    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji},coverImage{large},id,siteUrl}}}}`,
+    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji}coverImage{large}id,siteUrl},progress}}}`,
     (data)=>{
-        console.log(data.data.MediaListCollection.statusLists.current);
+        data=data.data.MediaListCollection.statusLists.current;
+
+        var currentId;
+        for (var x=0,l=data.length;x<l;x++)
+        {
+            currentId=data[x].media.id;
+
+            if (storageData[currentId])
+            {
+                storageData[currentId].progress=data[x].progress;
+            }
+
+            else
+            {
+                storageData[currentId]={
+                    cover:data[x].media.coverImage.large,
+                    progress:data[x].progress,
+                    id:currentId,
+                    link:data[x].media.siteUrl,
+                    title:data[x].media.title.romaji
+                };
+            }
+
+            storageIds[currentId]=data[x].progress;
+        }
+
+        _storageids=storageIds;
+        chrome.storage.local.set(storageData);
+        chrome.storage.local.set({ids:storageIds});
     });
 }
