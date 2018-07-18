@@ -295,31 +295,32 @@ function updateFromAPI(storageData,storageIds)
             storageIds[currentId]=data[x].progress;
         }
 
-        for (var x of deleteIds)
+        var deleteDays=new Set();
+        for (var x of seenIds)
         {
             if (storageData[x].day)
             {
-
+                deleteDays.add(storageData[x].day);
             }
 
             delete storageData[x];
             delete storageIds[x];
         }
 
+        deleteDays=[...deleteDays];
+
+        chrome.storage.local.get(deleteDays,(data)=>{
+            for (var x of seenIds)
+            {
+                delete data["day"+storageData[x].day][x];
+            }
+
+            chrome.storage.local.set(data);
+        });
 
         _storageids=storageIds;
         chrome.storage.local.set(storageData);
         chrome.storage.local.set({ids:storageIds});
         completeMessage(data.length);
     });
-}
-
-//give it a SET of ids to REMOVE from the the database
-//and the database. returns the database
-function deleteUpdate(deleteIds)
-{
-    for (var x of deleteIds)
-    {
-        console.log(x);
-    }
 }
