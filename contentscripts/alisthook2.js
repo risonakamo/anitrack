@@ -271,10 +271,12 @@ function updateFromAPI(storageData,storageIds)
         var seenIds=new Set(Object.keys(storageIds));
 
         var currentId;
+        //go over all ids found from api
         for (var x=0,l=data.length;x<l;x++)
         {
             currentId=data[x].media.id;
 
+            //only update the progress if already in storage
             if (storageData[currentId])
             {
                 storageData[currentId].progress=data[x].progress;
@@ -295,6 +297,7 @@ function updateFromAPI(storageData,storageIds)
             storageIds[currentId]=data[x].progress;
         }
 
+        //get days that need to be retrieved to update
         var deleteDays=new Set();
         for (var x of seenIds)
         {

@@ -161,3 +161,8 @@
     content: "土";
     background-color: #b0aa9e;
 }
+
+.entry.day.kyou .progress,.entry.day.kyou .format
+{
+    color: white;
+}
