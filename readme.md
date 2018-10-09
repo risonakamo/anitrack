@@ -13,29 +13,39 @@ After being installed Anitrack will provide a menu accessible by clicking on its
 - displays links to relevant sites to the process, including google calendar, your Anilist.co page, NYAA's front page, and a selected stream site which may be useful to keeping track of what is actually releasing
 - allows access to the show configuration page, by clicking "more".
 
-[screenshot of ppoup]
+*the popup:*
+
+![](https://i.imgur.com/VdTSsOm.png)
 
 ### Options/Configuration Page
-This page is where shows detected by the extension from Anilist.co are displayed and can be configured. A show can be configured by RIGHT CLICKING the X to the right of the show, which changes to an "n" if the show has been given a NYAA string. What does configuration involves:
+This page is where shows detected by the extension from Anilist.co are displayed and can be configured. A show's options can be accessed by right clicking the symbol at the far right of a show entry.
 
 - shows can be set a DAY and a NYAA string.
 - once a DAY is set the show will appear under the correct day category (once reloaded). The show will also begin appearing in the popup on the set day.  Additionally, the show on your Anilist.co page will be colour-coded to show the set DAY.
 
-[screenshot demonstrating day]
+*shows grouping by day:*
 
-- a NYAA string is a search string for the NYAA service. Once the NYAA string is set, clicking on the show in the popup or the "n" icon on the configuration page will open a new tab performing a search at NYAA for the set string. Using this, one can quickly search up releases for a show.
+![](https://i.imgur.com/hpTZWlS.png)
 
-[screenshot demonstrating nyaa string]
+- a NYAA string is a search string for the NYAA service.
+- The symbol on the right will change to an "n" from an "x" to indicate the show has a nyaa set. The "n" can now be clicked to quickly navigate to a nyaa search for the inputted nyaa string.
+    - clicking on the show when it appears in the popup will also now navigate to the nyaa search
+
+![](https://i.imgur.com/wCScsqi.png)
+
+- note: *option changes do not take effect until page reload*
 
 ### Anilist Page
-The extension adds colour-coding to your Anilist.co page for shows that have been given a DAY.
+The extension adds colour-coding to your Anilist.co page for shows that have been given a DAY. Today, and yesterday's shows are highlighted for faster eye-access, while other shows have a badge indicating the DAY.
 
-[screenshot of that]
+![](https://i.imgur.com/yMtmbOP.png)
 
 ## Setup, Usage and Show Tracking
 Before functionality can be used the extension must be setup. This is done by entering your Anilist.co username into the fields at the top of the configuration page. This username must be the same as the string that appears in your Anilist.co's profile page url. And of course, your Anilist.co must be public.
 
-[screen shot of that]
+*the input fields at the configuration page's top:*
+
+![](https://i.imgur.com/WLrw9yP.png)
 
 The extension cannot hack your account. It needs this link in order to know on what page to being its actions, as well as allow you to go to your Anilist.co page via the popup.
 
@@ -46,8 +56,10 @@ Now that the extension knows what page to do work at, simply visit your Show Lis
 
 ### Tracking
 - Upon visiting your Anilist page, the extension begins tracking only shows that are under the WATCHING category. Make use of Anilist.co's category systems to narrow down which shows the extension should track.
+    - this means, the only way to remove a tracked show is to remove it from WATCHING and allow the extension to update
 - The extension is optimised to run on page load. Making changes to shows, such as moving them out or into the WATCHING category will require a reload before the extension updates its tracked shows.
     - An exception to this is the "+" button, which increments your WATCHED PROGRESS. Use of this button will be properly tracked by the extension, without a reload
+- The language of the show will always hook as **romaji**, for now.
 
 If things are going wrong, reloading generally works.
 
@@ -55,4 +67,4 @@ If things are going wrong, reloading generally works.
 Anilist.co currently has a bug where navigating to the site directly appears to prevent interaction with website functions such as incrementing show progress (the + button). It is as if you are not logged in. The extension will continue to update as usual. A solution to this is using the navigation tabs at the top to move to another page (such as the "profile" page), and then moving back to the show list page. The extension will update again as usual.
 
 ## trivia
-It is a rather specific process this extension is streamlining, so I don't expect anyone to use it.  So why did I write this? Because if I lose my memory and forget the process this extension becomes completely useless.
+It is a rather specific process this extension is streamlining, so I don't expect anyone to use it.  So why did I write this? Because if I lose my memory and forget the process this extension becomes a puzzle to use.
