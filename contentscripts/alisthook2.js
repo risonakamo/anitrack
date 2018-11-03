@@ -276,9 +276,12 @@ function updateFromAPI(storageData,storageIds)
         {
             currentId=data[x].media.id;
 
-            //only update the progress if already in storage
+            //only update progress and cover image if already in storage,
+            //to avoid problems possibly happening. cover image updates
+            //because anilist has a tendancy to change it
             if (storageData[currentId])
             {
+                storageData[currentId].cover=data[x].media.coverImage.large;
                 storageData[currentId].progress=data[x].progress;
                 seenIds.delete(`${currentId}`);
             }
