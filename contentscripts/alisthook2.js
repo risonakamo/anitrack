@@ -302,28 +302,49 @@ function updateFromAPI(storageData,storageIds)
 
         //get days that need to be retrieved to update
         var deleteDays=new Set();
+        //save the entries that will be deleted
+        var entriesToBeDeleted={};
+
+        //for every id that is going to be deleted
         for (var x of seenIds)
         {
+            //if the entry has a day, put it into deletedays,
+            //so it can be removed from that day
             if (storageData[x].day)
             {
                 deleteDays.add(storageData[x].day);
             }
 
+            //save the entry
+            entriesToBeDeleted[x]=storageData[x];
+
+            //remove it from storagedata so it isnt update
             delete storageData[x];
+            //remove the id from the storage
+            chrome.storage.local.remove(x);
+            //remove it from storage ids
             delete storageIds[x];
         }
 
+        //append word "day" to the day numbers collected
         deleteDays=[...deleteDays];
+        for (var x=0,l=deleteDays.length;x<l;x++)
+        {
+            deleteDays[x]=`day${deleteDays[x]}`;
+        }
 
+        //for all the ids that are to be deleted, look at their day, and remove
+        //the id from that day array.  then push the day arrays back
         chrome.storage.local.get(deleteDays,(data)=>{
             for (var x of seenIds)
             {
-                delete data["day"+storageData[x].day][x];
+                delete data["day"+entriesToBeDeleted[x].day][x];
             }
 
             chrome.storage.local.set(data);
         });
 
+        //update the storage ids and storage
         _storageids=storageIds;
         chrome.storage.local.set(storageData);
         chrome.storage.local.set({ids:storageIds});

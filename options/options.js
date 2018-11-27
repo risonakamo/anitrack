@@ -215,7 +215,7 @@ function updateND(id,nyaa,day)
     });
 }
 
-function displayStorage()
+function showStorage()
 {
     chrome.storage.local.get(null,function(d){
         console.log(d);
