@@ -14,7 +14,7 @@ var defaultPlumber=(err)=>{
 };
 
 var lessConfig={
-    targets:[],
+    targets:["options2/options2.less"],
     base:"."
 };
 

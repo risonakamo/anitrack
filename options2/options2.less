@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+@weird-grey: #f8f8f8;
+@grey-blue: #5c728a;
+@ani-blue: #47aee4;
+@bright-line-grey: #cec7cf;
+
+body
+{
+    margin: 0;
+    font-size: 0;
+    font-family: roboto;
+    color: @grey-blue;
+    background-color: @weird-grey;
+}
+
+h1
+{
+    margin: 0;
+}
+
+.show-block
+{
+    width: 370px;
+    height: 160px;
+    margin: 10px;
+    background-color: white;
+
+    img
+    {
+        height: 100%;
+    }
+
+    .right
+    {
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+
+        h1
+        {
+            font-size: 15px;
+        }
+    }
+}
+
+//nyaa setting div that goes inside show blocks
+.nyaa-setting
+{
+    a
+    {
+        font-size: 12px;
+        color: white;
+        background-color: @ani-blue;
+        padding: 1px 14px 2px 14px;
+        border-radius: 6px;
+        text-decoration: none;
+
+        &:hover
+        {
+            opacity: .7;
+        }
+    }
+
+    input
+    {
+        border: none;
+        outline: none;
+        margin-left: 7px;
+        padding: 0px 0px 1px 5px;
+        font-family: roboto; //change later!!!!!!
+        border-bottom: 1px solid @bright-line-grey;
+        color: @ani-blue;
+    }
+}
