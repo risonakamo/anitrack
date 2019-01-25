@@ -22,9 +22,13 @@ h1 {
   display: inline-block;
   height: 100%;
   vertical-align: top;
+  padding-left: 14px;
 }
 .show-block .right h1 {
   font-size: 15px;
+}
+.nyaa-setting {
+  margin-top: 43px;
 }
 .nyaa-setting a {
   font-size: 12px;
@@ -45,4 +49,15 @@ h1 {
   font-family: roboto;
   border-bottom: 1px solid #cec7cf;
   color: #47aee4;
+}
+.day-setting {
+  margin-top: 8px;
+}
+.day-setting select {
+  border: none;
+  outline: none;
+  color: #de5b59;
+  padding-left: 3px;
+  font-size: 12px;
+  font-family: roboto;
 }
