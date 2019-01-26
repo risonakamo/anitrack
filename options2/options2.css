@@ -1,4 +1,25 @@
 @charset "UTF-8";
+.nichi {
+  --day-colour: #e05b56;
+}
+.getsu {
+  --day-colour: #b790fd;
+}
+.kai {
+  --day-colour: #fec828;
+}
+.mizu {
+  --day-colour: #8eafff;
+}
+.moku {
+  --day-colour: #cade87;
+}
+.kin {
+  --day-colour: #ec9756;
+}
+.do {
+  --day-colour: #b0aa9e;
+}
 body {
   margin: 0;
   font-size: 0;
@@ -55,6 +76,16 @@ h2 {
 .show-block .right .setting {
   height: 40px;
 }
+.nyaa-setting.no-link a {
+  background-color: #cec7cf;
+  cursor: default;
+}
+.nyaa-setting.no-link a:hover {
+  opacity: 1;
+}
+.nyaa-setting.no-link input {
+  color: #cec7cf;
+}
 .nyaa-setting a {
   font-size: 12px;
   color: white;
@@ -82,10 +113,10 @@ h2 {
   margin-top: 5px;
 }
 .day-setting select {
-  width: 100px;
+  width: 60px;
   border: none;
   outline: none;
-  color: #de5b59;
+  color: var(--day-colour);
   padding-left: 3px;
   font-size: 12px;
   font-weight: 500;

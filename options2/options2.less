@@ -7,6 +7,8 @@
 
 @input-font: "montserrat";
 
+@import "colours2.less";
+
 body
 {
     margin: 0;
@@ -93,6 +95,27 @@ h1,h2
 //nyaa setting div that goes inside show blocks
 .nyaa-setting
 {
+    //apply to nyaa setting when theres no link.
+    //causes some colours to change
+    &.no-link
+    {
+        a
+        {
+            background-color: @bright-line-grey;
+            cursor: default;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
+
+        input
+        {
+            color: @bright-line-grey;
+        }
+    }
+
     a
     {
         font-size: 12px;
@@ -130,10 +153,10 @@ h1,h2
 
     select
     {
-        width: 100px;
+        width: 60px;
         border: none;
         outline: none;
-        color: #de5b59;
+        color: var(--day-colour);
         padding-left: 3px;
         font-size: 12px;
         font-weight: 500;
