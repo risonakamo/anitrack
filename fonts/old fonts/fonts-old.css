@@ -1,0 +1,17 @@
+@font-face
+{
+    font-family: "montserrat-reg";
+    src: url("montserrat-reg.otf");
+}
+
+@font-face
+{
+    font-family: "montserrat-lit";
+    src: url("montserrat-lit.otf");
+}
+
+@font-face
+{
+    font-family: "montserrat-med";
+    src: url("montserrat-med.otf");
+}

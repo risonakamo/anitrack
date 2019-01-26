@@ -5,11 +5,14 @@
 @ani-blue: #47aee4;
 @bright-line-grey: #cec7cf;
 
+@input-font: "montserrat";
+
 body
 {
     margin: 0;
     font-size: 0;
-    font-family: roboto;
+    font-family: "montserrat";
+    font-weight: 400;
     color: @grey-blue;
     background-color: @weird-grey;
 }
@@ -42,7 +45,7 @@ h1
         display: inline-flex;
         height: 100%;
         vertical-align: top;
-        padding: 14px;
+        padding: 14px 0 10px 14px;
         box-sizing: border-box;
         flex-direction: column;
 
@@ -54,6 +57,7 @@ h1
             h1
             {
                 font-size: 15px;
+                font-weight: 500;
             }
         }
 
@@ -76,6 +80,7 @@ h1
         padding: 1px 14px 2px 14px;
         border-radius: 6px;
         text-decoration: none;
+        font-weight: 500;
 
         &:hover
         {
@@ -85,11 +90,12 @@ h1
 
     input
     {
+        width: 140px; //modify later maybe to fit better
         border: none;
         outline: none;
         margin-left: 7px;
         padding: 0px 0px 1px 5px;
-        font-family: roboto; //change later!!!!!!
+        font-family: @input-font;
         border-bottom: 1px solid @bright-line-grey;
         color: @ani-blue;
         caret-color: @bright-line-grey;
@@ -99,16 +105,17 @@ h1
 //day setting div
 .day-setting
 {
-    margin-top: 6px;
+    margin-top: 5px;
 
     select
     {
-        width: 90px;
+        width: 100px;
         border: none;
         outline: none;
         color: #de5b59;
         padding-left: 3px;
         font-size: 12px;
-        font-family: roboto;
+        font-weight: 500;
+        font-family: @input-font;
     }
 }

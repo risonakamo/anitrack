@@ -1,0 +1,23 @@
+/* regular */
+@font-face
+{
+    font-family: "montserrat";
+    src: url("Montserrat-Regular.woff2");
+    font-weight: 400;
+}
+
+/* medium */
+@font-face
+{
+    font-family: "montserrat";
+    src: url("Montserrat-Medium.woff2");
+    font-weight: 500;
+}
+
+/* light */
+@font-face
+{
+    font-family: "montserrat";
+    src: url("Montserrat-Light.woff2");
+    font-weight: 300;
+}
