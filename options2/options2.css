@@ -7,10 +7,12 @@ body {
   color: #5c728a;
   background-color: #f8f8f8;
 }
-h1 {
+h1,
+h2 {
   margin: 0;
 }
 .show-block {
+  display: inline-block;
   width: 370px;
   height: 160px;
   margin: 10px;
@@ -29,10 +31,26 @@ h1 {
 }
 .show-block .right .information {
   flex: 1;
+  overflow: hidden;
 }
 .show-block .right .information h1 {
+  display: inline-block;
+  width: 172px;
   font-size: 15px;
   font-weight: 500;
+  padding-right: 15px;
+  vertical-align: top;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+.show-block .right .information h2 {
+  display: inline-block;
+  width: 50px;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  vertical-align: top;
+  text-align: center;
 }
 .show-block .right .setting {
   height: 40px;
