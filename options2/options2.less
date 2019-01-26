@@ -19,28 +19,48 @@ h1
     margin: 0;
 }
 
+//show block element
 .show-block
 {
     width: 370px;
     height: 160px;
     margin: 10px;
     background-color: white;
+    // border-radius: 10px;
+    // overflow: hidden;
+    // box-shadow: 0 2px 20px rgba(49,54,68,.09);
 
+    //cover image
     img
     {
         height: 100%;
     }
 
+    //right section
     .right
     {
-        display: inline-block;
+        display: inline-flex;
         height: 100%;
         vertical-align: top;
-        padding-left: 14px;
+        padding: 14px;
+        box-sizing: border-box;
+        flex-direction: column;
 
-        h1
+        //info section of right
+        .information
         {
-            font-size: 15px;
+            flex: 1;
+
+            h1
+            {
+                font-size: 15px;
+            }
+        }
+
+        //setting section of right
+        .setting
+        {
+            height: 40px; //adjust to be proper fixed width of settings area
         }
     }
 }
@@ -48,8 +68,6 @@ h1
 //nyaa setting div that goes inside show blocks
 .nyaa-setting
 {
-    margin-top: 43px; //change this later
-
     a
     {
         font-size: 12px;
@@ -74,16 +92,18 @@ h1
         font-family: roboto; //change later!!!!!!
         border-bottom: 1px solid @bright-line-grey;
         color: @ani-blue;
+        caret-color: @bright-line-grey;
     }
 }
 
 //day setting div
 .day-setting
 {
-    margin-top: 8px;
+    margin-top: 6px;
 
     select
     {
+        width: 90px;
         border: none;
         outline: none;
         color: #de5b59;

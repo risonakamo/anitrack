@@ -19,16 +19,21 @@ h1 {
   height: 100%;
 }
 .show-block .right {
-  display: inline-block;
+  display: inline-flex;
   height: 100%;
   vertical-align: top;
-  padding-left: 14px;
+  padding: 14px;
+  box-sizing: border-box;
+  flex-direction: column;
 }
-.show-block .right h1 {
+.show-block .right .information {
+  flex: 1;
+}
+.show-block .right .information h1 {
   font-size: 15px;
 }
-.nyaa-setting {
-  margin-top: 43px;
+.show-block .right .setting {
+  height: 40px;
 }
 .nyaa-setting a {
   font-size: 12px;
@@ -49,11 +54,13 @@ h1 {
   font-family: roboto;
   border-bottom: 1px solid #cec7cf;
   color: #47aee4;
+  caret-color: #cec7cf;
 }
 .day-setting {
-  margin-top: 8px;
+  margin-top: 6px;
 }
 .day-setting select {
+  width: 90px;
   border: none;
   outline: none;
   color: #de5b59;
