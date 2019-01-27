@@ -26,7 +26,8 @@ body {
   font-family: "montserrat";
   font-weight: 400;
   color: #5c728a;
-  background-color: #f8f8f8;
+  background-color: #edf1f5;
+  padding: 50px 0 100px 0;
 }
 h1,
 h2 {
@@ -122,4 +123,20 @@ h2 {
   font-weight: 500;
   font-family: "montserrat";
   cursor: pointer;
+}
+.day-block {
+  width: 780px;
+  margin: auto;
+  padding: 18px 0 18px 0;
+}
+.day-block .day-label {
+  font-size: 25px;
+  font-weight: 500;
+  padding: 0 0 0 40px;
+  line-height: 1;
+  color: #47aee4;
+}
+.day-block .none-text {
+  font-size: 18px;
+  text-align: center;
 }
