@@ -3,14 +3,14 @@ class Showblock extends React.Component {
     return React.createElement("div", {
       className: "show-block"
     }, React.createElement("img", {
-      src: "test.jpg"
+      src: this.props.showdata.cover
     }), React.createElement("div", {
       className: "right"
     }, React.createElement("div", {
       className: "information"
     }, React.createElement("h1", null, React.createElement("a", {
-      href: "google.com"
-    }, "eromanga sensei")), React.createElement("h2", null, "2")), React.createElement("div", {
+      href: this.props.showdata.link
+    }, this.props.showdata.title)), React.createElement("h2", null, this.props.showdata.progress)), React.createElement("div", {
       className: "setting"
     }, React.createElement("div", {
       className: "nyaa-setting"
@@ -18,8 +18,7 @@ class Showblock extends React.Component {
       href: "",
       className: "nyaa-link"
     }, "nyaa"), React.createElement("input", {
-      type: "text",
-      value: "ero"
+      type: "text"
     })), React.createElement("div", {
       className: "day-setting"
     }, React.createElement("select", null, React.createElement("option", {

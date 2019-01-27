@@ -17,7 +17,7 @@ type ShowObject
     cover:string,
     day:string,
     id:int,
-    link:url,
+    link:url, # anilist url
     nyaa:string,
     progress:int,
     title:string

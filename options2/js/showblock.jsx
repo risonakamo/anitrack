@@ -1,20 +1,23 @@
+/*Showblock element displaying a single show.
+  Showblock(object showdata)
+  showdata: ShowObject object containing show data for 1 show*/
 class Showblock extends React.Component
 {
   render()
   {
     return (
       <div className="show-block">
-        <img src="test.jpg"/>
+        <img src={this.props.showdata.cover}/>
         <div className="right">
           <div className="information">
-            <h1><a href="google.com">eromanga sensei</a></h1>
-            <h2>2</h2>
+            <h1><a href={this.props.showdata.link}>{this.props.showdata.title}</a></h1>
+            <h2>{this.props.showdata.progress}</h2>
           </div>
 
           <div className="setting">
             <div className="nyaa-setting">
               <a href="" className="nyaa-link">nyaa</a>
-              <input type="text" value="ero"/>
+              <input type="text"/>
             </div>
 
             <div className="day-setting">
