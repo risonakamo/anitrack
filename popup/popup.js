@@ -13,7 +13,7 @@ function setOverviewButton()
     var oButton=document.querySelector(".options");
 
     oButton.addEventListener("click",function(e){
-        chrome.tabs.create({url:"/options/options.html"});
+        chrome.tabs.create({url:"/options2/options2.html"});
     });
 }
 

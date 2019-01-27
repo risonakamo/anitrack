@@ -20,7 +20,7 @@ var lessConfig={
 };
 
 var reactConfig={
-    targets:[],
+    targets:["options2/js/showblock.jsx"],
     base:"."
 };
 
