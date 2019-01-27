@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-@weird-grey: #f8f8f8;
-@new-weird-grey: #edf1f5;
-@grey-blue: #5c728a;
-@ani-blue: #47aee4;
-@bright-line-grey: #cec7cf;
+@weird-grey: #f8f8f8; //initially used for background
+@new-weird-grey: #edf1f5; //initially used for background
+@grey-blue: #5c728a; //bluish grey for main text colour
+@ani-blue: #47aee4; //bright blue for headers
+@bright-line-grey: #cec7cf; //used for input lines
 
 @input-font: "montserrat";
 
@@ -27,6 +27,28 @@ h1,h2
 }
 
 @import "showblock.less";
+
+//top header area with settings things
+.header-setter
+{
+    margin: auto;
+    text-align: center;
+
+    p
+    {
+        display: inline-block;
+        font-size: 15px;
+    }
+
+    input
+    {
+        &:extend(.nyaa-setting input); //borrow styles from nyaa-setting
+        border-bottom-color: @grey-blue;
+        color: @grey-blue;
+        caret-color: @grey-blue;
+        font-size: 15px;
+    }
+}
 
 //container for showblocks
 .day-block
