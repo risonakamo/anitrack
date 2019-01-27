@@ -14,6 +14,7 @@ var defaultPlumber=(err)=>{
 };
 
 var lessConfig={
+    watchTargets:["*.less","**/*.less"],
     targets:["options2/options2.less"],
     base:"."
 };
@@ -26,7 +27,7 @@ var reactConfig={
 //remove any watchers not being used:
 
 //for less
-gulp.watch(lessConfig.targets).on("change",()=>{
+gulp.watch(lessConfig.watchTargets).on("change",()=>{
     gulp.src(lessConfig.targets,{base:lessConfig.base}).pipe(less()).pipe(gulp.dest(lessConfig.base));
 });
 
