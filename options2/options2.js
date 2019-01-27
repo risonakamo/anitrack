@@ -2,7 +2,7 @@ window.onload=main;
 
 function main()
 {
-
+    ReactDOM.render(React.createElement(OptionsTwoTop),document.querySelector(".day-blocks"));
 }
 
 function showStorage()
