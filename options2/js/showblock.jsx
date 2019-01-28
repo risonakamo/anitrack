@@ -9,6 +9,7 @@ class Showblock extends React.Component
     super(props);
     this.openBackgroundNyaa=this.openBackgroundNyaa.bind(this);
     this.changeDay=this.changeDay.bind(this);
+    this.updateNyaa=this.updateNyaa.bind(this);
   }
 
   //opens a background tab to this show's nyaa link,
@@ -36,12 +37,18 @@ class Showblock extends React.Component
     this.props.triggerDataRerender();
   }
 
-  // updateNyaa(e)
-  // {
-  //   delayQueue(this.props.showdata.id,()=>{
-  //     this.props.showdata.nyaa=e.currentTarget.value;
-  //   },2000);
-  // }
+  //update nyaa entry for this show in storage and other visual
+  //update stuff
+  updateNyaa(e)
+  {
+    var value=e.currentTarget.value;
+    var showdata=this.props.showdata;
+    delayQueue(showdata.id,()=>{
+      showdata.nyaa=value;
+      chrome.storage.local.set({[showdata.id]:showdata});
+      this.forceUpdate();
+    },1000);
+  }
 
   render()
   {
@@ -64,7 +71,7 @@ class Showblock extends React.Component
           <div className="setting">
             <div className={`nyaa-setting ${disabledNyaa}`}>
               <a href="" className="nyaa-link" onClick={this.openBackgroundNyaa}>nyaa</a>
-              <input type="text" defaultValue={this.props.showdata.nyaa}/>
+              <input type="text" defaultValue={this.props.showdata.nyaa} onChange={this.updateNyaa}/>
             </div>
 
             <div className="day-setting">

@@ -3,6 +3,7 @@ class Showblock extends React.Component {
     super(props);
     this.openBackgroundNyaa = this.openBackgroundNyaa.bind(this);
     this.changeDay = this.changeDay.bind(this);
+    this.updateNyaa = this.updateNyaa.bind(this);
   }
 
   openBackgroundNyaa(e) {
@@ -20,6 +21,18 @@ class Showblock extends React.Component {
     var showdata = this.props.showdata;
     changeDay(showdata, showdata.day, e.currentTarget.value);
     this.props.triggerDataRerender();
+  }
+
+  updateNyaa(e) {
+    var value = e.currentTarget.value;
+    var showdata = this.props.showdata;
+    delayQueue(showdata.id, () => {
+      showdata.nyaa = value;
+      chrome.storage.local.set({
+        [showdata.id]: showdata
+      });
+      this.forceUpdate();
+    }, 1000);
   }
 
   render() {
@@ -50,7 +63,8 @@ class Showblock extends React.Component {
       onClick: this.openBackgroundNyaa
     }, "nyaa"), React.createElement("input", {
       type: "text",
-      defaultValue: this.props.showdata.nyaa
+      defaultValue: this.props.showdata.nyaa,
+      onChange: this.updateNyaa
     })), React.createElement("div", {
       className: "day-setting"
     }, React.createElement("select", {
