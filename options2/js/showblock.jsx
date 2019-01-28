@@ -31,7 +31,7 @@ class Showblock extends React.Component
   changeDay(e)
   {
     var showdata=this.props.showdata;
-    showdata.day=e.currentTarget.value;
+    changeDay(showdata,showdata.day,e.currentTarget.value);
 
     this.props.triggerDataRerender();
   }
@@ -65,7 +65,7 @@ class Showblock extends React.Component
                 className={dayNumberToClass[this.props.showdata.day]}
                 onChange={this.changeDay}
               >
-                <option value="0">日なし</option>
+                <option value="0">なし</option>
                 <option value="2">月</option>
                 <option value="3">火</option>
                 <option value="4">水</option>

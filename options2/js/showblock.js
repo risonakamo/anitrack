@@ -18,7 +18,7 @@ class Showblock extends React.Component {
 
   changeDay(e) {
     var showdata = this.props.showdata;
-    showdata.day = e.currentTarget.value;
+    changeDay(showdata, showdata.day, e.currentTarget.value);
     this.props.triggerDataRerender();
   }
 
@@ -59,7 +59,7 @@ class Showblock extends React.Component {
       onChange: this.changeDay
     }, React.createElement("option", {
       value: "0"
-    }, "\u65E5\u306A\u3057"), React.createElement("option", {
+    }, "\u306A\u3057"), React.createElement("option", {
       value: "2"
     }, "\u6708"), React.createElement("option", {
       value: "3"
