@@ -17,19 +17,19 @@ class Showblock extends React.Component
           <div className="setting">
             <div className="nyaa-setting">
               <a href="" className="nyaa-link">nyaa</a>
-              <input type="text"/>
+              <input type="text" defaultValue={this.props.showdata.nyaa}/>
             </div>
 
             <div className="day-setting">
-              <select>
-                <option value="0">ない</option>
-                <option value="1">月</option>
-                <option value="2">火</option>
-                <option value="3">水</option>
-                <option value="4">木</option>
-                <option value="5">金</option>
-                <option value="6">土</option>
-                <option value="7">日</option>
+              <select defaultValue={this.props.showdata.day} className={dayNumberToClass[this.props.showdata.day]}>
+                <option value="0">日なし</option>
+                <option value="1">日</option>
+                <option value="2">月</option>
+                <option value="3">火</option>
+                <option value="4">水</option>
+                <option value="5">木</option>
+                <option value="6">金</option>
+                <option value="7">土</option>
               </select>
             </div>
           </div>

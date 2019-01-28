@@ -18,26 +18,30 @@ class Showblock extends React.Component {
       href: "",
       className: "nyaa-link"
     }, "nyaa"), React.createElement("input", {
-      type: "text"
+      type: "text",
+      defaultValue: this.props.showdata.nyaa
     })), React.createElement("div", {
       className: "day-setting"
-    }, React.createElement("select", null, React.createElement("option", {
+    }, React.createElement("select", {
+      defaultValue: this.props.showdata.day,
+      className: dayNumberToClass[this.props.showdata.day]
+    }, React.createElement("option", {
       value: "0"
-    }, "\u306A\u3044"), React.createElement("option", {
+    }, "\u65E5\u306A\u3057"), React.createElement("option", {
       value: "1"
-    }, "\u6708"), React.createElement("option", {
+    }, "\u65E5"), React.createElement("option", {
       value: "2"
-    }, "\u706B"), React.createElement("option", {
+    }, "\u6708"), React.createElement("option", {
       value: "3"
-    }, "\u6C34"), React.createElement("option", {
+    }, "\u706B"), React.createElement("option", {
       value: "4"
-    }, "\u6728"), React.createElement("option", {
+    }, "\u6C34"), React.createElement("option", {
       value: "5"
-    }, "\u91D1"), React.createElement("option", {
+    }, "\u6728"), React.createElement("option", {
       value: "6"
-    }, "\u571F"), React.createElement("option", {
+    }, "\u91D1"), React.createElement("option", {
       value: "7"
-    }, "\u65E5"))))));
+    }, "\u571F"))))));
   }
 
 }
