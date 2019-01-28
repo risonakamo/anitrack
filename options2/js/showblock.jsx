@@ -3,20 +3,48 @@
   showdata: ShowObject object containing show data for 1 show*/
 class Showblock extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.openBackgroundNyaa=this.openBackgroundNyaa.bind(this);
+  }
+
+  //opens a background tab to this show's nyaa link,
+  //if there is a nyaa set.
+  openBackgroundNyaa(e)
+  {
+    e.preventDefault();
+
+    if (this.props.showdata.nyaa)
+    {
+      chrome.tabs.create({
+        url:`https://nyaa.si/?q=${this.props.showdata.nyaa}&f=0&c=1_2`,
+        active:false
+      });
+    }
+  }
+
   render()
   {
+    //decide if nyaa link should have a disabled appearance
+    var disabledNyaa;
+    if (!this.props.showdata.nyaa)
+    {
+      disabledNyaa="no-link";
+    }
+
     return (
       <div className="show-block">
         <img src={this.props.showdata.cover}/>
         <div className="right">
           <div className="information">
-            <h1><a href={this.props.showdata.link}>{this.props.showdata.title}</a></h1>
+            <h1><a href={this.props.showdata.link} target="_blank">{this.props.showdata.title}</a></h1>
             <h2>{this.props.showdata.progress}</h2>
           </div>
 
           <div className="setting">
-            <div className="nyaa-setting">
-              <a href="" className="nyaa-link">nyaa</a>
+            <div className={`nyaa-setting ${disabledNyaa}`}>
+              <a href="" className="nyaa-link" onClick={this.openBackgroundNyaa}>nyaa</a>
               <input type="text" defaultValue={this.props.showdata.nyaa}/>
             </div>
 

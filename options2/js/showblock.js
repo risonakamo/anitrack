@@ -1,5 +1,27 @@
 class Showblock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.openBackgroundNyaa = this.openBackgroundNyaa.bind(this);
+  }
+
+  openBackgroundNyaa(e) {
+    e.preventDefault();
+
+    if (this.props.showdata.nyaa) {
+      chrome.tabs.create({
+        url: `https://nyaa.si/?q=${this.props.showdata.nyaa}&f=0&c=1_2`,
+        active: false
+      });
+    }
+  }
+
   render() {
+    var disabledNyaa;
+
+    if (!this.props.showdata.nyaa) {
+      disabledNyaa = "no-link";
+    }
+
     return React.createElement("div", {
       className: "show-block"
     }, React.createElement("img", {
@@ -9,14 +31,16 @@ class Showblock extends React.Component {
     }, React.createElement("div", {
       className: "information"
     }, React.createElement("h1", null, React.createElement("a", {
-      href: this.props.showdata.link
+      href: this.props.showdata.link,
+      target: "_blank"
     }, this.props.showdata.title)), React.createElement("h2", null, this.props.showdata.progress)), React.createElement("div", {
       className: "setting"
     }, React.createElement("div", {
-      className: "nyaa-setting"
+      className: `nyaa-setting ${disabledNyaa}`
     }, React.createElement("a", {
       href: "",
-      className: "nyaa-link"
+      className: "nyaa-link",
+      onClick: this.openBackgroundNyaa
     }, "nyaa"), React.createElement("input", {
       type: "text",
       defaultValue: this.props.showdata.nyaa
