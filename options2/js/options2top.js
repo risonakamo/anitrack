@@ -1,6 +1,7 @@
 class OptionsTwoTop extends React.Component {
   constructor(props) {
     super(props);
+    this.triggerDataRerender = this.triggerDataRerender.bind(this);
     this.state = {};
     var data = this.props.shows;
     var daySortData = {};
@@ -19,12 +20,19 @@ class OptionsTwoTop extends React.Component {
     this.state.shows = daySortData;
   }
 
+  triggerDataRerender() {
+    this.setState({
+      shows: this.state.shows
+    });
+  }
+
   render() {
     return React.createElement(React.Fragment, null, ["日なし", "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"].map((x, i) => {
       return React.createElement(DayBlock, {
         day: x,
         key: i,
-        shows: this.state.shows[i]
+        shows: this.state.shows[i],
+        triggerDataRerender: this.triggerDataRerender
       });
     }));
   }

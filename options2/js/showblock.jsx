@@ -1,12 +1,14 @@
 /*Showblock element displaying a single show.
-  Showblock(object showdata)
-  showdata: ShowObject object containing show data for 1 show*/
+  Showblock(object showdata,parent-function triggerDataRerender)
+  showdata: ShowObject object containing show data for 1 show
+  triggerDataRerender: function from Dayblock parent*/
 class Showblock extends React.Component
 {
   constructor(props)
   {
     super(props);
     this.openBackgroundNyaa=this.openBackgroundNyaa.bind(this);
+    this.changeDay=this.changeDay.bind(this);
   }
 
   //opens a background tab to this show's nyaa link,
@@ -22,6 +24,14 @@ class Showblock extends React.Component
         active:false
       });
     }
+  }
+
+  changeDay(e)
+  {
+    var showdata=this.props.showdata;
+    showdata.day=e.currentTarget.value;
+
+    this.props.triggerDataRerender();
   }
 
   render()
@@ -49,7 +59,7 @@ class Showblock extends React.Component
             </div>
 
             <div className="day-setting">
-              <select defaultValue={this.props.showdata.day} className={dayNumberToClass[this.props.showdata.day]}>
+              <select defaultValue={this.props.showdata.day} className={dayNumberToClass[this.props.showdata.day]} onChange={this.changeDay}>
                 <option value="0">日なし</option>
                 <option value="1">日</option>
                 <option value="2">月</option>

@@ -1,7 +1,8 @@
 /* showblock container for each day
-   DayBlock(string day,array shows)
+   DayBlock(string day,array shows,parent-function triggerDataRerender)
    day: the day string
-   shows: array of show objects*/
+   shows: array of show objects
+   triggerDataRerender: function from parent OptionsTwoTop*/
 class DayBlock extends React.Component
 {
   render()
@@ -16,7 +17,7 @@ class DayBlock extends React.Component
     else
     {
       displayedShows=this.props.shows.map((x,i)=>{
-        return <Showblock showdata={x} key={i}/>;
+        return <Showblock showdata={x} key={i} triggerDataRerender={this.props.triggerDataRerender}/>;
       });
     }
 

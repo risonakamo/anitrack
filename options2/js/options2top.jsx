@@ -6,6 +6,7 @@ class OptionsTwoTop extends React.Component
   constructor(props)
   {
     super(props);
+    this.triggerDataRerender=this.triggerDataRerender.bind(this);
 
     this.state={
       //shows:{}*
@@ -32,13 +33,19 @@ class OptionsTwoTop extends React.Component
     this.state.shows=daySortData;
   }
 
+  //public, passdown. rerender everything, usually with modified data.
+  triggerDataRerender()
+  {
+    this.setState({shows:this.state.shows});
+  }
+
   render()
   {
     return <>
       {["日なし","日曜日","月曜日","火曜日","水曜日",
         "木曜日","金曜日","土曜日"].map(
         (x,i)=>{
-          return <DayBlock day={x} key={i} shows={this.state.shows[i]}/>;
+          return <DayBlock day={x} key={i} shows={this.state.shows[i]} triggerDataRerender={this.triggerDataRerender}/>;
         }
       )}
     </>;

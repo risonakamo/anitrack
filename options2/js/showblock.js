@@ -2,6 +2,7 @@ class Showblock extends React.Component {
   constructor(props) {
     super(props);
     this.openBackgroundNyaa = this.openBackgroundNyaa.bind(this);
+    this.changeDay = this.changeDay.bind(this);
   }
 
   openBackgroundNyaa(e) {
@@ -13,6 +14,12 @@ class Showblock extends React.Component {
         active: false
       });
     }
+  }
+
+  changeDay(e) {
+    var showdata = this.props.showdata;
+    showdata.day = e.currentTarget.value;
+    this.props.triggerDataRerender();
   }
 
   render() {
@@ -48,7 +55,8 @@ class Showblock extends React.Component {
       className: "day-setting"
     }, React.createElement("select", {
       defaultValue: this.props.showdata.day,
-      className: dayNumberToClass[this.props.showdata.day]
+      className: dayNumberToClass[this.props.showdata.day],
+      onChange: this.changeDay
     }, React.createElement("option", {
       value: "0"
     }, "\u65E5\u306A\u3057"), React.createElement("option", {

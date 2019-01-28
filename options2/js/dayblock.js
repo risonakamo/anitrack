@@ -10,7 +10,8 @@ class DayBlock extends React.Component {
       displayedShows = this.props.shows.map((x, i) => {
         return React.createElement(Showblock, {
           showdata: x,
-          key: i
+          key: i,
+          triggerDataRerender: this.props.triggerDataRerender
         });
       });
     }
