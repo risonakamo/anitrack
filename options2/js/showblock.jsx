@@ -26,6 +26,8 @@ class Showblock extends React.Component
     }
   }
 
+  //handle a change of day by day change input. triggers a rerender
+  //and pushes new data to chrome storage
   changeDay(e)
   {
     var showdata=this.props.showdata;
@@ -59,15 +61,18 @@ class Showblock extends React.Component
             </div>
 
             <div className="day-setting">
-              <select defaultValue={this.props.showdata.day} className={dayNumberToClass[this.props.showdata.day]} onChange={this.changeDay}>
+              <select value={this.props.showdata.day}
+                className={dayNumberToClass[this.props.showdata.day]}
+                onChange={this.changeDay}
+              >
                 <option value="0">日なし</option>
-                <option value="1">日</option>
                 <option value="2">月</option>
                 <option value="3">火</option>
                 <option value="4">水</option>
                 <option value="5">木</option>
                 <option value="6">金</option>
                 <option value="7">土</option>
+                <option value="1">日</option>
               </select>
             </div>
           </div>

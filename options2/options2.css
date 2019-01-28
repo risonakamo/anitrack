@@ -1,24 +1,24 @@
 @charset "UTF-8";
 .nichi {
-  --day-colour: #e05b56;
+  --day-colour: #b3312d;
 }
 .getsu {
-  --day-colour: #b790fd;
+  --day-colour: #8364b9;
 }
 .kai {
-  --day-colour: #fec828;
+  --day-colour: #cc9903;
 }
 .mizu {
-  --day-colour: #8eafff;
+  --day-colour: #5c7ed2;
 }
 .moku {
-  --day-colour: #cade87;
+  --day-colour: #8b9e4c;
 }
 .kin {
-  --day-colour: #ec9756;
+  --day-colour: #cc7330;
 }
 .do {
-  --day-colour: #b0aa9e;
+  --day-colour: #827c70;
 }
 body {
   margin: 0;

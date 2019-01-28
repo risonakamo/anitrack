@@ -54,14 +54,12 @@ class Showblock extends React.Component {
     })), React.createElement("div", {
       className: "day-setting"
     }, React.createElement("select", {
-      defaultValue: this.props.showdata.day,
+      value: this.props.showdata.day,
       className: dayNumberToClass[this.props.showdata.day],
       onChange: this.changeDay
     }, React.createElement("option", {
       value: "0"
     }, "\u65E5\u306A\u3057"), React.createElement("option", {
-      value: "1"
-    }, "\u65E5"), React.createElement("option", {
       value: "2"
     }, "\u6708"), React.createElement("option", {
       value: "3"
@@ -73,7 +71,9 @@ class Showblock extends React.Component {
       value: "6"
     }, "\u91D1"), React.createElement("option", {
       value: "7"
-    }, "\u571F"))))));
+    }, "\u571F"), React.createElement("option", {
+      value: "1"
+    }, "\u65E5"))))));
   }
 
 }
