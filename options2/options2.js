@@ -68,3 +68,18 @@ function changeDay(show,oldDay,newDay)
         chrome.storage.local.set(data);
     });
 }
+
+//queue a callback to run after some time within a named queue.
+//only 1 callback can be queued per queuename, queing another
+//function with an existing queuename resets the timer for
+//that queue.
+var delayQueueQueue={};
+function delayQueue(queueName,callback,time=2000)
+{
+    if (delayQueueQueue[queueName])
+    {
+        clearTimeout(delayQueueQueue[queueName]);
+    }
+
+    delayQueueQueue[queueName]=setTimeout(callback,time);
+}

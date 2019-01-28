@@ -36,6 +36,13 @@ class Showblock extends React.Component
     this.props.triggerDataRerender();
   }
 
+  // updateNyaa(e)
+  // {
+  //   delayQueue(this.props.showdata.id,()=>{
+  //     this.props.showdata.nyaa=e.currentTarget.value;
+  //   },2000);
+  // }
+
   render()
   {
     //decide if nyaa link should have a disabled appearance
