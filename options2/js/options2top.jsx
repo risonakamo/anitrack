@@ -55,11 +55,19 @@ class OptionsTwoTop extends React.Component
   username: username to start with.*/
 class HeaderSetter extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+
+    this.editNotif=React.createRef();
+  }
+
   render()
   {
     return <>
       <p>Anilist ID:</p>
       <input type="text" defaultValue={this.props.username}/>
+      <p className="edit-notif hidden" ref={this.editNotif}>press enter to set</p>
     </>;
   }
 }

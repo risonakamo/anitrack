@@ -44,6 +44,20 @@ a
     {
         display: inline-block;
         font-size: 15px;
+
+        //inline "edit notification" element
+        &.edit-notif
+        {
+            width: 0;
+            white-space: nowrap;
+            font-size: 10px;
+            opacity: 0.85;
+
+            &.hidden
+            {
+                display: none;
+            }
+        }
     }
 
     input

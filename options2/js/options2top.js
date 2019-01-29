@@ -41,11 +41,19 @@ class OptionsTwoTop extends React.Component {
 }
 
 class HeaderSetter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.editNotif = React.createRef();
+  }
+
   render() {
     return React.createElement(React.Fragment, null, React.createElement("p", null, "Anilist ID:"), React.createElement("input", {
       type: "text",
       defaultValue: this.props.username
-    }));
+    }), React.createElement("p", {
+      className: "edit-notif hidden",
+      ref: this.editNotif
+    }, "press enter to set"));
   }
 
 }

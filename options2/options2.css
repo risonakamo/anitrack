@@ -141,6 +141,15 @@ a {
   display: inline-block;
   font-size: 15px;
 }
+.header-setter p.edit-notif {
+  width: 0;
+  white-space: nowrap;
+  font-size: 10px;
+  opacity: 0.85;
+}
+.header-setter p.edit-notif.hidden {
+  display: none;
+}
 .header-setter input {
   border-bottom-color: #5c728a;
   color: #5c728a;
