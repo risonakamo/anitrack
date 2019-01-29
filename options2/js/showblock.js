@@ -36,7 +36,7 @@ class Showblock extends React.Component {
   }
 
   render() {
-    var disabledNyaa;
+    var disabledNyaa = "";
 
     if (!this.props.showdata.nyaa) {
       disabledNyaa = "no-link";

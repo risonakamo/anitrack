@@ -14,6 +14,22 @@ var dayNumberToClass={
 
 function main()
 {
+    chrome.storage.local.get("userOps",(data)=>{
+        data=data.userOps;
+
+        if (!data || data.length!=2)
+        {
+            data="";
+        }
+
+        else
+        {
+            data=data[0];
+        }
+
+        ReactDOM.render(React.createElement(HeaderSetter,{username:data}),document.querySelector(".header-setter"));
+    });
+
     chrome.storage.local.get("ids",(data)=>{
         data=data.ids;
         if (!data)

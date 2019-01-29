@@ -53,7 +53,7 @@ class Showblock extends React.Component
   render()
   {
     //decide if nyaa link should have a disabled appearance
-    var disabledNyaa;
+    var disabledNyaa="";
     if (!this.props.showdata.nyaa)
     {
       disabledNyaa="no-link";

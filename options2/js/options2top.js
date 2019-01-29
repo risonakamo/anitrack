@@ -39,3 +39,13 @@ class OptionsTwoTop extends React.Component {
   }
 
 }
+
+class HeaderSetter extends React.Component {
+  render() {
+    return React.createElement(React.Fragment, null, React.createElement("p", null, "Anilist ID:"), React.createElement("input", {
+      type: "text",
+      defaultValue: this.props.username
+    }));
+  }
+
+}

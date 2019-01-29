@@ -49,3 +49,17 @@ class OptionsTwoTop extends React.Component
     </>;
   }
 }
+
+/*header setter elements. currently just the username setter
+  HeaderSetter(string username)
+  username: username to start with.*/
+class HeaderSetter extends React.Component
+{
+  render()
+  {
+    return <>
+      <p>Anilist ID:</p>
+      <input type="text" defaultValue={this.props.username}/>
+    </>;
+  }
+}
