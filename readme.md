@@ -17,7 +17,19 @@ After being installed Anitrack will provide a menu accessible by clicking on its
 
 ![](https://i.imgur.com/VdTSsOm.png)
 
-### Options/Configuration Page
+### Options/Configuration Page (NEW)
+This page is where shows detected by the extension from Anilist.co are displayed and can be configured, accessed by clicking the "More" button on the extension popup.
+
+- Shows are grouped by their assigned day.
+- Shows can be set a NYAA string by typing in the field next to the NYAA button. The value is automatically saved after completion of typing.
+- Clicking the NYAA button will open a tab to a NYAA search page using the provided NYAA string as the search query. If there is no NYAA string the button will be grey and unclickable.
+- The day of any show can be changed by using the day dropdown menu present under the NYAA button in each show. Setting the day will allow the show to appear in the extension popup on their specified day and be colour-coded at the Anilist.co list page, as well as relocate the show to the appropriate day category within this options page.
+
+![](https://i.imgur.com/9n7R6qr.png)
+
+### Options/Configuration Page (OLD)
+*(for older versions of anitrack)*
+
 This page is where shows detected by the extension from Anilist.co are displayed and can be configured. A show's options can be accessed by right clicking the symbol at the far right of a show entry.
 
 - shows can be set a DAY and a NYAA string.
