@@ -58,16 +58,64 @@ class HeaderSetter extends React.Component
   constructor(props)
   {
     super(props);
+    this.inputOnChange=this.inputOnChange.bind(this);
+    this.inputKeyHandler=this.inputKeyHandler.bind(this);
 
-    this.editNotif=React.createRef();
+    this.state={
+      //showNotif:0* //if notif element is showing
+      //applied:0*  //if the input is "applied". upon
+                    //being changed, it is no longer "applied"
+    };
+  }
+
+  //onchange event handler for main input
+  inputOnChange()
+  {
+    //if the notif is not showing yet, show it
+    if (!this.state.showNotif)
+    {
+      this.setState({showNotif:1});
+    }
+
+    //the input is not not applied anymore, and is changed
+    this.setState({applied:0});
+  }
+
+  //keypress event handler for main input
+  inputKeyHandler(e)
+  {
+    if (e.key=="Enter")
+    {
+      //if not already applied, do stuff
+      if (!this.state.applied)
+      {
+        this.setState({applied:1});
+        chrome.storage.local.set({userOps:[e.currentTarget.value,""]});
+      }
+    }
   }
 
   render()
   {
+    //determine if notif element should be hidden
+    var notifClass="hidden";
+    if (this.state.showNotif)
+    {
+      notifClass="";
+    }
+
+    //determine which message notif should show, based
+    //on if it is applied or not
+    var notifText="press enter to set";
+    if (this.state.applied)
+    {
+      notifText="applied";
+    }
+
     return <>
       <p>Anilist ID:</p>
-      <input type="text" defaultValue={this.props.username}/>
-      <p className="edit-notif hidden" ref={this.editNotif}>press enter to set</p>
+      <input type="text" defaultValue={this.props.username} onChange={this.inputOnChange} onKeyPress={this.inputKeyHandler}/>
+      <p className={`edit-notif ${notifClass}`}>{notifText}</p>
     </>;
   }
 }

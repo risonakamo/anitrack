@@ -43,17 +43,57 @@ class OptionsTwoTop extends React.Component {
 class HeaderSetter extends React.Component {
   constructor(props) {
     super(props);
-    this.editNotif = React.createRef();
+    this.inputOnChange = this.inputOnChange.bind(this);
+    this.inputKeyHandler = this.inputKeyHandler.bind(this);
+    this.state = {};
+  }
+
+  inputOnChange() {
+    if (!this.state.showNotif) {
+      this.setState({
+        showNotif: 1
+      });
+    }
+
+    this.setState({
+      applied: 0
+    });
+  }
+
+  inputKeyHandler(e) {
+    if (e.key == "Enter") {
+      if (!this.state.applied) {
+        this.setState({
+          applied: 1
+        });
+        chrome.storage.local.set({
+          userOps: [e.currentTarget.value, ""]
+        });
+      }
+    }
   }
 
   render() {
+    var notifClass = "hidden";
+
+    if (this.state.showNotif) {
+      notifClass = "";
+    }
+
+    var notifText = "press enter to set";
+
+    if (this.state.applied) {
+      notifText = "applied";
+    }
+
     return React.createElement(React.Fragment, null, React.createElement("p", null, "Anilist ID:"), React.createElement("input", {
       type: "text",
-      defaultValue: this.props.username
+      defaultValue: this.props.username,
+      onChange: this.inputOnChange,
+      onKeyPress: this.inputKeyHandler
     }), React.createElement("p", {
-      className: "edit-notif hidden",
-      ref: this.editNotif
-    }, "press enter to set"));
+      className: `edit-notif ${notifClass}`
+    }, notifText));
   }
 
 }
