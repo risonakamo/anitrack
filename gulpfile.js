@@ -15,7 +15,7 @@ var defaultPlumber=(err)=>{
 
 var lessConfig={
     watchTargets:["*.less","**/*.less"],
-    targets:["options2/options2.less"],
+    targets:["options2/css/options2.less"],
     base:"."
 };
 
