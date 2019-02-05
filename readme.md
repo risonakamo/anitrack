@@ -55,6 +55,12 @@ The extension adds colour-coding to your Anilist.co page for shows that have bee
 ## Setup, Usage and Show Tracking
 Before functionality can be used the extension must be setup. This is done by entering your Anilist.co username into the fields at the top of the configuration page. This username must be the same as the string that appears in your Anilist.co's profile page url. And of course, your Anilist.co must be public.
 
+### (NEW) Username configuration
+*input field at top of new Anitrack options/configuration page:*
+
+![](https://i.imgur.com/wBPWnLm.png)
+
+### (OLD) Pre-2.7 configuration
 *the input fields at the configuration page's top:*
 
 ![](https://i.imgur.com/WLrw9yP.png)
