@@ -71,7 +71,7 @@ class Showblock extends React.Component
           <div className="setting">
             <div className={`nyaa-setting ${disabledNyaa}`}>
               <a href="" className="nyaa-link" onClick={this.openBackgroundNyaa}>nyaa</a>
-              <input type="text" defaultValue={this.props.showdata.nyaa} onChange={this.updateNyaa}/>
+              <input type="text" key={this.props.showdata.id} defaultValue={this.props.showdata.nyaa} onChange={this.updateNyaa}/>
             </div>
 
             <div className="day-setting">

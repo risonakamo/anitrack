@@ -63,6 +63,7 @@ class Showblock extends React.Component {
       onClick: this.openBackgroundNyaa
     }, "nyaa"), React.createElement("input", {
       type: "text",
+      key: this.props.showdata.id,
       defaultValue: this.props.showdata.nyaa,
       onChange: this.updateNyaa
     })), React.createElement("div", {
