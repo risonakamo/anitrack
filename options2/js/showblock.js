@@ -75,6 +75,8 @@ class Showblock extends React.Component {
     }, React.createElement("option", {
       value: "0"
     }, "\u306A\u3057"), React.createElement("option", {
+      value: "1"
+    }, "\u65E5"), React.createElement("option", {
       value: "2"
     }, "\u6708"), React.createElement("option", {
       value: "3"
@@ -86,9 +88,7 @@ class Showblock extends React.Component {
       value: "6"
     }, "\u91D1"), React.createElement("option", {
       value: "7"
-    }, "\u571F"), React.createElement("option", {
-      value: "1"
-    }, "\u65E5"))))));
+    }, "\u571F"))))));
   }
 
 }

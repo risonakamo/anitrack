@@ -80,13 +80,13 @@ class Showblock extends React.Component
                 onChange={this.changeDay}
               >
                 <option value="0">なし</option>
+                <option value="1">日</option>
                 <option value="2">月</option>
                 <option value="3">火</option>
                 <option value="4">水</option>
                 <option value="5">木</option>
                 <option value="6">金</option>
                 <option value="7">土</option>
-                <option value="1">日</option>
               </select>
             </div>
           </div>
