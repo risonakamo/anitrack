@@ -21,6 +21,10 @@ class OptionsTwoTop extends React.Component {
     for (var x in data) {
       theday = data[x].day;
 
+      if (!theday) {
+        theday = 0;
+      }
+
       if (daySortData[theday]) {
         daySortData[theday].push(data[x]);
       } else {

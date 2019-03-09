@@ -3,7 +3,7 @@
     "name":"anitrack",
     "description":"helps track anilist.co shows",
     "homepage_url":"https://github.com/risonakamo/anitrack",
-    "version":"2.7.2",
+    "version":"2.7.3",
 
     "permissions":["tabs","storage","https://anilist.co/user/*"],
 
