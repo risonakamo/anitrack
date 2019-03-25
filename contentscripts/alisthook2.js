@@ -261,9 +261,18 @@ function alistReq(query,callback)
 //and and an object with the ids and the progress.
 function updateFromAPI(storageData,storageIds)
 {
-    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){statusLists{media{title{romaji}coverImage{large}id,siteUrl},progress}}}`,
+    alistReq(`{MediaListCollection(userName:"risona",type:ANIME){lists{name,entries{media{title{romaji},coverImage{large},id,siteUrl},progress}}}}`,
     (data)=>{
-        data=data.data.MediaListCollection.statusLists.current;
+        data=data.data.MediaListCollection.lists;
+
+        for (var x=0,l=data.length;x<l;x++)
+        {
+            if (data[x].name=="Watching")
+            {
+                data=data[x].entries;
+                break;
+            }
+        }
 
         //keep track of every id that was present in the database but
         //not in the API. by the end, whatever is left in here should be
