@@ -44,7 +44,13 @@ a {
   margin: 10px;
   background-color: white;
 }
-.show-block img {
+.show-block .img-hold {
+  display: inline-block;
+  height: 100%;
+  max-width: 130px;
+  overflow: hidden;
+}
+.show-block .img-hold img {
   height: 100%;
 }
 .show-block .right {

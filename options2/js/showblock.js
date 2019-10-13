@@ -44,9 +44,11 @@ class Showblock extends React.Component {
 
     return React.createElement("div", {
       className: "show-block"
+    }, React.createElement("div", {
+      className: "img-hold"
     }, React.createElement("img", {
       src: this.props.showdata.cover
-    }), React.createElement("div", {
+    })), React.createElement("div", {
       className: "right"
     }, React.createElement("div", {
       className: "information"

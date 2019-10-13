@@ -61,7 +61,9 @@ class Showblock extends React.Component
 
     return (
       <div className="show-block">
-        <img src={this.props.showdata.cover}/>
+        <div className="img-hold">
+          <img src={this.props.showdata.cover}/>
+        </div>
         <div className="right">
           <div className="information">
             <h1><a href={this.props.showdata.link} target="_blank">{this.props.showdata.title}</a></h1>
