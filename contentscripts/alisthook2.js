@@ -189,10 +189,12 @@ function getDayClass(day)
 //attach logic to increment single shows progress each click on + sign
 function attachPlusUpdate(progressElement,entrydata)
 {
-    if (!progressElement.firstElementChild)
+    if (!progressElement.firstElementChild || progressElement.plusAttached)
     {
         return;
     }
+
+    progressElement.plusAttached=true;
 
     progressElement.firstElementChild.addEventListener("click",(e)=>{
         setTimeout(()=>{
