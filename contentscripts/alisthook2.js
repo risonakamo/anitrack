@@ -81,7 +81,7 @@ function hook(storageData,storageIds)
     var id;
     for (var x=0,l=entries.length;x<l;x++)
     {
-        id=entries[x].children[1].firstChild.href.replace(/.*\/(\d+)\/.*/,"$1");
+        id=entries[x].children[1].firstChild.href.match(/\/anime\/(\d+)\//)[1];
 
         //if hooked entry exists in storage
         if (storageData[id])
