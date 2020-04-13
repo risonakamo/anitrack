@@ -1,3 +1,5 @@
+type dayNumbers=string #day0=sunday,day1=monday,...
+
 # the chrome local storage
 # its a mess of things
 type chromeStorage
