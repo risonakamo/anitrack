@@ -67,7 +67,10 @@ function displayEntries2()
                     cid=dayEps[n][x];
                     e=d2[cid];
 
-                    html+=genEntry(e.cover,e.title,ids[cid],e.nyaa);
+                    if (e)
+                    {
+                        html+=genEntry(e.cover,e.title,ids[cid],e.nyaa);
+                    }
                 }
 
                 entriesPoint[n].innerHTML=html;
