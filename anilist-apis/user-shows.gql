@@ -1,0 +1,28 @@
+query($userName:String)
+{
+    MediaListCollection(
+        userName:$userName,
+        type:ANIME,
+        status:CURRENT
+    )
+    {
+        lists {
+            name
+            entries {
+                progress
+                media {
+                    title {
+                        romaji
+                    }
+
+                    coverImage {
+                        large
+                    }
+
+                    id
+                    siteUrl
+                }
+            }
+        }
+    }
+}

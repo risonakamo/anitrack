@@ -1,0 +1,4 @@
+function getUserShows(user:string)
+{
+
+}
