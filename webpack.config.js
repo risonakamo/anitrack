@@ -6,8 +6,7 @@ const WebpackBar=require("webpackbar");
 module.exports={
     mode:"development",
     entry:{
-        // add entry points here
-        // index:"./index.tsx"
+        anilisthook:"./anilist-hooks/anilist-hook.ts"
     },
     output:{
         path:`${__dirname}/build`,

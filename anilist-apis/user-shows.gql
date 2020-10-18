@@ -1,3 +1,4 @@
+# retrieve shows of a target user.
 query($userName:String)
 {
     MediaListCollection(
