@@ -1,3 +1,5 @@
 import {queryUserShows} from "../anilist-apis/anilist-apis";
 
-queryUserShows("risona");
+(async ()=>{
+    console.log(await queryUserShows("risona"));
+})();

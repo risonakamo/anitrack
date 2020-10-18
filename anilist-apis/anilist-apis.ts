@@ -29,9 +29,10 @@ query($userName:String)
     }
 }`;
 
-export async function queryUserShows(user:string)
+// return raw anilist api result query for user shows
+export async function queryUserShows(user:string):Promise<UserShowsQueryResult>
 {
-    var res=await (await fetch("https://graphql.anilist.co",{
+    return await (await fetch("https://graphql.anilist.co",{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -44,6 +45,4 @@ export async function queryUserShows(user:string)
             query:userShowQuery
         })
     })).json();
-
-    console.log(res);
 }
