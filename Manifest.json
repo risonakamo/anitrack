@@ -1,28 +1,14 @@
 {
     "manifest_version":2,
-    "name":"anitrack",
+    "name":"anitrack 2",
+    "short_name":"anitrack2",
     "description":"helps track anilist.co shows",
+    "version":"3.0.0-dev",
     "homepage_url":"https://github.com/risonakamo/anitrack",
-    "version":"2.7.8",
 
-    "permissions":["tabs","storage","https://anilist.co/user/*"],
-
-    "browser_action":{
-        "default_popup":"popup/popup.html",
-        "default_icon":"popup/at-logo.png"
-    },
-
-    "content_scripts":[{
-        "matches":["https://anilist.co/user/*"],
-        "js":["contentscripts/alisthook2.js"],
-        "run_at":"document_end"
-    }],
-
-    "web_accessible_resources":["contentscripts/hooked.css"],
-
-    "icons":{
-        "16":"popup/at-logo.png",
-        "48":"popup/at-logo.png",
-        "128":"popup/at-logo.png"
-    }
+    "permissions":[
+        "tabs",
+        "storage",
+        "https://anilist.co/user/*"
+    ]
 }
