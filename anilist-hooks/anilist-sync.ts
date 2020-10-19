@@ -4,6 +4,7 @@ import {getUserShows} from "../anilist-apis/anilist-apis";
 // synchronise extension database current shows with anilist
 export async function anilistSync():Promise<void>
 {
+    console.log("anitrack syncing");
     var user:string|null=await getUser();
 
     if (!user)
