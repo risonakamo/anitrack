@@ -6,7 +6,9 @@ const ForkTsCheckerWebpackPlugin=require("fork-ts-checker-webpack-plugin");
 module.exports={
     mode:"development",
     entry:{
-        anilisthook:"./anilist-hooks/anilist-hook.ts"
+        anilisthook:"./anilist-hooks/anilist-hook.ts",
+        showlist:"./showlist/showlist-index.tsx",
+        popup:"./popup/popup-index.tsx"
     },
     output:{
         path:`${__dirname}/build`,
