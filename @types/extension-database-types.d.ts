@@ -1,6 +1,7 @@
 interface AnitrackStorage
 {
     currentShows:ShowInfo[]
+    user:string
 }
 
 // show info from anilist
