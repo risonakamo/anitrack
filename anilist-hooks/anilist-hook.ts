@@ -1,5 +1,5 @@
-import {queryUserShows} from "../anilist-apis/anilist-apis";
+import {getUserShows} from "../anilist-apis/anilist-apis";
 
 (async ()=>{
-    console.log(await queryUserShows("risona"));
+    console.log(await getUserShows("risona"));
 })();
