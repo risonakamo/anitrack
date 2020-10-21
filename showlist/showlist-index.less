@@ -1,1 +1,31 @@
 @charset "UTF-8";
+@import (reference) "../shared-css/shared-css.less";
+
+body
+{
+    background-color: @background-grey;
+    color: @main-black;
+}
+
+h2
+{
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+
+    &:hover
+    {
+        opacity: .8;
+    }
+
+    &:focus
+    {
+        opacity: .6;
+    }
+}
