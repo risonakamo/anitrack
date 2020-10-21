@@ -14,5 +14,19 @@ export default function ShowBox():JSX.Element
         <h2>Love Live! Nijigasaki Gakuen School Idol Doukoukai</h2>
       </a>
     </div>
+    <div className="day-indicator"></div>
+    <div className="input-zone">
+      <input className="nyaa-input" type="text"/>
+      <select className="day-input">
+        <option>N/A</option>
+        <option>Mon</option>
+        <option>Tue</option>
+        <option>Wed</option>
+        <option>Thu</option>
+        <option>Fri</option>
+        <option>Sat</option>
+        <option>Sun</option>
+      </select>
+    </div>
   </div>;
 }
