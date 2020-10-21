@@ -16,7 +16,9 @@ export default function ShowBox():JSX.Element
     </div>
     <div className="day-indicator"></div>
     <div className="input-zone">
-      <input className="nyaa-input" type="text"/>
+      <div className="nyaa-hold">
+        <input className="nyaa-input" type="text" placeholder="nyaa..."/>
+      </div>
       <select className="day-input">
         <option>N/A</option>
         <option>Mon</option>
