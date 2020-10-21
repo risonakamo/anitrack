@@ -2,20 +2,25 @@ import React from "react";
 
 import "./showbox.less";
 
-export default function ShowBox():JSX.Element
+interface ShowBoxProps
+{
+  show:ShowInfo
+}
+
+export default function ShowBox(props:ShowBoxProps):JSX.Element
 {
   return <div className="show-box">
-    <a href="https://anilist.co/anime/113970/Love-Live-Nijigasaki-Gakuen-School-Idol-Doukoukai/">
+    <a href="">
       <img className="cover-img"
-        src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx104937-A4BF3Rl9dMn4.jpg"/>
+        src={props.show.cover}/>
     </a>
     <div className="content">
-      <a href="https://anilist.co/anime/113970/Love-Live-Nijigasaki-Gakuen-School-Idol-Doukoukai/">
-        <h2>Love Live! Nijigasaki Gakuen School Idol Doukoukai</h2>
+      <a href={props.show.url}>
+        <h2>{props.show.title}</h2>
       </a>
     </div>
     <div className="day-indicator"></div>
-    <div className="input-zone">
+    <div className="input-zone hidden">
       <div className="nyaa-hold">
         <input className="nyaa-input" type="text" placeholder="nyaa..."/>
       </div>

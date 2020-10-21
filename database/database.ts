@@ -13,3 +13,13 @@ export function getUser():Promise<string|null>
         });
     });
 }
+
+// get the current shows from storage
+export async function getCurrentShows():Promise<ShowInfo[]>
+{
+    return new Promise<ShowInfo[]>((resolve)=>{
+        chrome.storage.local.get("currentShows",(storage:AnitrackStorage)=>{
+            resolve(storage.currentShows || []);
+        });
+    });
+}
