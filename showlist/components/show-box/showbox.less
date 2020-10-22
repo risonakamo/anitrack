@@ -40,6 +40,7 @@
     {
         display: flex;
         height: 20px;
+        opacity: 0;
 
         .nyaa-hold
         {
@@ -80,10 +81,21 @@
             border: none;
             background: #cc7330; //TEMP
         }
+    }
 
-        &.hidden
+    &:hover
+    {
+        .input-zone
         {
-            display: none;
+            opacity: 1;
+        }
+    }
+
+    &.focused
+    {
+        .input-zone
+        {
+            opacity: 1;
         }
     }
 }

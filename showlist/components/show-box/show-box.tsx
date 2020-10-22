@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+import cx from "classnames";
 
 import "./showbox.less";
 
@@ -9,7 +10,26 @@ interface ShowBoxProps
 
 export default function ShowBox(props:ShowBoxProps):JSX.Element
 {
-  return <div className="show-box">
+  // focus enabled
+  const [inputsFocused,setinputsFocused]=useState<boolean>(false);
+
+  // handle input zone items being focused
+  function focusHandler():void
+  {
+    setinputsFocused(true);
+  }
+
+  // handle input zone items being blurred
+  function unfocusHandler():void
+  {
+    setinputsFocused(false);
+  }
+
+  const showBoxClass={
+    focused:inputsFocused
+  };
+
+  return <div className={cx("show-box",showBoxClass)}>
     <a href="">
       <img className="cover-img"
         src={props.show.cover}/>
@@ -22,9 +42,9 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
     <div className="day-indicator"></div>
     <div className="input-zone hidden">
       <div className="nyaa-hold">
-        <input className="nyaa-input" type="text" placeholder="nyaa..."/>
+        <input className="nyaa-input" type="text" placeholder="nyaa..." onFocus={focusHandler} onBlur={unfocusHandler}/>
       </div>
-      <select className="day-input">
+      <select className="day-input" onFocus={focusHandler} onBlur={unfocusHandler}>
         <option>N/A</option>
         <option>Mon</option>
         <option>Tue</option>
