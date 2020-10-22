@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import _ from "lodash";
 
 import {getCurrentShows,getAllExtraShowInfos,updateExtraShowInfoDB} from "../database/database";
+import {sortShowInfos} from "../database/database-helpers";
 import ShowBox from "./components/show-box/show-box";
 
 import "./showlist-index.less";
@@ -17,8 +18,9 @@ function ShowlistMain():JSX.Element
   // initial load of shows
   useEffect(()=>{
     (async ()=>{
-      setShows(await getCurrentShows());
-      setExtraInfos(await getAllExtraShowInfos());
+      var newextraInfo:ExtraShowInfos=await getAllExtraShowInfos();
+      setShows(sortShowInfos(await getCurrentShows(),newextraInfo));
+      setExtraInfos(newextraInfo);
     })();
   },[]);
 

@@ -23,3 +23,9 @@ interface ExtraShowInfo
     nyaa:string
     day:DayString
 }
+
+interface CombinedShowInfo
+{
+    show:ShowInfo
+    extras?:ExtraShowInfo
+}
