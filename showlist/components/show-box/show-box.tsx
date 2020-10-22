@@ -44,12 +44,22 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
     });
   }
 
+  // open nyaa tab
+  function openNyaa(e:React.MouseEvent):void
+  {
+    e.preventDefault();
+    chrome.tabs.create({
+      active:false,
+      url:`https://nyaa.si/?q=${props.extraInfo.nyaa}&f=0&c=1_2`
+    });
+  }
+
   const showBoxClass={
     focused:inputsFocused
   };
 
   return <div className={cx("show-box",showBoxClass)}>
-    <a href="">
+    <a href="" onClick={openNyaa}>
       <img className="cover-img"
         src={props.show.cover}/>
     </a>
