@@ -33,7 +33,7 @@
     .day-indicator
     {
         height: 5px;
-        background-color: #cc7330; //TEMP
+        background-color: var(--day-colour);
     }
 
     .input-zone
@@ -79,7 +79,7 @@
             width: 30%;
             height: 100%;
             border: none;
-            background: #cc7330; //TEMP
+            background: var(--day-colour);
         }
     }
 
@@ -98,4 +98,11 @@
             opacity: 1;
         }
     }
+
+    each(@colour-classes,{
+        &.@{key}
+        {
+            --day-colour: @value;
+        }
+    });
 }

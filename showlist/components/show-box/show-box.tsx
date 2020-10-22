@@ -1,5 +1,6 @@
 import React,{useState,useRef,useEffect} from "react";
 import cx from "classnames";
+import _ from "lodash";
 
 import "./showbox.less";
 
@@ -57,8 +58,9 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   const showBoxClass={
     focused:inputsFocused
   };
+  const dayClass:string=_.get(props.extraInfo,"day","");
 
-  return <div className={cx("show-box",showBoxClass)}>
+  return <div className={cx("show-box",showBoxClass,dayClass)}>
     <a href="" onClick={openNyaa}>
       <img className="cover-img"
         src={props.show.cover}/>
