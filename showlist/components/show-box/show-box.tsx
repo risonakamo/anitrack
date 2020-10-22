@@ -58,13 +58,15 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   const showBoxClass={
     focused:inputsFocused
   };
-  const dayClass:string=_.get(props.extraInfo,"day","");
+  const dayClass:string=_.get(props.extraInfo,"day","N/A");
 
   return <div className={cx("show-box",showBoxClass,dayClass)}>
-    <a href="" onClick={openNyaa}>
-      <img className="cover-img"
-        src={props.show.cover}/>
-    </a>
+    <div className="cover-hold">
+      <a href="" onClick={openNyaa}>
+        <img className="cover-img"
+          src={props.show.cover}/>
+      </a>
+    </div>
     <div className="content">
       <a href={props.show.url}>
         <h2>{props.show.title}</h2>
