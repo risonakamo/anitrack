@@ -1,4 +1,4 @@
-type DayString="MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN"
+type DayString="MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN"|"N/A"
 type ExtraShowInfos=Record<number,ExtraShowInfo>
 
 interface AnitrackStorage

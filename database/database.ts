@@ -4,11 +4,13 @@ export function setCurrentShows(shows:ShowInfo[]):void
     chrome.storage.local.set({currentShows:shows});
 }
 
-export async function setExtraShowInfo(id:number,info:ExtraShowInfo):Promise<void>
+// update an extra show info given id and the extra show info. returns the newly updated extra show infos.
+export async function updateExtraShowInfoDB(id:number,info:ExtraShowInfo):Promise<ExtraShowInfos>
 {
     var extraInfos:ExtraShowInfos=await getAllExtraShowInfos();
     extraInfos[id]=info;
     chrome.storage.local.set({extraShowInfo:extraInfos});
+    return extraInfos;
 }
 
 // get the registered user from database
