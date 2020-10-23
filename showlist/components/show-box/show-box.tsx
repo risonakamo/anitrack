@@ -7,7 +7,7 @@ import "./showbox.less";
 interface ShowBoxProps
 {
   show:ShowInfo
-  extraInfo:ExtraShowInfo
+  extraInfo:ExtraShowInfo|undefined
   updatedExtraInfo(id:number,info:ExtraShowInfo):void
 }
 
@@ -49,16 +49,21 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   function openNyaa(e:React.MouseEvent):void
   {
     e.preventDefault();
-    chrome.tabs.create({
-      active:false,
-      url:`https://nyaa.si/?q=${props.extraInfo.nyaa}&f=0&c=1_2`
-    });
+
+    if (props.extraInfo)
+    {
+      chrome.tabs.create({
+        active:false,
+        url:`https://nyaa.si/?q=${props.extraInfo.nyaa}&f=0&c=1_2`
+      });
+    }
   }
 
   const showBoxClass={
     focused:inputsFocused
   };
-  const dayClass:string=_.get(props.extraInfo,"day","N/A");
+  const dayClass:string=props.extraInfo?.day || "N/A";
+  const nyaaString:string=props.extraInfo?.nyaa || "";
 
   return <div className={cx("show-box",showBoxClass,dayClass)}>
     <div className="cover-hold">
@@ -72,7 +77,9 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
         <h2>{props.show.title}</h2>
       </a>
     </div>
-    <div className="day-indicator"></div>
+    <div className="day-indicator">
+      <div className="nyaa-indicator">{nyaaString}</div>
+    </div>
     <div className="input-zone hidden">
       <div className="nyaa-hold">
         <input className="nyaa-input" type="text" placeholder="nyaa..." ref={nyaaBox}

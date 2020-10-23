@@ -43,8 +43,22 @@
 
     .day-indicator
     {
+        position: relative;
         height: 5px;
         background-color: var(--day-colour);
+
+        .nyaa-indicator
+        {
+            position: absolute;
+            width: 100%;
+            top: 7px;
+            font-size: 10px;
+            font-style: italic;
+            text-align: center;
+            color: @sub-grey;
+            pointer-events: none;
+            transition: opacity @main-transition-time;
+        }
     }
 
     .input-zone
@@ -101,6 +115,11 @@
         {
             opacity: 1;
         }
+
+        .day-indicator .nyaa-indicator
+        {
+            opacity: 0;
+        }
     }
 
     &.focused
@@ -108,6 +127,11 @@
         .input-zone
         {
             opacity: 1;
+        }
+
+        .day-indicator .nyaa-indicator
+        {
+            opacity: 0;
         }
     }
 
