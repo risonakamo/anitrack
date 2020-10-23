@@ -143,6 +143,24 @@
         }
     }
 
+    &.no-nyaa
+    {
+        .cover-hold a
+        {
+            cursor: default;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+
+            &:focus
+            {
+                opacity: 1;
+            }
+        }
+    }
+
     each(@colour-classes,{
         &.@{key}
         {

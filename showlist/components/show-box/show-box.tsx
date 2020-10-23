@@ -50,7 +50,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   {
     e.preventDefault();
 
-    if (props.extraInfo)
+    if (props.extraInfo?.nyaa)
     {
       chrome.tabs.create({
         active:false,
@@ -60,7 +60,8 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   }
 
   const showBoxClass={
-    focused:inputsFocused
+    focused:inputsFocused,
+    "no-nyaa":!props.extraInfo?.nyaa
   };
   const dayClass:string=props.extraInfo?.day || "N/A";
   const nyaaString:string=props.extraInfo?.nyaa || "";
