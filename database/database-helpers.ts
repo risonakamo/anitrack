@@ -17,6 +17,14 @@ export function sortShowInfos(shows:ShowInfo[],extraInfos:ExtraShowInfos):ShowIn
     });
 }
 
+// convert array of show infos into ShowsByDay dictionary, using extra infos.
+export function groupByDay(shows:ShowInfo[],extraInfos:ExtraShowInfos):ShowsByDay
+{
+    return _.groupBy(shows,(x:ShowInfo)=>{
+        return extraInfos[x.id]?.day || "N/A";
+    }) as ShowsByDay;
+}
+
 // sort function for 2 combined show infos, sort by day
 function compareCombinedInfoDay(a:CombinedShowInfo,b:CombinedShowInfo):number
 {

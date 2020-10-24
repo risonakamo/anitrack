@@ -1,6 +1,9 @@
 type DayString="MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN"|"N/A"
 type ExtraShowInfos=Record<number,ExtraShowInfo>
 
+// mapping of shows to
+type ShowsByDay=Record<DayString|string,ShowInfo[]>
+
 interface AnitrackStorage
 {
     currentShows:ShowInfo[]

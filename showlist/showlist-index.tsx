@@ -3,15 +3,17 @@ import ReactDOM from "react-dom";
 import _ from "lodash";
 
 import {getCurrentShows,getAllExtraShowInfos,updateExtraShowInfoDB} from "../database/database";
-import {sortShowInfos} from "../database/database-helpers";
-import ShowBox from "./components/show-box/show-box";
+import {groupByDay} from "../database/database-helpers";
+import DayContainer from "./components/day-container/day-container";
 
 import "./showlist-index.less";
+
+const dayOrder:DayString[]=["N/A","MON","TUE","WED","THU","FRI","SAT","SUN"];
 
 function ShowlistMain():JSX.Element
 {
   // the current shows
-  const [shows,setShows]=useState<ShowInfo[]>([]);
+  const [shows,setShows]=useState<ShowsByDay>({});
   // the extra infos
   const [extraInfos,setExtraInfos]=useState<ExtraShowInfos>({});
 
@@ -19,7 +21,7 @@ function ShowlistMain():JSX.Element
   useEffect(()=>{
     (async ()=>{
       var newextraInfo:ExtraShowInfos=await getAllExtraShowInfos();
-      setShows(sortShowInfos(await getCurrentShows(),newextraInfo));
+      setShows(groupByDay(await getCurrentShows(),newextraInfo));
       setExtraInfos(newextraInfo);
     })();
   },[]);
@@ -31,12 +33,18 @@ function ShowlistMain():JSX.Element
     setExtraInfos(newExtraInfos);
   }
 
-  const showBoxes:JSX.Element[]=_.map(shows,(x:ShowInfo,i:number)=>{
-    return <ShowBox show={x} key={i} extraInfo={extraInfos[x.id]} updatedExtraInfo={updateExtraShowInfo}/>;
-  });
+  const dayContainers:JSX.Element[]=_.filter(_.map(dayOrder,(x:DayString,i:number)=>{
+    if (!shows[x])
+    {
+      return null;
+    }
+
+    return <DayContainer day={x} shows={shows[x]} extraInfos={extraInfos}
+      updateExtraShowInfo={updateExtraShowInfo} key={i}/>;
+  })) as JSX.Element[];
 
   return <>
-    {showBoxes}
+    {dayContainers}
   </>;
 }
 
