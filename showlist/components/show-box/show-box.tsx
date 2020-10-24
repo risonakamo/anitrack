@@ -72,6 +72,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
         <img className="cover-img"
           src={props.show.cover}/>
       </a>
+      <div className="progress-badge">{props.show.progress}</div>
     </div>
     <div className="content">
       <a href={props.show.url}>

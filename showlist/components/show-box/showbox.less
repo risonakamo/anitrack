@@ -11,11 +11,30 @@
 
     .cover-hold
     {
+        position: relative;
         background-color: var(--day-colour);
 
         .cover-img
         {
             width: 100%;
+        }
+
+        .progress-badge
+        {
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            bottom: 7px;
+            right: 7px;
+            padding: 4px;
+            text-align: center;
+            font-size: 19px;
+            background: white;
+            border-radius: 50%;
+            line-height: 25px;
+            border: 2px solid var(--day-colour);
+            pointer-events: none;
+            font-weight: 500;
         }
     }
 
