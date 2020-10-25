@@ -1,5 +1,4 @@
 import {anilistSync} from "./anilist-sync";
-import {popupNotify} from "./notification-hook";
 import {injectHookStyles} from "./inject-style-hook";
 
 import "./hook-styles.less";
@@ -8,5 +7,4 @@ import "./hook-styles.less";
 (()=>{
     injectHookStyles();
     anilistSync();
-    popupNotify("a");
 })();

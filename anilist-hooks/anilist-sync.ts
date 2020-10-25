@@ -1,5 +1,6 @@
 import {getUser,setCurrentShows} from "../database/database";
 import {getUserShows} from "../anilist-apis/anilist-apis";
+import {popupNotify} from "./notification-hook";
 
 // synchronise extension database current shows with anilist
 export async function anilistSync():Promise<void>
@@ -12,5 +13,9 @@ export async function anilistSync():Promise<void>
         return;
     }
 
-    setCurrentShows(await getUserShows(user));
+    var gotshows:ShowInfo[]=await getUserShows(user);
+
+    popupNotify(`updated ${gotshows.length} shows`);
+
+    setCurrentShows(gotshows);
 }
