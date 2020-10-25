@@ -1,5 +1,6 @@
 import {anilistSync} from "./anilist-sync";
 import {injectHookStyles} from "./inject-style-hook";
+import {daymarktest} from "./day-mark-hook";
 
 import "./hook-styles.less";
 
@@ -7,4 +8,5 @@ import "./hook-styles.less";
 (()=>{
     injectHookStyles();
     anilistSync();
+    daymarktest();
 })();
