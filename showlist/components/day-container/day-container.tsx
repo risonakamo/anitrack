@@ -1,7 +1,10 @@
 import React from "react";
 import _ from "lodash";
+import cx from "classnames";
 
 import ShowBox from "../show-box/show-box";
+
+import "./day-container.less";
 
 interface DayContainerProps
 {
@@ -17,7 +20,7 @@ export default function DayContainer(props:DayContainerProps):JSX.Element
     return <ShowBox show={x} key={i} extraInfo={props.extraInfos[x.id]} updatedExtraInfo={props.updateExtraShowInfo}/>;
   });
 
-  return <span className="day-container">
+  return <span className={cx("day-container",props.day)}>
     {showBoxes}
   </span>;
 }

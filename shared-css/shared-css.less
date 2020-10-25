@@ -30,3 +30,13 @@
 }
 
 @main-transition-time: .15s;
+
+.gen-colour-classes()
+{
+    each(@colour-classes,{
+        &.@{key}
+        {
+            --day-colour: @value;
+        }
+    });
+}
