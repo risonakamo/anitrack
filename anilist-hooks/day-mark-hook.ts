@@ -48,7 +48,7 @@ function attachDayClass(showRow:HTMLElement,extraInfos:ExtraShowInfos):void
         return;
     }
 
-    showRow.classList.add(extraInfos[gotId].day);
+    showRow.classList.add("day",extraInfos[gotId].day);
 }
 
 // attempt to extract id number for anilist url

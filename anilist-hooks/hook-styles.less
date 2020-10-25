@@ -1,3 +1,5 @@
+@import (reference) "../shared-css/shared-css.less";
+
 .hook-message
 {
     position: fixed;
@@ -10,16 +12,17 @@
     bottom: -50px;
     right: 30px;
     padding: 0 15px 0 15px;
+
+    .hook-message-show
+    {
+        animation-name: hm-slide-in,hm-slide-in;
+        animation-duration: .6s,.6s;
+        animation-delay: 1s,7s;
+        animation-fill-mode: forwards,forwards;
+        animation-direction: normal,reverse;
+    }
 }
 
-.hook-message.hook-message-show
-{
-    animation-name: hm-slide-in,hm-slide-in;
-    animation-duration: .6s,.6s;
-    animation-delay: 1s,7s;
-    animation-fill-mode: forwards,forwards;
-    animation-direction: normal,reverse;
-}
 
 @keyframes hm-slide-in
 {
@@ -32,4 +35,26 @@
     {
         transform: translateY(-70px)
     }
+}
+
+.entry.day
+{
+    .title a::after
+    {
+        margin-left: 10px;
+        padding: 2px 3px 2px 3px;
+        color: white;
+        background-color: var(--day-colour);
+        font-size: 12px;
+        border-radius: 3px;
+        content: var(--day-content);
+    }
+
+    each(@colour-classes,{
+        &.@{key}
+        {
+            --day-colour: @value;
+            --day-content: @day-content[$@key];
+        }
+    });
 }
