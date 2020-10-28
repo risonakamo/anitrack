@@ -50,11 +50,23 @@
         content: var(--day-content);
     }
 
+    &.today
+    {
+        background-color: var(--day-colour);
+        color: white;
+
+        &:hover
+        {
+            background-color: var(--day-colour-dark);
+        }
+    }
+
     each(@colour-classes,{
         &.@{key}
         {
             --day-colour: @value;
             --day-content: @day-content[$@key];
+            --day-colour-dark: @colour-classes-dark[$@key];
         }
     });
 }
