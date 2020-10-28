@@ -1,29 +1,20 @@
-import retry from "async-retry";
-
 import {getAllExtraShowInfos} from "../database/database";
 
-export function daymarktest()
+// perform day mark hook on given show elements. attempts to restyle
+// row with day class
+export async function dayMarkHook(showElements:HTMLElement[])
 {
-    setTimeout(async ()=>{
-        var showElements:HTMLElement[]|null=getWatchingRowElements();
+    var extraInfos:ExtraShowInfos=await getAllExtraShowInfos();
+    var todays:Set<DayString>=getTodays();
 
-        if (!showElements)
-        {
-            return;
-        }
-
-        var extraInfos:ExtraShowInfos=await getAllExtraShowInfos();
-        var todays:Set<DayString>=getTodays();
-
-        for (var x=0,i=showElements.length;x<i;x++)
-        {
-            attachDayClass(showElements[x],extraInfos,todays);
-        }
-    },1000);
+    for (var x=0,i=showElements.length;x<i;x++)
+    {
+        attachDayClass(showElements[x],extraInfos,todays);
+    }
 }
 
 // get all the show row entry elements in the watching category, or null if it failed
-function getWatchingRowElements():HTMLElement[]|null
+export function getWatchingRowElements():HTMLElement[]|null
 {
     // target all list sections on the page, and attempt to find section that is watching section.
     var watchingListSection:HTMLElement|undefined=Array.from(document.querySelectorAll(".list-wrap")).find((x:Element)=>{
