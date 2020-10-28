@@ -1,6 +1,7 @@
 import {anilistSync} from "./anilist-sync";
 import {injectHookStyles} from "./inject-style-hook";
 import {dayMarkHook,getWatchingRowElements} from "./day-mark-hook";
+import {plusIncrementHook} from "./plus-increment-hook";
 
 import "./hook-styles.less";
 
@@ -18,5 +19,6 @@ import "./hook-styles.less";
         }
 
         dayMarkHook(showElements);
+        plusIncrementHook(showElements);
     },1000);
 })();

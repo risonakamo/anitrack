@@ -13,6 +13,25 @@ export async function updateExtraShowInfoDB(id:number,info:ExtraShowInfo):Promis
     return extraInfos;
 }
 
+// increment progress of a show with the given id
+export async function incrementShowProgress(id:number):Promise<void>
+{
+    var shows:ShowInfo[]=await getCurrentShows();
+    var targetShow:ShowInfo|undefined=shows.find((x:ShowInfo)=>{
+        return x.id==id;
+    });
+
+    if (!targetShow)
+    {
+        console.log("unabled to update progress for non-existing show");
+        return;
+    }
+
+    targetShow.progress++;
+
+    chrome.storage.local.set({currentShows:shows});
+}
+
 // get the registered user from database
 export function getUser():Promise<string|null>
 {
