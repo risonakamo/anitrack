@@ -2,64 +2,31 @@ import {getAllExtraShowInfos} from "../database/database";
 
 // perform day mark hook on given show elements. attempts to restyle
 // row with day class
-export async function dayMarkHook(showElements:HTMLElement[])
+export async function dayMarkHook(showRows:WatchRow[])
 {
     var extraInfos:ExtraShowInfos=await getAllExtraShowInfos();
     var todays:Set<DayString>=getTodays();
 
-    for (var x=0,i=showElements.length;x<i;x++)
+    for (var x=0,i=showRows.length;x<i;x++)
     {
-        attachDayClass(showElements[x],extraInfos,todays);
+        attachDayClass(showRows[x],extraInfos,todays);
     }
-}
-
-// get all the show row entry elements in the watching category, or null if it failed
-export function getWatchingRowElements():HTMLElement[]|null
-{
-    // target all list sections on the page, and attempt to find section that is watching section.
-    var watchingListSection:HTMLElement|undefined=Array.from(document.querySelectorAll(".list-wrap")).find((x:Element)=>{
-        return (x.querySelector(".section-name") as HTMLElement).innerText=="Watching";
-    }) as HTMLElement;
-
-    if (!watchingListSection)
-    {
-        console.log("failed");
-        return null;
-    }
-
-    return Array.from(watchingListSection.querySelector(".list-entries")!.children) as HTMLElement[];
 }
 
 // given a show row element and the extra infos object, attempt to add the day class to the show row.
-function attachDayClass(showRow:HTMLElement,extraInfos:ExtraShowInfos,todays:Set<DayString>):void
+function attachDayClass(showRow:WatchRow,extraInfos:ExtraShowInfos,todays:Set<DayString>):void
 {
-    var gotId:number|null=extractIdFromAnilistUrl((showRow.querySelector(".title a") as HTMLLinkElement).href);
-
-    if (!gotId || !extraInfos[gotId])
+    if (showRow.id<0 || !extraInfos[showRow.id])
     {
         return;
     }
 
-    showRow.classList.add("day",extraInfos[gotId].day);
+    showRow.element.classList.add("day",extraInfos[showRow.id].day);
 
-    if (todays.has(extraInfos[gotId].day))
+    if (todays.has(extraInfos[showRow.id].day))
     {
-        showRow.classList.add("today");
+        showRow.element.classList.add("today");
     }
-}
-
-// attempt to extract id number for anilist url
-function extractIdFromAnilistUrl(url:string):number|null
-{
-    // [1]: the id number
-    var idMatchs:RegExpMatchArray|null=url.match(/anime\/(\d+)/);
-
-    if (!idMatchs || idMatchs.length!=2)
-    {
-        return null;
-    }
-
-    return parseInt(idMatchs[1]);
 }
 
 // return a set of strings that count as today (today and yesterday)

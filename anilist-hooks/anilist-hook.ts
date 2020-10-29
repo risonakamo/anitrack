@@ -1,7 +1,8 @@
 import {anilistSync} from "./anilist-sync";
 import {injectHookStyles} from "./inject-style-hook";
-import {dayMarkHook,getWatchingRowElements} from "./day-mark-hook";
+import {dayMarkHook} from "./day-mark-hook";
 import {plusIncrementHook} from "./plus-increment-hook";
+import {getWatchRows} from "./element-hooks";
 
 import "./hook-styles.less";
 
@@ -11,7 +12,7 @@ import "./hook-styles.less";
     anilistSync();
 
     setTimeout(()=>{
-        var showElements:HTMLElement[]|null=getWatchingRowElements();
+        var showElements:WatchRow[]|null=getWatchRows();
 
         if (!showElements)
         {
