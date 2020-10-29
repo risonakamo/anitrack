@@ -1,9 +1,11 @@
+import {incrementShowProgress} from "../database/database";
+
+// attach show progress increment to pluses on targeted show elements
 export function plusIncrementHook(showElements:WatchRow[]):void
 {
-    for (var x=0,l=showElements.length;x<l;x++)
-    {
-        showElements[x].element.querySelector(".plus-progress")?.addEventListener("click",()=>{
-            console.log(showElements[x].id);
+    showElements.forEach((x:WatchRow)=>{
+        x.element.querySelector(".plus-progress")?.addEventListener("click",()=>{
+            incrementShowProgress(x.id);
         });
-    }
+    });
 }
