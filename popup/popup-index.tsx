@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MiniShowBox from "./components/mini-show-box/mini-show-box";
+import ShowBoxHold from "./components/show-box-hold/show-box-hold";
 
 import "./popup-index.less";
 
@@ -16,8 +16,7 @@ function PopupMain():JSX.Element
   }
 
   return <>
-    <MiniShowBox/>
-    <MiniShowBox/>
+    <ShowBoxHold/>
     <div>
       <a href="" onClick={openShowListPage}>showlist</a>
     </div>
