@@ -8,12 +8,17 @@
 
     .cover-box
     {
+        display: block;
         position: relative;
         font-size: 0;
+        background-color: @mon-purple;
+        cursor: pointer;
+        user-select: none;
 
         .cover
         {
             width: 100%;
+            transition: opacity @main-transition-time;
         }
 
         .progress
@@ -24,17 +29,30 @@
             height: 100%;
             top: 0;
             align-items: center;
+            justify-content: center;
 
-            .inner
+            .progress-text
             {
-                width: 100%;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 text-align: center;
                 font-size: 29px;
+                border-radius: 50%;
+                line-height: 43px;
+                color: white;
+                background-color: fade(@mon-purple,50%); //TEMP
+                opacity: .9;
+            }
+        }
+
+        &:hover
+        {
+            .cover
+            {
+                opacity: .7;
             }
         }
     }
-
 
     .nyaa
     {

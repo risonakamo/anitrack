@@ -8,7 +8,7 @@ export default function MiniShowBox():JSX.Element
     <div className="cover-box">
       <img className="cover" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx116147-PtcjOsmUy4fX.jpg"/>
       <div className="progress">
-        <div className="inner">12</div>
+        <div className="progress-text">12</div>
       </div>
     </div>
     <p className="nyaa">one room</p>
