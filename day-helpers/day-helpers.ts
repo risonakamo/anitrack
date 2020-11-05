@@ -1,6 +1,17 @@
 // return a set of strings that count as today (today and yesterday)
 export function getTodays():Set<DayString>
 {
+    var todays:Todays=getTodaysNormal();
+
+    return new Set([
+        todays.today,
+        todays.yesterday
+    ]);
+}
+
+// return object specifying today and yesterday
+export function getTodaysNormal():Todays
+{
     var todayNum:number=new Date().getDay();
     var yesterdayNum:number=todayNum-1;
 
@@ -9,10 +20,10 @@ export function getTodays():Set<DayString>
         yesterdayNum=6;
     }
 
-    return new Set([
-        numToDay(todayNum),
-        numToDay(yesterdayNum)
-    ]);
+    return {
+        today:numToDay(todayNum),
+        yesterday:numToDay(yesterdayNum)
+    };
 }
 
 // get day number from a combined show info, if possible

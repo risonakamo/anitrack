@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import ShowBoxHold from "./components/show-box-hold/show-box-hold";
 import {getShowsByDay} from "../database/database";
+import {getTodaysNormal} from "../day-helpers/day-helpers";
 
 import "./popup-index.less";
 
@@ -12,6 +13,7 @@ function PopupMain():JSX.Element
   useEffect(()=>{
     (async ()=>{
       console.log(await getShowsByDay());
+      console.log(getTodaysNormal());
     })();
   },[]);
 
