@@ -1,12 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 
 import ShowBoxHold from "./components/show-box-hold/show-box-hold";
+import {getShowsByDay} from "../database/database";
 
 import "./popup-index.less";
 
 function PopupMain():JSX.Element
 {
+  // testing
+  useEffect(()=>{
+    (async ()=>{
+      console.log(await getShowsByDay());
+    })();
+  },[]);
+
   function openShowListPage(e:React.MouseEvent):void
   {
     chrome.tabs.create({

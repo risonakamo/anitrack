@@ -1,3 +1,5 @@
+import {groupByDay} from "./database-helpers";
+
 // OVERRIDE the current shows with the given array of shows
 export function setCurrentShows(shows:ShowInfo[]):void
 {
@@ -60,4 +62,10 @@ export async function getAllExtraShowInfos():Promise<ExtraShowInfos>
             resolve(storage.extraShowInfo || {});
         });
     });
+}
+
+// return all shows, grouped by day.
+export async function getShowsByDay():Promise<ShowsByDay>
+{
+    return groupByDay(await getCurrentShows(),await getAllExtraShowInfos());
 }
