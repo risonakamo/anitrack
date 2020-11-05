@@ -1,17 +1,46 @@
+@import (reference) "../../../shared-css/shared-css.less";
+
 .show-box-hold
 {
     display: flex;
+    width: 500px;
+    margin: 5px;
+    color: @mon-purple; //TEMP
 
     .day-text-zone
     {
         display: flex;
+        width: 60px;
         justify-content: center;
         flex-direction: column;
-        margin-right: 8px;
+        margin-right: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color @main-transition-time;
 
         .day-text
         {
+            position: relative;
             height: 20px;
+
+            .arrow
+            {
+                position: absolute;
+                right: -2px;
+            }
+        }
+
+        &:hover
+        {
+            background-color: @mon-purple; //TEMP
+            color: white;
+
+            .day-text .arrow
+            {
+                color: @mon-purple; //TEMP
+                right: -10px;
+            }
         }
     }
 }

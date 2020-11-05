@@ -17,6 +17,7 @@ function PopupMain():JSX.Element
 
   return <>
     <ShowBoxHold/>
+    <ShowBoxHold/>
     <div>
       <a href="" onClick={openShowListPage}>showlist</a>
     </div>

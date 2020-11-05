@@ -8,7 +8,10 @@ export default function ShowBoxHold():JSX.Element
 {
   return <div className="show-box-hold">
     <div className="day-text-zone">
-      <p className="day-text">THU</p>
+      <p className="day-text">
+        THU
+        <span className="arrow">▸</span>
+      </p>
     </div>
     <div className="boxes">
       <MiniShowBox/>
