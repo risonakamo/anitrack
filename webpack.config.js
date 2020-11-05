@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin=require("mini-css-extract-plugin");
 const ForkTsCheckerWebpackPlugin=require("fork-ts-checker-webpack-plugin");
 // const CopyPlugin=require("copy-webpack-plugin");
-// const WebpackBar=require("webpackbar");
+const WebpackBar=require("webpackbar");
 
 module.exports={
     mode:"development",
@@ -43,8 +43,8 @@ module.exports={
             filename:"[name]-build.css"
         }),
 
-        new ForkTsCheckerWebpackPlugin()
-        // new WebpackBar()
+        new ForkTsCheckerWebpackPlugin(),
+        new WebpackBar()
     ],
 
     resolve:{
