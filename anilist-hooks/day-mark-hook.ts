@@ -1,4 +1,5 @@
 import {getAllExtraShowInfos} from "../database/database";
+import {getTodays} from "../day-helpers/day-helpers";
 
 // perform day mark hook on given show elements. attempts to restyle
 // row with day class
@@ -27,51 +28,4 @@ function attachDayClass(showRow:WatchRow,extraInfos:ExtraShowInfos,todays:Set<Da
     {
         showRow.element.classList.add("today");
     }
-}
-
-// return a set of strings that count as today (today and yesterday)
-function getTodays():Set<DayString>
-{
-    var todayNum:number=new Date().getDay();
-    var yesterdayNum:number=todayNum-1;
-
-    if (yesterdayNum<0)
-    {
-        yesterdayNum=6;
-    }
-
-    return new Set([
-        numToDay(todayNum),
-        numToDay(yesterdayNum)
-    ]);
-}
-
-// convert day number from Date().getDay() to daystring
-function numToDay(dayNum:number):DayString
-{
-    switch (dayNum)
-    {
-        case 0:
-        return "SUN";
-
-        case 1:
-        return "MON";
-
-        case 2:
-        return "TUE";
-
-        case 3:
-        return "WED";
-
-        case 4:
-        return "THU";
-
-        case 5:
-        return "FRI";
-
-        case 6:
-        return "SAT";
-    }
-
-    return "N/A";
 }
