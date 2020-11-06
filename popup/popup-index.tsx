@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
 
 import ShowBoxHold from "./components/show-box-hold/show-box-hold";
@@ -9,10 +9,12 @@ import "./popup-index.less";
 
 function PopupMain():JSX.Element
 {
-  // testing
+  const [todayShowsState,setTodayShowsState]=useState<TodayShows>();
+
+  // load today shows
   useEffect(()=>{
     (async ()=>{
-      console.log(await getTodaysShows());
+      setTodayShowsState(await getTodaysShows());
     })();
   },[]);
 
@@ -24,9 +26,19 @@ function PopupMain():JSX.Element
     });
   }
 
+  var showBoxes:JSX.Element[]=[];
+  if (todayShowsState)
+  {
+    showBoxes=[
+      <ShowBoxHold day={todayShowsState.today.day} key="today"
+        shows={todayShowsState.today.shows}/>,
+      <ShowBoxHold day={todayShowsState.yesterday.day} key="yesterday"
+        shows={todayShowsState.yesterday.shows}/>,
+    ];
+  }
+
   return <>
-    {/* <ShowBoxHold/>
-    <ShowBoxHold/> */}
+    {showBoxes}
     <div>
       <a href="" onClick={openShowListPage}>showlist</a>
     </div>

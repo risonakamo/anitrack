@@ -8,12 +8,12 @@ import "./show-box-hold.less";
 interface ShowBoxHoldProps
 {
   day:DayString
-  shows:ShowInfo[]
+  shows:CombinedShowInfo[]
 }
 
 export default function ShowBoxHold(props:ShowBoxHoldProps):JSX.Element
 {
-  const shows:JSX.Element[]=_.map(props.shows,(x:ShowInfo,i:number)=>{
+  const shows:JSX.Element[]=_.map(props.shows,(x:CombinedShowInfo,i:number)=>{
     return <MiniShowBox key={i} show={x}/>;
   });
 
