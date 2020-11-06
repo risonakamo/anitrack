@@ -1,4 +1,6 @@
-import {groupByDay} from "./database-helpers";
+import _ from "lodash";
+
+import {groupByDay,groupCombinedInfoByDay} from "./database-helpers";
 
 // OVERRIDE the current shows with the given array of shows
 export function setCurrentShows(shows:ShowInfo[]):void
@@ -68,4 +70,24 @@ export async function getAllExtraShowInfos():Promise<ExtraShowInfos>
 export async function getShowsByDay():Promise<ShowsByDay>
 {
     return groupByDay(await getCurrentShows(),await getAllExtraShowInfos());
+}
+
+// return all combined show infos
+export async function getAllCombinedInfo():Promise<CombinedShowInfo[]>
+{
+    var shows:ShowInfo[]=await getCurrentShows();
+    var extraInfo:ExtraShowInfos=await getAllExtraShowInfos();
+
+    return _.map(shows,(x:ShowInfo)=>{
+        return {
+            show:x,
+            extras:extraInfo[x.id]
+        };
+    });
+}
+
+// get combined show infos grouped by day
+export async function getCombinedInfoByDay():Promise<CombinedShowsByDay>
+{
+    return groupCombinedInfoByDay(await getAllCombinedInfo());
 }

@@ -27,6 +27,21 @@ export function groupByDay(shows:ShowInfo[],extraInfos:ExtraShowInfos):ShowsByDa
     }) as ShowsByDay;
 }
 
+// sort array of combined shows into combined shows by day. with filter enabled, removes shows without a day field.
+export function groupCombinedInfoByDay(combinedShows:CombinedShowInfo[],filter:boolean=true):CombinedShowsByDay
+{
+    if (filter)
+    {
+        combinedShows=_.filter(combinedShows,(x:CombinedShowInfo)=>{
+            return x.extras;
+        }) as CombinedShowInfo[];
+    }
+
+    return _.groupBy(combinedShows,(x:CombinedShowInfo)=>{
+        return x.extras?.day || "N/A";
+    });
+}
+
 // sort function for 2 combined show infos, sort by day
 function compareCombinedInfoDay(a:CombinedShowInfo,b:CombinedShowInfo):number
 {

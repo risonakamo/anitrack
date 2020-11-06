@@ -2,7 +2,7 @@ import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 
 import ShowBoxHold from "./components/show-box-hold/show-box-hold";
-import {getShowsByDay} from "../database/database";
+import {getCombinedInfoByDay} from "../database/database";
 import {getTodaysNormal} from "../day-helpers/day-helpers";
 
 import "./popup-index.less";
@@ -12,7 +12,7 @@ function PopupMain():JSX.Element
   // testing
   useEffect(()=>{
     (async ()=>{
-      console.log(await getShowsByDay());
+      console.log(await getCombinedInfoByDay());
       console.log(getTodaysNormal());
     })();
   },[]);
@@ -26,8 +26,8 @@ function PopupMain():JSX.Element
   }
 
   return <>
-    <ShowBoxHold/>
-    <ShowBoxHold/>
+    {/* <ShowBoxHold/>
+    <ShowBoxHold/> */}
     <div>
       <a href="" onClick={openShowListPage}>showlist</a>
     </div>
