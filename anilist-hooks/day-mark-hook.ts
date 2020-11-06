@@ -1,5 +1,5 @@
 import {getAllExtraShowInfos} from "../database/database";
-import {getTodays} from "../day-helpers/day-helpers";
+import {getTodays} from "../helpers/day-helpers";
 
 // perform day mark hook on given show elements. attempts to restyle
 // row with day class

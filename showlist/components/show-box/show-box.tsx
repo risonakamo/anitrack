@@ -2,7 +2,7 @@ import React,{useState,useRef,useEffect} from "react";
 import cx from "classnames";
 import _ from "lodash";
 
-import {openNyaa} from "../../../day-helpers/nyaa-helpers";
+import {openNyaa} from "../../../helpers/nyaa-helpers";
 
 import "./showbox.less";
 

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import ShowBoxHold from "./components/show-box-hold/show-box-hold";
 import {getCombinedInfoByDay} from "../database/database";
-import {getTodaysNormal} from "../day-helpers/day-helpers";
+import {getTodaysNormal} from "../helpers/day-helpers";
 
 import "./popup-index.less";
 

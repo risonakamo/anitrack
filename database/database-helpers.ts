@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import {getDayNum} from "../day-helpers/day-helpers";
+import {getDayNum} from "../helpers/day-helpers";
 
 // sort array of show infos with extra infos. returns sorted array.
 export function sortShowInfos(shows:ShowInfo[],extraInfos:ExtraShowInfos):ShowInfo[]

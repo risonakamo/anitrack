@@ -1,6 +1,6 @@
 import React from "react";
 
-import {openNyaa} from "../../../day-helpers/nyaa-helpers";
+import {openNyaa} from "../../../helpers/nyaa-helpers";
 
 import "./mini-show-box.less";
 
