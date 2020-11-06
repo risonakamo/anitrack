@@ -12,8 +12,7 @@ function PopupMain():JSX.Element
   // testing
   useEffect(()=>{
     (async ()=>{
-      console.log(await getCombinedInfoByDay());
-      console.log(getTodaysNormal());
+      console.log(await getTodaysShows());
     })();
   },[]);
 
@@ -32,6 +31,28 @@ function PopupMain():JSX.Element
       <a href="" onClick={openShowListPage}>showlist</a>
     </div>
   </>;
+}
+
+// get today's shows object.
+async function getTodaysShows():Promise<TodayShows>
+{
+  var allInfos:CombinedShowsByDay=await getCombinedInfoByDay();
+  var todays:Todays=getTodaysNormal();
+
+  var todayShows:DaysShows={
+    day:todays.today,
+    shows:allInfos[todays.today] || []
+  };
+
+  var yesterdayShows:DaysShows={
+    day:todays.yesterday,
+    shows:allInfos[todays.yesterday] || []
+  };
+
+  return {
+    today:todayShows,
+    yesterday:yesterdayShows
+  };
 }
 
 function main()
