@@ -2,6 +2,8 @@ import React,{useState,useRef,useEffect} from "react";
 import cx from "classnames";
 import _ from "lodash";
 
+import {openNyaa} from "../../../day-helpers/nyaa-helpers";
+
 import "./showbox.less";
 
 interface ShowBoxProps
@@ -46,16 +48,13 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
   }
 
   // open nyaa tab
-  function openNyaa(e:React.MouseEvent):void
+  function nyaaClickHandler(e:React.MouseEvent):void
   {
     e.preventDefault();
 
     if (props.extraInfo?.nyaa)
     {
-      chrome.tabs.create({
-        active:false,
-        url:`https://nyaa.si/?q=${props.extraInfo.nyaa}&f=0&c=1_2`
-      });
+      openNyaa(props.extraInfo.nyaa);
     }
   }
 
@@ -68,7 +67,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
 
   return <div className={cx("show-box",showBoxClass,dayClass)}>
     <div className="cover-hold">
-      <a href="" onClick={openNyaa}>
+      <a href="" onClick={nyaaClickHandler}>
         <img className="cover-img"
           src={props.show.cover}/>
       </a>

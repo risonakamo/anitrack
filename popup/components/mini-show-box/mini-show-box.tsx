@@ -1,5 +1,7 @@
 import React from "react";
 
+import {openNyaa} from "../../../day-helpers/nyaa-helpers";
+
 import "./mini-show-box.less";
 
 interface MiniShowBoxProps
@@ -9,9 +11,18 @@ interface MiniShowBoxProps
 
 export default function MiniShowBox(props:MiniShowBoxProps):JSX.Element
 {
+  // box click handler
+  function clickHandler():void
+  {
+    if (props.show.extras)
+    {
+      openNyaa(props.show.extras.nyaa);
+    }
+  }
+
   var nyaaString:string=props.show.extras?.nyaa || "";
 
-  return <div className="mini-show-box">
+  return <div className="mini-show-box" onClick={clickHandler}>
     <div className="cover-box">
       <img className="cover" src={props.show.show.cover}/>
       <div className="progress">
