@@ -31,7 +31,7 @@ function PopupMain():JSX.Element
   {
     showBoxes=[
       <MiniShowBoxes day={todayShowsState.today.day} key="today"
-        shows={todayShowsState.today.shows}/>,
+        shows={todayShowsState.today.shows} today={true}/>,
       <MiniShowBoxes day={todayShowsState.yesterday.day} key="yesterday"
         shows={todayShowsState.yesterday.shows}/>,
     ];

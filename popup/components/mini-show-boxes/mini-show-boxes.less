@@ -4,7 +4,7 @@
 {
     display: flex;
     width: 500px;
-    margin: 5px;
+    padding: 5px;
     color: var(--day-colour);
 
     .gen-colour-classes();
@@ -44,5 +44,10 @@
                 right: -10px;
             }
         }
+    }
+
+    &.today
+    {
+        background-color: @light-back-grey;
     }
 }

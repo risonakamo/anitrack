@@ -11,6 +11,7 @@ interface MiniShowBoxesProps
 {
   day:DayString
   shows:CombinedShowInfo[]
+  today?:boolean
 }
 
 export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
@@ -31,7 +32,7 @@ export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
     return <MiniShowBox key={i} show={x}/>;
   });
 
-  return <div className={cx("mini-show-boxes",props.day)}>
+  return <div className={cx("mini-show-boxes",props.day,{today:props.today})}>
     <div className="day-text-zone" onClick={dayTextClick}>
       <p className="day-text">
         {props.day}
