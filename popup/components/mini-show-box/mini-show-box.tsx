@@ -14,7 +14,7 @@ export default function MiniShowBox(props:MiniShowBoxProps):JSX.Element
   // box click handler
   function clickHandler():void
   {
-    if (props.show.extras)
+    if (props.show.extras && props.show.extras.nyaa)
     {
       openNyaa(props.show.extras.nyaa);
     }

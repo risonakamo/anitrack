@@ -21,7 +21,7 @@ export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
   {
     for (var x=0;x<props.shows.length;x++)
     {
-      if (props.shows[x].extras)
+      if (props.shows[x].extras && props.shows[x].extras!.nyaa)
       {
         openNyaa(props.shows[x].extras!.nyaa);
       }
