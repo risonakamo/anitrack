@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import cx from "classnames";
 
 import MiniShowBox from "../mini-show-box/mini-show-box";
 import {openNyaa} from "../../../helpers/nyaa-helpers";
@@ -30,7 +31,7 @@ export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
     return <MiniShowBox key={i} show={x}/>;
   });
 
-  return <div className="mini-show-boxes">
+  return <div className={cx("mini-show-boxes",props.day)}>
     <div className="day-text-zone" onClick={dayTextClick}>
       <p className="day-text">
         {props.day}

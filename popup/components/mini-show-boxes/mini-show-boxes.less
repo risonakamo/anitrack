@@ -5,7 +5,9 @@
     display: flex;
     width: 500px;
     margin: 5px;
-    color: @mon-purple; //TEMP
+    color: var(--day-colour);
+
+    .gen-colour-classes();
 
     .day-text-zone
     {
@@ -33,12 +35,12 @@
 
         &:hover
         {
-            background-color: @mon-purple; //TEMP
+            background-color: var(--day-colour);
             color: white;
 
             .day-text .arrow
             {
-                color: @mon-purple; //TEMP
+                color: var(--day-colour);
                 right: -10px;
             }
         }
