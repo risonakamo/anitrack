@@ -4,15 +4,15 @@ import _ from "lodash";
 import MiniShowBox from "../mini-show-box/mini-show-box";
 import {openNyaa} from "../../../helpers/nyaa-helpers";
 
-import "./show-box-hold.less";
+import "./mini-show-boxes.less";
 
-interface ShowBoxHoldProps
+interface MiniShowBoxesProps
 {
   day:DayString
   shows:CombinedShowInfo[]
 }
 
-export default function ShowBoxHold(props:ShowBoxHoldProps):JSX.Element
+export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
 {
   // click handler for clicking day text. opens all nyaas of shows in the show hold.
   function dayTextClick():void
@@ -30,7 +30,7 @@ export default function ShowBoxHold(props:ShowBoxHoldProps):JSX.Element
     return <MiniShowBox key={i} show={x}/>;
   });
 
-  return <div className="show-box-hold">
+  return <div className="mini-show-boxes">
     <div className="day-text-zone" onClick={dayTextClick}>
       <p className="day-text">
         {props.day}

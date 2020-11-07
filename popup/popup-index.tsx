@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
 
-import ShowBoxHold from "./components/show-box-hold/show-box-hold";
+import MiniShowBoxes from "./components/mini-show-boxes/mini-show-boxes";
 import {getCombinedInfoByDay} from "../database/database";
 import {getTodaysNormal} from "../helpers/day-helpers";
 
@@ -30,9 +30,9 @@ function PopupMain():JSX.Element
   if (todayShowsState)
   {
     showBoxes=[
-      <ShowBoxHold day={todayShowsState.today.day} key="today"
+      <MiniShowBoxes day={todayShowsState.today.day} key="today"
         shows={todayShowsState.today.shows}/>,
-      <ShowBoxHold day={todayShowsState.yesterday.day} key="yesterday"
+      <MiniShowBoxes day={todayShowsState.yesterday.day} key="yesterday"
         shows={todayShowsState.yesterday.shows}/>,
     ];
   }
