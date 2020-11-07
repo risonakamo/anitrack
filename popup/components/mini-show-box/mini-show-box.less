@@ -11,7 +11,7 @@
         display: block;
         position: relative;
         font-size: 0;
-        background-color: @mon-purple; //TEMP
+        background-color: var(--day-colour); //day colour comes from parent container class
         cursor: pointer;
         user-select: none;
 
@@ -40,7 +40,7 @@
                 border-radius: 50%;
                 line-height: 43px;
                 color: white;
-                background-color: fade(@mon-purple,50%); //TEMP
+                background-color: var(--day-colour-50);
                 opacity: .9;
             }
         }
