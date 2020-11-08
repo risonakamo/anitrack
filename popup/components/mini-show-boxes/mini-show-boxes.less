@@ -46,6 +46,24 @@
         }
     }
 
+    .boxes
+    {
+        width: 100%;
+        flex: 1;
+
+        .no-shows
+        {
+            display: none;
+            width: 100%;
+            text-align: center;
+
+            &.showing
+            {
+                display: block;
+            }
+        }
+    }
+
     &.today
     {
         background-color: @light-back-grey;

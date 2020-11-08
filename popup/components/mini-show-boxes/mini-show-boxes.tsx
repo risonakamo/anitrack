@@ -40,6 +40,7 @@ export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
       </p>
     </div>
     <div className="boxes">
+      <p className={cx("no-shows",{showing:!props.shows.length})}>no shows</p>
       {shows}
     </div>
   </div>;
