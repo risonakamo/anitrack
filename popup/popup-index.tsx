@@ -2,6 +2,8 @@ import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
 
 import MiniShowBoxes from "./components/mini-show-boxes/mini-show-boxes";
+import LinkButton from "./components/link-button/link-button";
+
 import {getCombinedInfoByDay} from "../database/database";
 import {getTodaysNormal} from "../helpers/day-helpers";
 
@@ -18,6 +20,7 @@ function PopupMain():JSX.Element
     })();
   },[]);
 
+  // open show list page
   function openShowListPage(e:React.MouseEvent):void
   {
     chrome.tabs.create({
@@ -38,9 +41,11 @@ function PopupMain():JSX.Element
   }
 
   return <>
-    {showBoxes}
-    <div>
-      <a href="" onClick={openShowListPage}>showlist</a>
+    <div className="show-boxes">
+      {showBoxes}
+    </div>
+    <div className="control">
+      <LinkButton/>
     </div>
   </>;
 }
