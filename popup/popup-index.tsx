@@ -45,7 +45,11 @@ function PopupMain():JSX.Element
       {showBoxes}
     </div>
     <div className="control">
-      <LinkButton/>
+      <div className="link-button-row">
+        <LinkButton newTabHref="https://calendar.google.com/">CAL</LinkButton>
+        <LinkButton>AL</LinkButton>
+        <LinkButton newTabHref="https://gogoanimes.co/">GO</LinkButton>
+      </div>
     </div>
   </>;
 }
