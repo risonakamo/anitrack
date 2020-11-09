@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 
 import "./link-button.less";
 
@@ -6,6 +7,7 @@ interface LinkButtonProps
 {
   newTabHref?:string //if given, click will open this in background tab
   multiOpenHrefs?:string[] //if given, click will open all links in background tab
+  className?:string
 }
 
 export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps>):JSX.Element
@@ -33,7 +35,7 @@ export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps
     }
   }
 
-  return <div className="link-button" onClick={clickHandler}>
+  return <div className={cx("link-button",props.className)} onClick={clickHandler}>
     {props.children}
   </div>;
 }

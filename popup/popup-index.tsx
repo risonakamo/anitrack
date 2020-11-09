@@ -65,7 +65,7 @@ function PopupMain():JSX.Element
         <LinkButton newTabHref="https://gogoanimes.co/">GO</LinkButton>
       </div>
       <div className="link-button-row">
-        <LinkButton multiOpenHrefs={tripleOpenLinks}>TRIP</LinkButton>
+        <LinkButton multiOpenHrefs={tripleOpenLinks} className="triple-button">TRIP</LinkButton>
         <LinkButton newTabHref="showlist/showlist-index.html">LIST</LinkButton>
         <LinkButton newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
       </div>
