@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import MiniShowBoxes from "./components/mini-show-boxes/mini-show-boxes";
 import LinkButton from "./components/link-button/link-button";
 
-import {getCombinedInfoByDay} from "../database/database";
+import {getCombinedInfoByDay,getUser} from "../database/database";
 import {getTodaysNormal} from "../helpers/day-helpers";
 
 import "./popup-index.less";
@@ -12,11 +12,13 @@ import "./popup-index.less";
 function PopupMain():JSX.Element
 {
   const [todayShowsState,setTodayShowsState]=useState<TodayShows>();
+  const [anilistUsernameState,setAnilistUsernameState]=useState<string|null>(null);
 
   // load today shows
   useEffect(()=>{
     (async ()=>{
       setTodayShowsState(await getTodaysShows());
+      setAnilistUsernameState(await getUser());
     })();
   },[]);
 
@@ -40,6 +42,18 @@ function PopupMain():JSX.Element
     ];
   }
 
+  var anilistLink:string="https://anilist.co/";
+  if (anilistUsernameState)
+  {
+    anilistLink=`https://anilist.co/user/${anilistUsernameState}/animelist`;
+  }
+
+  var tripleOpenLinks:string[]=[
+    "https://calendar.google.com/",
+    anilistLink,
+    "https://gogoanimes.co/"
+  ];
+
   return <>
     <div className="show-boxes">
       {showBoxes}
@@ -47,11 +61,11 @@ function PopupMain():JSX.Element
     <div className="control">
       <div className="link-button-row">
         <LinkButton newTabHref="https://calendar.google.com/">CAL</LinkButton>
-        <LinkButton>AL</LinkButton>
+        <LinkButton newTabHref={anilistLink}>AL</LinkButton>
         <LinkButton newTabHref="https://gogoanimes.co/">GO</LinkButton>
       </div>
       <div className="link-button-row">
-        <LinkButton>TRIP</LinkButton>
+        <LinkButton multiOpenHrefs={tripleOpenLinks}>TRIP</LinkButton>
         <LinkButton newTabHref="showlist/showlist-index.html">LIST</LinkButton>
         <LinkButton newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
       </div>
