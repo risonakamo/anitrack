@@ -60,9 +60,15 @@ function PopupMain():JSX.Element
     </div>
     <div className="control">
       <div className="link-button-row">
-        <LinkButton newTabHref="https://calendar.google.com/">CAL</LinkButton>
-        <LinkButton newTabHref={anilistLink}>AL</LinkButton>
-        <LinkButton newTabHref="https://gogoanimes.co/">GO</LinkButton>
+        <LinkButton newTabHref="https://calendar.google.com/">
+          <img src="/assets/popup-icons/calendar-white.png" className="link-icon"/>
+        </LinkButton>
+        <LinkButton newTabHref={anilistLink}>
+          <img src="/assets/popup-icons/al-white.png" className="link-icon"/>
+        </LinkButton>
+        <LinkButton newTabHref="https://gogoanimes.co/">
+          <img src="/assets/popup-icons/go-white.png" className="link-icon"/>
+        </LinkButton>
       </div>
       <div className="link-button-row">
         <LinkButton multiOpenHrefs={tripleOpenLinks} className="triple-button">TRIP</LinkButton>
