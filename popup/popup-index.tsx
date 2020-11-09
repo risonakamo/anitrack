@@ -50,6 +50,11 @@ function PopupMain():JSX.Element
         <LinkButton>AL</LinkButton>
         <LinkButton newTabHref="https://gogoanimes.co/">GO</LinkButton>
       </div>
+      <div className="link-button-row">
+        <LinkButton>TRIP</LinkButton>
+        <LinkButton newTabHref="showlist/showlist-index.html">LIST</LinkButton>
+        <LinkButton newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
+      </div>
     </div>
   </>;
 }
