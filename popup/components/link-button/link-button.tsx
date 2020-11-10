@@ -8,6 +8,7 @@ interface LinkButtonProps
   newTabHref?:string //if given, click will open this in background tab
   multiOpenHrefs?:string[] //if given, click will open all links in background tab
   className?:string
+  title?:string
 }
 
 export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps>):JSX.Element
@@ -35,7 +36,7 @@ export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps
     }
   }
 
-  return <div className={cx("link-button",props.className)} onClick={clickHandler}>
+  return <div className={cx("link-button",props.className)} onClick={clickHandler} title={props.title}>
     {props.children}
   </div>;
 }

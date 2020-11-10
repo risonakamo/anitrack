@@ -60,22 +60,22 @@ function PopupMain():JSX.Element
     </div>
     <div className="control">
       <div className="link-button-row">
-        <LinkButton newTabHref="https://calendar.google.com/" className="image-button">
+        <LinkButton title="Calendar" className="image-button" newTabHref="https://calendar.google.com/">
           <img src="/assets/popup-icons/calendar-white.png" className="link-icon"/>
         </LinkButton>
-        <LinkButton newTabHref={anilistLink} className="image-button">
+        <LinkButton title="AniList" newTabHref={anilistLink} className="image-button">
           <img src="/assets/popup-icons/al-white.png" className="link-icon"/>
         </LinkButton>
-        <LinkButton newTabHref="https://gogoanimes.co/" className="image-button">
+        <LinkButton title="Release Site" newTabHref="https://gogoanimes.co/" className="image-button">
           <img src="/assets/popup-icons/go-white.png" className="link-icon"/>
         </LinkButton>
       </div>
       <div className="link-button-row">
-        <LinkButton multiOpenHrefs={tripleOpenLinks} className="triple-button image-button">
+        <LinkButton title="Open All Main Sites" multiOpenHrefs={tripleOpenLinks} className="triple-button image-button">
           <img src="/assets/popup-icons/triple-rect.png"/>
         </LinkButton>
-        <LinkButton newTabHref="showlist/showlist-index.html">LIST</LinkButton>
-        <LinkButton newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
+        <LinkButton title="Tracked Shows List" newTabHref="showlist/showlist-index.html">LIST</LinkButton>
+        <LinkButton title="Nyaa" newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
       </div>
     </div>
   </>;
