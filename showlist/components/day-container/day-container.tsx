@@ -12,12 +12,14 @@ interface DayContainerProps
   shows:ShowInfo[]
   extraInfos:ExtraShowInfos
   updateExtraShowInfo(id:number,info:ExtraShowInfo):void
+  today?:boolean
 }
 
 export default function DayContainer(props:DayContainerProps):JSX.Element
 {
   const showBoxes:JSX.Element[]=_.map(props.shows,(x:ShowInfo,i:number)=>{
-    return <ShowBox show={x} key={i} extraInfo={props.extraInfos[x.id]} updatedExtraInfo={props.updateExtraShowInfo}/>;
+    return <ShowBox show={x} key={i} extraInfo={props.extraInfos[x.id]} today={props.today}
+      updatedExtraInfo={props.updateExtraShowInfo}/>;
   });
 
   return <span className={cx("day-container",props.day)}>
