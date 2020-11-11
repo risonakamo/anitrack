@@ -11,6 +11,7 @@ interface ShowBoxProps
   show:ShowInfo
   extraInfo:ExtraShowInfo|undefined
   updatedExtraInfo(id:number,info:ExtraShowInfo):void
+  today?:boolean
 }
 
 export default function ShowBox(props:ShowBoxProps):JSX.Element
@@ -82,7 +83,10 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
           src={props.show.cover}/>
       </a>
       <div className="progress-badge">{props.show.progress}</div>
-      <div className="day-label">{dayClass}</div>
+      <div className="day-label">
+        {dayClass}
+        <span className={cx("today-label",{show:props.today})}> • TODAY</span>
+      </div>
     </div>
 
     <div className="content">
