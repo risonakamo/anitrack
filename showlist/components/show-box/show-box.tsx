@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import {openNyaa} from "../../../helpers/nyaa-helpers";
 
-import "./showbox.less";
+import "./show-box.less";
 
 interface ShowBoxProps
 {
