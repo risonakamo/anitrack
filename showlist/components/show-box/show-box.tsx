@@ -47,6 +47,16 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
     });
   }
 
+  // handle key input in nyaa input box. enter blurs input
+  // to save contents.
+  function inputKeyHandler(e:React.KeyboardEvent):void
+  {
+    if (e.key=="Enter")
+    {
+      (e.currentTarget as HTMLInputElement).blur();
+    }
+  }
+
   // open nyaa tab
   function nyaaClickHandler(e:React.MouseEvent):void
   {
@@ -84,7 +94,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
     <div className="input-zone hidden">
       <div className="nyaa-hold">
         <input className="nyaa-input" type="text" placeholder="nyaa..." ref={nyaaBox}
-          onFocus={focusHandler} onBlur={unfocusHandler}/>
+          onFocus={focusHandler} onBlur={unfocusHandler} onKeyDown={inputKeyHandler}/>
       </div>
       <select className="day-input" onFocus={focusHandler} onBlur={unfocusHandler} ref={dayBox}>
         <option value="N/A">N/A</option>
