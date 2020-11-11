@@ -36,6 +36,15 @@
             pointer-events: none;
             font-weight: 500;
         }
+
+        .day-label
+        {
+            display: none;
+            position: absolute;
+            font-size: 10px;
+            top: -22px;
+            color: var(--day-colour-dark);
+        }
     }
 
     .content
@@ -182,4 +191,12 @@
     }
 
     .gen-colour-classes();
+
+    &:first-child
+    {
+        .cover-hold .day-label
+        {
+            display: block;
+        }
+    }
 }

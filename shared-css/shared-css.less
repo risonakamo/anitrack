@@ -60,6 +60,7 @@
         &.@{key}
         {
             --day-colour: @value;
+            --day-colour-dark: @colour-classes-dark[$@key];
             --day-colour-50: fade(@value,50%);
         }
     });

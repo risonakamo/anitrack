@@ -82,15 +82,19 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
           src={props.show.cover}/>
       </a>
       <div className="progress-badge">{props.show.progress}</div>
+      <div className="day-label">{dayClass}</div>
     </div>
+
     <div className="content">
       <a href={props.show.url}>
         <h2>{props.show.title}</h2>
       </a>
     </div>
+
     <div className="day-indicator">
       <div className="nyaa-indicator">{nyaaString}</div>
     </div>
+
     <div className="input-zone hidden">
       <div className="nyaa-hold">
         <input className="nyaa-input" type="text" placeholder="nyaa..." ref={nyaaBox}
