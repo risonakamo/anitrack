@@ -71,11 +71,21 @@ function PopupMain():JSX.Element
         </LinkButton>
       </div>
       <div className="link-button-row">
-        <LinkButton title="Open All Main Sites" multiOpenHrefs={tripleOpenLinks} className="triple-button image-button">
+        <LinkButton title="Open All Main Sites" activeOpen={true}
+          multiOpenHrefs={tripleOpenLinks} className="triple-button image-button"
+        >
           <img src="/assets/popup-icons/triple-rect.png"/>
         </LinkButton>
-        <LinkButton title="Tracked Shows List" newTabHref="showlist/showlist-index.html">LIST</LinkButton>
-        <LinkButton title="Nyaa" newTabHref="https://nyaa.si/?f=0&c=1_2&q=">NYAA</LinkButton>
+        <LinkButton title="Tracked Shows List" activeOpen={true}
+          newTabHref="showlist/showlist-index.html"
+        >
+          LIST
+        </LinkButton>
+        <LinkButton title="Nyaa" activeOpen={true}
+          newTabHref="https://nyaa.si/?f=0&c=1_2&q="
+        >
+          NYAA
+        </LinkButton>
       </div>
     </div>
   </>;

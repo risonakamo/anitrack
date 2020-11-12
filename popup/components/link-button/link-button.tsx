@@ -7,6 +7,9 @@ interface LinkButtonProps
 {
   newTabHref?:string //if given, click will open this in background tab
   multiOpenHrefs?:string[] //if given, click will open all links in background tab
+  activeOpen?:boolean //open new tab as active instead of background.
+                      // if given with multi open hrefs, opens the first one as active.
+
   className?:string
   title?:string
 }
@@ -20,7 +23,7 @@ export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps
     {
       chrome.tabs.create({
         url:props.newTabHref,
-        active:false
+        active:props.activeOpen || false
       });
     }
 
@@ -28,9 +31,16 @@ export default function LinkButton(props:React.PropsWithChildren<LinkButtonProps
     {
       for (var x=0,l=props.multiOpenHrefs.length;x<l;x++)
       {
+        var active:boolean=false;
+
+        if (x==0 && props.activeOpen)
+        {
+          active=true;
+        }
+
         chrome.tabs.create({
           url:props.multiOpenHrefs[x],
-          active:false
+          active
         });
       }
     }
