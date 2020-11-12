@@ -7,6 +7,7 @@ import {groupByDay} from "../database/database-helpers";
 import {getTodaysNormal} from "../helpers/day-helpers";
 
 import DayContainer from "./components/day-container/day-container";
+import UserConfigurator from "./components/user-configurator/user-configurator";
 
 import "./showlist-index.less";
 
@@ -47,7 +48,12 @@ function ShowlistMain():JSX.Element
   })) as JSX.Element[];
 
   return <>
-    {dayContainers}
+    <div className="day-containers">
+      {dayContainers}
+    </div>
+    <div className="user-config-zone">
+      <UserConfigurator/>
+    </div>
   </>;
 }
 

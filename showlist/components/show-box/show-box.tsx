@@ -101,7 +101,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
 
     <div className="input-zone hidden">
       <div className="nyaa-hold">
-        <input className="nyaa-input" type="text" placeholder="nyaa..." ref={nyaaBox}
+        <input className="nyaa-input grey-line-input" type="text" placeholder="nyaa..." ref={nyaaBox}
           onFocus={focusHandler} onBlur={unfocusHandler} onKeyDown={inputKeyHandler}/>
       </div>
       <select className="day-input" onFocus={focusHandler} onBlur={unfocusHandler} ref={dayBox}>
