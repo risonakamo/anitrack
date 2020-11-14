@@ -36,6 +36,12 @@ export async function incrementShowProgress(id:number):Promise<void>
     chrome.storage.local.set({currentShows:shows});
 }
 
+// set the current user in the database
+export function setUser(user:string):void
+{
+    chrome.storage.local.set({user});
+}
+
 // get the registered user from database
 export function getUser():Promise<string|null>
 {
