@@ -17,3 +17,7 @@ track anilist.co shows with days and nyaa links.
 - upon navigating to your anilist.co page by using the extension popup's built in anilist navigation button, or reloading manually on the show page, the shows in the **watching** category will be tracked.
 - incrementing the progress of a show on the anilist.co show page while the extension is active will automatically update the tracked progress without necessitating a reload.
 - days and nyaa links can be assigned by using the extension's **showlist** page, accessible via the extension popup menu.
+
+# build release
+1. `npm run build-prod`
+2. folder called `release` will be created. zip the contents up and give it a name.
