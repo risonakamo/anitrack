@@ -9,6 +9,8 @@ import {getTodaysNormal} from "../helpers/day-helpers";
 
 import "./popup-index.less";
 
+const _refSiteLink:string="https://www9.gogoanimehub.tv/";
+
 function PopupMain():JSX.Element
 {
   const [todayShowsState,setTodayShowsState]=useState<TodayShows>();
@@ -51,7 +53,7 @@ function PopupMain():JSX.Element
   var tripleOpenLinks:string[]=[
     "https://calendar.google.com/",
     anilistLink,
-    "https://gogoanimes.co/"
+    _refSiteLink
   ];
 
   return <>
@@ -66,7 +68,7 @@ function PopupMain():JSX.Element
         <LinkButton title="AniList" newTabHref={anilistLink} className="image-button">
           <img src="/assets/popup-icons/al-white.png" className="link-icon"/>
         </LinkButton>
-        <LinkButton title="Release Site" newTabHref="https://gogoanimes.co/" className="image-button">
+        <LinkButton title="Release Site" newTabHref={_refSiteLink} className="image-button">
           <img src="/assets/popup-icons/go-white.png" className="link-icon"/>
         </LinkButton>
       </div>
