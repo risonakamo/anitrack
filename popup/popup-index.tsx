@@ -52,8 +52,8 @@ function PopupMain():JSX.Element
 
   var tripleOpenLinks:string[]=[
     "https://calendar.google.com/",
-    anilistLink,
-    _refSiteLink
+    _refSiteLink,
+    anilistLink
   ];
 
   return <>

@@ -19,11 +19,14 @@ export default function MiniShowBoxes(props:MiniShowBoxesProps):JSX.Element
   // click handler for clicking day text. opens all nyaas of shows in the show hold.
   function dayTextClick():void
   {
+    // set the first nyaa to be opened as active tab, others are background tab
+    var firstActive:boolean=true;
     for (var x=0;x<props.shows.length;x++)
     {
       if (props.shows[x].extras && props.shows[x].extras!.nyaa)
       {
-        openNyaa(props.shows[x].extras!.nyaa);
+        openNyaa(props.shows[x].extras!.nyaa,firstActive);
+        firstActive=false;
       }
     }
   }

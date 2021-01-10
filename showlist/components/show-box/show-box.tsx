@@ -65,7 +65,7 @@ export default function ShowBox(props:ShowBoxProps):JSX.Element
 
     if (props.extraInfo?.nyaa)
     {
-      openNyaa(props.extraInfo.nyaa);
+      openNyaa(props.extraInfo.nyaa,!e.ctrlKey);
     }
   }
 
