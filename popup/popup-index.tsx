@@ -9,7 +9,7 @@ import {getTodaysNormal} from "../helpers/day-helpers";
 
 import "./popup-index.less";
 
-const _refSiteLink:string="https://www9.gogoanimehub.tv/";
+const _refSiteLink:string="https://ww2.gogoanimes.org/";
 
 function PopupMain():JSX.Element
 {
