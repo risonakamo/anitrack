@@ -11,6 +11,9 @@ import "./popup-index.less";
 
 const _refSiteLink:string="https://ww2.gogoanimes.org/";
 
+// const _nyaaLink:string="https://nyaa.si/?f=0&c=1_2&q=";
+const _nyaaLink:string="https://animetosho.org/";
+
 function PopupMain():JSX.Element
 {
   const [todayShowsState,setTodayShowsState]=useState<TodayShows>();
@@ -84,7 +87,7 @@ function PopupMain():JSX.Element
           LIST
         </LinkButton>
         <LinkButton title="Nyaa" activeOpen={true}
-          newTabHref="https://nyaa.si/?f=0&c=1_2&q="
+          newTabHref={_nyaaLink}
         >
           NYAA
         </LinkButton>
