@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import {groupByDay,groupCombinedInfoByDay} from "./database-helpers";
+import {groupByDay,groupCombinedInfoByDay} from "lib/database/database-helpers";
 
 // OVERRIDE the current shows with the given array of shows
 export function setCurrentShows(shows:ShowInfo[]):void

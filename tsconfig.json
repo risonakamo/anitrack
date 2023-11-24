@@ -18,7 +18,7 @@
         "resolveJsonModule":true,
         "isolatedModules":true,
         "allowSyntheticDefaultImports": true,
-        // "skipLibCheck":true,
+        "skipLibCheck":true,
 
         // pathing
         "baseUrl":".",

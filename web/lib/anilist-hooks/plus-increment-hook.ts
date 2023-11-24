@@ -1,4 +1,4 @@
-import {incrementShowProgress} from "../database/database";
+import {incrementShowProgress} from "lib/database/database";
 
 // attach show progress increment to pluses on targeted show elements
 export function plusIncrementHook(showElements:WatchRow[]):void

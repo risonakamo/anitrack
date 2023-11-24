@@ -1,6 +1,6 @@
-import {getUser,setCurrentShows} from "../database/database";
-import {getUserShows} from "../anilist-apis/anilist-apis";
-import {popupNotify} from "./notification-hook";
+import {getUser,setCurrentShows} from "lib/database/database";
+import {getUserShows} from "apis/anilist-apis";
+import {popupNotify} from "lib/anilist-hooks/notification-hook";
 
 // synchronise extension database current shows with anilist
 export async function anilistSync():Promise<void>
