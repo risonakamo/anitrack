@@ -1,0 +1,195 @@
+@import (reference) "css/shared-css";
+
+.show-box
+{
+    display: inline-block;
+    width: 170px;
+    font-size: 0;
+    margin: 5px 5px 20px 5px;
+    vertical-align: top;
+    --day-colour: transparent;
+
+    .cover-hold
+    {
+        position: relative;
+        background-color: var(--day-colour);
+
+        .cover-img
+        {
+            width: 100%;
+        }
+
+        .progress-badge
+        {
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            bottom: 7px;
+            right: 7px;
+            padding: 4px;
+            text-align: center;
+            font-size: 19px;
+            background: white;
+            border-radius: 50%;
+            line-height: 27px;
+            border: 2px solid var(--day-colour);
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .day-label
+        {
+            display: none;
+            position: absolute;
+            font-size: 10px;
+            top: -22px;
+            color: var(--day-colour-dark);
+
+            .today-label
+            {
+                display: none;
+                color: @main-black;
+
+                &.show
+                {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .content
+    {
+        padding: 8px;
+        background: white;
+
+        a
+        {
+            display: block;
+
+            h2
+            {
+                text-align: center;
+                line-height: 1.1;
+            }
+
+            &:hover
+            {
+                color: var(--day-colour);
+            }
+        }
+    }
+
+    .day-indicator
+    {
+        position: relative;
+        height: 5px;
+        background-color: var(--day-colour);
+
+        .nyaa-indicator
+        {
+            position: absolute;
+            width: 100%;
+            top: 7px;
+            font-size: 10px;
+            font-style: italic;
+            text-align: center;
+            color: @sub-grey;
+            pointer-events: none;
+            transition: opacity @main-transition-time;
+        }
+    }
+
+    .input-zone
+    {
+        display: flex;
+        height: 20px;
+        opacity: 0;
+        transition: opacity @main-transition-time;
+
+        .nyaa-hold
+        {
+            width: 100%;
+            height: 100%;
+            flex: 1;
+
+            .nyaa-input
+            {
+                width: 97%;
+                height: 100%;
+            }
+        }
+
+
+        .day-input
+        {
+            width: 30%;
+            height: 100%;
+            border: none;
+            background: var(--day-colour);
+            cursor: pointer;
+        }
+    }
+
+    &:hover
+    {
+        .input-zone
+        {
+            opacity: 1;
+        }
+
+        .day-indicator .nyaa-indicator
+        {
+            opacity: 0;
+        }
+    }
+
+    &.focused
+    {
+        .input-zone
+        {
+            opacity: 1;
+        }
+
+        .day-indicator .nyaa-indicator
+        {
+            opacity: 0;
+        }
+    }
+
+    &.N\/A
+    {
+        .content a:hover
+        {
+            color: @main-black;
+        }
+    }
+
+    &.no-nyaa
+    {
+        .cover-hold a
+        {
+            cursor: default;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+
+            &:focus
+            {
+                opacity: 1;
+            }
+        }
+    }
+
+    .gen-colour-classes();
+
+    &:first-child
+    {
+        .cover-hold .day-label
+        {
+            display: block;
+        }
+    }
+}

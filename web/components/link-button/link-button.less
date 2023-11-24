@@ -1,0 +1,22 @@
+@import (reference) "css/shared-css";
+
+.link-button
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: fade(white,90%);
+    font-size: 13px;
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 4px;
+    cursor: pointer;
+    transition: background-color @main-transition-time,color @main-transition-time;
+
+    &:hover
+    {
+        background-color: fade(@light-white,30%);
+    }
+}

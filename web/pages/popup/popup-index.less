@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@import (reference) "css/shared-css";
+
+body
+{
+    margin: 0;
+}
+
+p
+{
+    margin: 0;
+}
+
+.control
+{
+    background-color: @blue-dark-black;
+
+    .link-button-row
+    {
+        display: flex;
+
+        .link-button
+        {
+            &.image-button
+            {
+                font-size: 0;
+            }
+
+            &.triple-button
+            {
+                flex: 4;
+            }
+
+            .link-icon
+            {
+                height: 30px;
+            }
+        }
+    }
+}

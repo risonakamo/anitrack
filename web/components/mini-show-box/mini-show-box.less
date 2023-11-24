@@ -1,0 +1,67 @@
+@import "css/shared-css";
+
+.mini-show-box
+{
+    display: inline-block;
+    width: 90px;
+    margin: 2px 1px;
+    vertical-align: top;
+
+    .cover-box
+    {
+        display: block;
+        position: relative;
+        font-size: 0;
+        background-color: var(--day-colour); //day colour comes from parent container class
+        cursor: pointer;
+        user-select: none;
+
+        .cover
+        {
+            width: 100%;
+            transition: opacity @main-transition-time;
+        }
+
+        .progress
+        {
+            position: absolute;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            align-items: center;
+            justify-content: center;
+
+            .progress-text
+            {
+                width: 45px;
+                height: 45px;
+                text-align: center;
+                font-size: 29px;
+                border-radius: 50%;
+                line-height: 43px;
+                color: white;
+                background-color: var(--day-colour-50);
+                text-shadow: 0 0 10px #0000008f, 0 0 10px #000000c7;
+                opacity: .9;
+            }
+        }
+
+        &:hover
+        {
+            .cover
+            {
+                opacity: .7;
+            }
+        }
+    }
+
+    .nyaa
+    {
+        text-align: center;
+        font-size: 10px;
+        font-style: italic;
+        margin-top: 1px;
+        color: @sub-grey;
+    }
+}
