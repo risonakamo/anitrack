@@ -6,6 +6,7 @@ declare const __dirname:string;
 
 export default defineConfig({
     root:`${__dirname}/web/html`,
+    base:"/build/",
     mode:"development",
 
     plugins:[
@@ -36,11 +37,25 @@ export default defineConfig({
         outDir:`${__dirname}/build`,
         target:["esnext"],
         sourcemap:true,
+        emptyOutDir:true,
 
         rollupOptions:{
             input:{
                 popup:`${__dirname}/web/html/popup/index.html`,
                 showlist:`${__dirname}/web/html/showlist/index.html`,
+                anilistHook:`${__dirname}/web/lib/anilist-hooks/anilist-hook.ts`
+            },
+
+            output:{
+                // override certain assets to not have hashes
+                entryFileNames:(chunkinfo)=>{
+                    if (chunkinfo.name=="anilist-hook")
+                    {
+                        return "assets/[name].js";
+                    }
+
+                    return "assets/[name]-[hash].js";
+                }
             }
         }
     }

@@ -7,6 +7,8 @@ import LinkButton from "components/link-button/link-button";
 import {getCombinedInfoByDay,getUser} from "lib/database/database";
 import {getTodaysNormal} from "lib/day-helpers";
 
+import { calendarIcon,anilistIcon,goIcon,tripleRectIcon } from "assets/assets";
+
 import "./popup-index.less";
 
 const _refSiteLink:string="https://ww2.gogoanimes.org/";
@@ -16,9 +18,13 @@ const _nyaaLink:string="https://animetosho.org/";
 
 function PopupMain():JSX.Element
 {
+  // --- state ---
   const [todayShowsState,setTodayShowsState]=useState<TodayShows>();
   const [anilistUsernameState,setAnilistUsernameState]=useState<string|null>(null);
 
+
+
+  // --- effect ---
   // load today shows
   useEffect(()=>{
     (async ()=>{
@@ -27,15 +33,22 @@ function PopupMain():JSX.Element
     })();
   },[]);
 
+
+
+  // --- functions ---
   // open show list page
   function openShowListPage(e:React.MouseEvent):void
   {
     chrome.tabs.create({
-      url:"../showlist/showlist-index.html",
+      url:"/build/showlist/index.html",
       active:true
     });
   }
 
+
+
+
+  // --- render ---
   var showBoxes:JSX.Element[]=[];
   if (todayShowsState)
   {
@@ -66,23 +79,23 @@ function PopupMain():JSX.Element
     <div className="control">
       <div className="link-button-row">
         <LinkButton title="Calendar" className="image-button" newTabHref="https://calendar.google.com/">
-          <img src="/assets/popup-icons/calendar-white.png" className="link-icon"/>
+          <img src={calendarIcon} className="link-icon"/>
         </LinkButton>
         <LinkButton title="AniList" newTabHref={anilistLink} className="image-button">
-          <img src="/assets/popup-icons/al-white.png" className="link-icon"/>
+          <img src={anilistIcon} className="link-icon"/>
         </LinkButton>
         <LinkButton title="Release Site" newTabHref={_refSiteLink} className="image-button">
-          <img src="/assets/popup-icons/go-white.png" className="link-icon"/>
+          <img src={goIcon} className="link-icon"/>
         </LinkButton>
       </div>
       <div className="link-button-row">
         <LinkButton title="Open All Main Sites" activeOpen={true}
           multiOpenHrefs={tripleOpenLinks} className="triple-button image-button"
         >
-          <img src="/assets/popup-icons/triple-rect.png"/>
+          <img src={tripleRectIcon}/>
         </LinkButton>
         <LinkButton title="Tracked Shows List" activeOpen={true}
-          newTabHref="showlist/showlist-index.html"
+          newTabHref="/build/showlist/index.html"
         >
           LIST
         </LinkButton>

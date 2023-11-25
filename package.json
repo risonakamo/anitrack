@@ -1,5 +1,6 @@
 {
   "name": "anitrack2",
+  "type": "module",
   "version": "3.1.1",
   "scripts":{
     "watch":"vite build -w true",
