@@ -49,7 +49,7 @@ export default defineConfig({
             output:{
                 // override certain assets to not have hashes
                 entryFileNames:(chunkinfo)=>{
-                    if (chunkinfo.name=="anilist-hook")
+                    if (chunkinfo.name=="anilistHook")
                     {
                         return "assets/[name].js";
                     }

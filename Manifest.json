@@ -16,6 +16,12 @@
         "https://anilist.co/user/*"
     ],
 
+    "content_scripts":[{
+        "matches":["https://anilist.co/user/*"],
+        "js":["build/assets/anilistHook.js"],
+        "run_at":"document_end"
+    }],
+
     "action":{
         "default_icon":{
             "16":"web/assets/at-logo.png",

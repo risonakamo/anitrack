@@ -8,6 +8,8 @@ import "./hook-styles.less";
 
 // main file for running hooks.
 (()=>{
+    console.log("anilist hook executing");
+
     injectHookStyles();
     anilistSync();
 
