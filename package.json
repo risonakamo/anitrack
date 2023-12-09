@@ -5,7 +5,8 @@
   "scripts":{
     "watch":"vite build -w true",
     "build":"vite build -w false",
-    "build2":"vite --config vite2.config.ts build -w false"
+    "build-cs":"vite --config vite2.config.ts build -w false",
+    "watch-cs":"vite --config vite2.config.ts build -w true"
   },
   "dependencies": {
     "@types/async-retry": "^1.4.8",

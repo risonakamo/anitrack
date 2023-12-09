@@ -18,12 +18,12 @@
 
     "content_scripts":[{
         "matches":["https://anilist.co/user/*"],
-        "js":["build2/anilist-hook.js"],
+        "js":["build-cscripts/anilist-hook.js"],
         "run_at":"document_end"
     }],
 
     "web_accessible_resources":[{
-        "resources":["build2/style.css"],
+        "resources":["build-cscripts/style.css"],
         "matches":["https://anilist.co/*"]
     }],
 

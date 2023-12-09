@@ -24,7 +24,8 @@ export default defineConfig({
             apis:`${__dirname}/web/apis`,
             hooks:`${__dirname}/web/hooks`,
             store:`${__dirname}/web/store`,
-            assets:`${__dirname}/web/assets`
+            assets:`${__dirname}/web/assets`,
+            cscripts:`${__dirname}/web/cscripts`
         }
     },
 
@@ -34,13 +35,13 @@ export default defineConfig({
     },
 
     build:{
-        outDir:`${__dirname}/build2`,
+        outDir:`${__dirname}/build-cscripts`,
         target:["esnext"],
         sourcemap:true,
         emptyOutDir:true,
 
         lib:{
-            entry:`${__dirname}/web/lib/anilist-hooks/anilist-hook.ts`,
+            entry:`${__dirname}/web/cscripts/anilist-hook.ts`,
             name:"anilist-hook",
             fileName:"anilist-hook"
         },

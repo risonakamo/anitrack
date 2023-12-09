@@ -4,7 +4,7 @@ import {dayMarkHook} from "lib/anilist-hooks/day-mark-hook";
 import {plusIncrementHook} from "lib/anilist-hooks/plus-increment-hook";
 import {getWatchRows} from "lib/anilist-hooks/element-hooks";
 
-import "./hook-styles.less";
+import "css/hook-styles.less";
 
 // main file for running hooks.
 (()=>{
