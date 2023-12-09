@@ -42,8 +42,7 @@ export default defineConfig({
         rollupOptions:{
             input:{
                 popup:`${__dirname}/web/html/popup/index.html`,
-                showlist:`${__dirname}/web/html/showlist/index.html`,
-                anilistHook:`${__dirname}/web/lib/anilist-hooks/anilist-hook.ts`
+                showlist:`${__dirname}/web/html/showlist/index.html`
             },
 
             output:{
