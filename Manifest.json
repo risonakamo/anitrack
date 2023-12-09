@@ -16,11 +16,18 @@
         "https://anilist.co/user/*"
     ],
 
-    "content_scripts":[{
-        "matches":["https://anilist.co/user/*"],
-        "js":["build-cscripts/anilist-hook.js"],
-        "run_at":"document_end"
-    }],
+    "content_scripts":[
+        {
+            "matches":["https://anilist.co/user/*"],
+            "js":["build-cscripts/anilist-hook.js"],
+            "run_at":"document_end"
+        },
+        {
+            "matches":["https://animetosho.org/search?q=*"],
+            "js":["build-cscripts/tosho-hook.js"],
+            "run_at":"document_end"
+        }
+    ],
 
     "web_accessible_resources":[{
         "resources":["build-cscripts/style.css"],
