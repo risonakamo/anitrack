@@ -1,29 +1,28 @@
 {
-    "manifest_version":2,
-    "name":"anitrack 3",
+    "name":"Anitrack 3",
     "short_name":"anitrack3",
-    "description":"helps track anilist.co shows",
-    "version":"3.1.1",
+    "description":"Notify on Tab Time Usage",
+    "version":"3.2.0",
     "homepage_url":"https://github.com/risonakamo/anitrack",
+    "manifest_version":3,
+    "author":"risonakamo",
 
-    "permissions":[
-        "tabs",
-        "storage",
-        "https://anilist.co/user/*"
-    ],
+    "permissions": ["tabs","storage"],
+    "host_permissions":["https://anilist.co/user/*"],
 
-    "content_scripts":[{
-        "matches":["https://anilist.co/user/*"],
-        "js":["build/anilisthook-build.js"],
-        "run_at":"document_end"
-    }],
-
-    "browser_action":{
+    "action":{
+        "default_title":"Anitrack 3",
         "default_popup":"popup/popup-index.html"
     },
 
-    "web_accessible_resources":[
-        "build/anilisthook-build.css"
+    "content_scripts": [
+        {
+            "matches": [
+                "https://anilist.co/user/*"
+            ],
+            "js":["build/anilisthook-build.js"],
+            "run_at": "document_end"
+        }
     ],
 
     "icons":{
